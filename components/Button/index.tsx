@@ -1,48 +1,66 @@
 import React from 'react';
-
+import { useThemeContext } from '../ThemeProvider';
+import clsx from 'clsx'
 interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
+  type?: string;
   size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
   label: string;
-  /**
-   * Optional click handler
-   */
   onClick?: () => void;
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
+export const Button: React.FunctionComponent<ButtonProps> = ({
+  type: buttonType,
   ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+}) => {
+  switch (buttonType) {
+    case 'primary':
+      return <SolidButton {...props} />
+    case 'outline':
+      return <OutlineButton {...props} />
+    default:
+      return <SolidButton {...props} />
+  }
+};
+
+export const SolidButton: React.FunctionComponent<ButtonProps> = ({
+  size = 'medium',
+  label,
+  type: buttonType,
+  children,
+  ...props
+}) => {
+  const { colors } = useThemeContext()
   return (
     <button
       type="button"
-      className={['p-8 bg-gray-600 text-white'].join(' ')}
-      style={{ backgroundColor }
+      className={clsx('px-4 py-1 text-white')}
+      style={{ backgroundColor: colors.primary }
       }
       {...props}
     >
-      {label}
+      {children || label}
+    </button>
+  );
+};
+
+
+export const OutlineButton: React.FunctionComponent<ButtonProps> = ({
+  size = 'medium',
+  label,
+  type: buttonType,
+  children,
+  ...props
+}) => {
+  const { colors } = useThemeContext()
+  return (
+    <button
+      type="button"
+      className={clsx('px-4 py-1 text-black')}
+      style={{ borderColor: colors.primary, borderWidth: 2 }
+      }
+      {...props}
+    >
+      {children || label}
     </button>
   );
 };
