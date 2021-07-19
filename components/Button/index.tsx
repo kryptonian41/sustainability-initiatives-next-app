@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 interface ButtonProps {
   type?: 'primary' | 'outline';
   size?: 'small' | 'medium' | 'large';
-  label: string;
+  label?: string;
   onClick?: () => void;
 }
 

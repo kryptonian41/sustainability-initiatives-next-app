@@ -1,7 +1,26 @@
 .container {
-  @apply px-12 py-4;
+  @apply px-12 py-4 flex items-center;
   svg {
     width: 80px;
     height: auto;
+  }
+  .body {
+    @apply flex-1 flex flex-col justify-end;
+    .sub-nav {
+      @apply flex justify-end;
+    }
+    .nav {
+      @apply mt-4;
+      ul {
+        @apply flex justify-end;
+        li {
+          @apply uppercase font-bold;
+          color: var(--text-dark);
+          &:not(:first-child) {
+            @apply ml-8;
+          }
+        }
+      }
+    }
   }
 }

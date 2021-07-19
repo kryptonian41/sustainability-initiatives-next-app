@@ -19,3 +19,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --primary: #ff881f;
+  --secondary: #984c16;
+  --tertiary: #f6f0eb;
+  --text-dark: #411b00;
+  --text-light: #cb9a76;
+  --text-highlight: #984c16;
+}
