@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { useThemeContext } from '../ThemeProvider';
 import clsx from 'clsx'
+import styles from './styles.module.css'
 interface ButtonProps {
   type?: 'primary' | 'outline';
   size?: 'small' | 'medium' | 'large';
