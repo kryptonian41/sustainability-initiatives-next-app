@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { useThemeContext } from '../ThemeProvider';
 import clsx from 'clsx'
 interface ButtonProps {
-  type?: string;
+  type?: 'primary' | 'outline';
   size?: 'small' | 'medium' | 'large';
   label: string;
   onClick?: () => void;
@@ -11,7 +11,7 @@ interface ButtonProps {
 export const Button: React.FunctionComponent<ButtonProps> = ({
   type: buttonType,
   ...props
-}) => {
+}: ButtonProps) => {
   switch (buttonType) {
     case 'primary':
       return <SolidButton {...props} />
@@ -28,7 +28,7 @@ export const SolidButton: React.FunctionComponent<ButtonProps> = ({
   type: buttonType,
   children,
   ...props
-}) => {
+}: PropsWithChildren<ButtonProps>) => {
   const { colors } = useThemeContext()
   return (
     <button
@@ -50,7 +50,7 @@ export const OutlineButton: React.FunctionComponent<ButtonProps> = ({
   type: buttonType,
   children,
   ...props
-}) => {
+}: PropsWithChildren<ButtonProps>) => {
   const { colors } = useThemeContext()
   return (
     <button
