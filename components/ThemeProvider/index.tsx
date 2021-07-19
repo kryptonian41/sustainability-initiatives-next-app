@@ -9,7 +9,9 @@ const colorMap = {
   secondary: '#984C16',
   tertiary: '#F6F0EB',
   text: {
-    highlight: '#984C16'
+    highlight: '#984C16',
+    dark: '#411B00',
+    light: '#CB9A76'
   }
 }
 
