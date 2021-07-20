@@ -1,0 +1,22 @@
+.container {
+  .title {
+    @apply text-2xl font-semibold mt-8;
+    color: var(--text-dark);
+  }
+  .subtitle {
+    @apply mt-2;
+    color: var(--text-light);
+  }
+  .body {
+    @apply mt-6;
+    color: var(--text-dark);
+  }
+  .actionContainer {
+    @apply mt-4;
+  }
+  .image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
