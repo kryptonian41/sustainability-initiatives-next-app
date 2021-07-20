@@ -14,12 +14,18 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  primary: true,
   label: 'Button',
+  type: 'primary'
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
   label: 'Button',
   type: 'outline'
+};
+
+export const Text = Template.bind({});
+Text.args = {
+  label: 'Button',
+  type: 'text'
 };

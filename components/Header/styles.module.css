@@ -8,16 +8,21 @@
     @apply flex-1 flex flex-col justify-end;
     .sub-nav {
       @apply flex justify-end;
+      svg {
+        @apply ml-8;
+        width: 30px;
+        height: auto;
+      }
     }
     .nav {
-      @apply mt-4;
+      @apply mt-8;
       ul {
         @apply flex justify-end;
         li {
-          @apply uppercase font-bold;
+          @apply uppercase font-bold cursor-pointer text-lg;
           color: var(--text-dark);
           &:not(:first-child) {
-            @apply ml-8;
+            @apply ml-10;
           }
         }
       }

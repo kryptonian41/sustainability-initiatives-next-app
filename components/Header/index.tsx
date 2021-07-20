@@ -1,6 +1,7 @@
 import { Button } from '../Button'
 import React from 'react'
 import HeaderLogo from '../../assets/svgs/logo.svg'
+import SearchIcon from '../../assets/svgs/search-icon.svg'
 import styles from './styles.module.css'
 
 interface Props {
@@ -13,7 +14,9 @@ export const Header = (props: Props) => {
       <HeaderLogo />
       <div className={styles.body}>
         <div className={styles['sub-nav']}>
-          <Button>GET IN TOUCH</Button>
+          <Button type="text" className="font-semibold">DOWNLOADS</Button>
+          <Button className="ml-4">GET IN TOUCH</Button>
+          <SearchIcon />
         </div>
         <div className={styles.nav}>
           <ul>

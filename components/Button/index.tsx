@@ -3,10 +3,11 @@ import { useThemeContext } from '../ThemeProvider';
 import clsx from 'clsx'
 import styles from './styles.module.css'
 interface ButtonProps {
-  type?: 'primary' | 'outline';
+  type?: 'primary' | 'outline' | 'text';
   size?: 'small' | 'medium' | 'large';
   label?: string;
   onClick?: () => void;
+  [key: string]: any
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
@@ -18,6 +19,8 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       return <SolidButton {...props} />
     case 'outline':
       return <OutlineButton {...props} />
+    case 'text':
+      return <TextButton {...props} />
     default:
       return <SolidButton {...props} />
   }
@@ -28,13 +31,14 @@ export const SolidButton: React.FunctionComponent<ButtonProps> = ({
   label,
   type: buttonType,
   children,
+  className,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
   const { colors } = useThemeContext()
   return (
     <button
       type="button"
-      className={clsx('px-4 py-1 text-white')}
+      className={clsx('px-4 py-1 text-white', className)}
       style={{ backgroundColor: colors.primary }
       }
       {...props}
@@ -50,14 +54,37 @@ export const OutlineButton: React.FunctionComponent<ButtonProps> = ({
   label,
   type: buttonType,
   children,
+  className,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
   const { colors } = useThemeContext()
   return (
     <button
       type="button"
-      className={clsx('px-4 py-1')}
+      className={clsx('px-4 py-1', className)}
       style={{ borderColor: colors.primary, borderWidth: 2, color: colors.text.dark }
+      }
+      {...props}
+    >
+      {children || label}
+    </button>
+  );
+};
+
+export const TextButton: React.FunctionComponent<ButtonProps> = ({
+  size = 'medium',
+  label,
+  type: buttonType,
+  children,
+  className,
+  ...props
+}: PropsWithChildren<ButtonProps>) => {
+  const { colors } = useThemeContext()
+  return (
+    <button
+      type="button"
+      className={clsx('px-4 py-1', className)}
+      style={{ color: colors.text.dark }
       }
       {...props}
     >

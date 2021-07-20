@@ -1,0 +1,15 @@
+.container {
+  @apply flex items-center;
+  .label {
+    font-family: var(--secondary-font);
+    font-size: 35px;
+  }
+  .line {
+    height: 2px;
+    background: var(--text-light);
+    @apply flex-1 ml-6;
+  }
+  .actionsContainer {
+    @apply ml-6;
+  }
+}

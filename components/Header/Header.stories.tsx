@@ -12,7 +12,4 @@ export default {
 const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+Primary.args = {};
