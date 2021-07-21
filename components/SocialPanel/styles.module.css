@@ -1,0 +1,15 @@
+.container {
+  @apply flex;
+  .item {
+    @apply inline-flex justify-center items-center;
+    width: 35px;
+    height: 35px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    &:not(:first-child) {
+      @apply ml-3;
+    }
+  }
+}
