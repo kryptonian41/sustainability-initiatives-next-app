@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 
 interface Props {
   label: string,
-  actions: React.ReactNode
+  actions?: React.ReactNode
 }
 
 export const Heading = ({ label, actions }: Props) => {
