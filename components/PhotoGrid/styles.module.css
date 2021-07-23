@@ -1,0 +1,16 @@
+.photosContainer {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.gridItem img {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.position {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}

@@ -1,16 +1,18 @@
 import { Person } from "./types";
+import styles from "./styles.module.css";
 
 type Props = {
   person: Person;
+  showPositions: boolean;
 };
 
-const GridPhoto = ({ person }: Props) => {
+const GridPhoto = ({ person, showPositions }: Props) => {
   const { imgSrc, name, position } = person;
   return (
-    <div>
+    <div className={styles.gridItem}>
       <img src={imgSrc} alt={name} />
-      <p>{name}</p>
-      <p>{position}</p>
+      <p className={styles.name}>{name}</p>
+      {showPositions && <p className={styles.position}>{position}</p>}
     </div>
   );
 };
