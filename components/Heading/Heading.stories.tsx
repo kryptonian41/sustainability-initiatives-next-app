@@ -13,11 +13,11 @@ const Template: ComponentStory<typeof Heading> = (args) => <Heading {...args} />
 
 export const Primary = Template.bind({});
 Primary.args = {
-  label: 'Heading'
+  label: 'The people who make it possible'
 };
 
 export const WithActions = Template.bind({});
 WithActions.args = {
-  label: 'Heading',
+  label: 'The people who make it possible',
   actions: <div>Actions</div>
 };

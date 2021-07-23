@@ -32,4 +32,7 @@ a {
   --secondary-font: "Begum";
   --background-primary: "#fff";
   --background-secondary: "#F7F0EB";
+  --tablet-breakpoint: 640px;
+  --laptop-breakpoint: 1024px;
+  --desktop-breakpoint: 1280px;
 }
