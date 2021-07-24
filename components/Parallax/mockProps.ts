@@ -6,8 +6,5 @@ export const parallaxProps: Props = {
   title: "Our mission is to make the world sustainable",
   subTitle:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim iaculis purus pretium ultrices. Suspendisse et condim entum libero. Proin vehicula dolor nibh.",
-  btnText: "READ MORE ABOUT US",
-  btnAction: () => {
-    console.log("clicked");
-  },
+  btnContent: "READ MORE ABOUT US",
 };

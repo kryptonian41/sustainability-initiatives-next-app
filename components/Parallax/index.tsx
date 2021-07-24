@@ -9,16 +9,14 @@ export interface Props {
   bgImg: string;
   title: string;
   subTitle?: string;
-  btnText: string;
-  btnAction: React.MouseEventHandler<HTMLButtonElement>;
+  btnContent: string | React.ReactNode;
 }
 
 const Parallax = ({
   bgImg,
   title,
   subTitle,
-  btnText,
-  btnAction,
+  btnContent,
   isLight = false,
 }: Props) => {
   return (
@@ -30,7 +28,7 @@ const Parallax = ({
             amount: 0.4,
           },
         ]}
-        style={{ position: "relative", minHeight: "60vh" }}
+        style={{ height: "fit-content" }}
       >
         <div
           className={styles.bgOverlay}
@@ -38,17 +36,20 @@ const Parallax = ({
             backgroundImage: isLight
               ? "linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.2), transparent, transparent)"
               : "linear-gradient(90deg, rgba(0,0,0,0.8), transparent)",
-            color: isLight ? "black" : "white",
           }}
-        >
-          <Layout>
-            <div className={styles.content}>
+        />
+        <Layout>
+          <div
+            className={styles.content}
+            style={{ color: isLight ? "black" : "white" }}
+          >
+            <div>
               {title && <h3>{title}</h3>}
               {subTitle && <p>{subTitle}</p>}
-              {btnText && <Button>{btnText}</Button>}
+              {btnContent && <Button>{btnContent}</Button>}
             </div>
-          </Layout>
-        </div>
+          </div>
+        </Layout>
       </ParallaxBanner>
     </ParallaxProvider>
   );
