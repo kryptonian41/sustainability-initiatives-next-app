@@ -17,3 +17,15 @@ export const Primary = Template.bind({});
 Primary.args = {
   people: peopleProps,
 };
+
+export const WithBg = Template.bind({});
+WithBg.args = {
+  people: peopleProps,
+  darkBg: true,
+};
+
+export const WithAction = Template.bind({});
+WithAction.args = {
+  people: peopleProps,
+  withAction: true,
+};
