@@ -28,6 +28,11 @@ a {
   --text-dark: #411b00;
   --text-light: #cb9a76;
   --text-highlight: #984c16;
-  --main-font: "Montserrat";
+  --primary-font: "Montserrat";
   --secondary-font: "Begum";
+  --background-primary: "#fff";
+  --background-secondary: "#F7F0EB";
+  --tablet-breakpoint: 640px;
+  --laptop-breakpoint: 1024px;
+  --desktop-breakpoint: 1280px;
 }

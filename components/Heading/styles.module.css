@@ -1,13 +1,18 @@
 .container {
-  @apply flex items-center;
-  .label {
-    font-family: var(--secondary-font);
+  @apply flex items-center  flex-wrap;
+  font-family: var(--secondary-font);
+  font-size: 22px;
+  :global(.whitespace) {
+    margin-left: 10px;
+  }
+  @media (min-width: 1024px) {
     font-size: 35px;
   }
   .line {
+    content: "";
     height: 2px;
     background: var(--text-light);
-    @apply flex-1 ml-6;
+    @apply flex-1 ml-4 inline;
   }
   .actionsContainer {
     @apply ml-6;
