@@ -1,0 +1,10 @@
+.outline-button {
+  border-color: var(--primary);
+  border-width: 2px;
+  color: var(--text-dark);
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+}

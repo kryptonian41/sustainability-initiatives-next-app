@@ -61,9 +61,7 @@ export const OutlineButton: React.FunctionComponent<ButtonProps> = ({
   return (
     <button
       type="button"
-      className={clsx('px-4 py-1', className)}
-      style={{ borderColor: colors.primary, borderWidth: 2, color: colors.text.dark }
-      }
+      className={clsx('px-4 py-1', styles['outline-button'], className)}
       {...props}
     >
       {children || label}
