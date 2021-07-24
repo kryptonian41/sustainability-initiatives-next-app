@@ -15,38 +15,41 @@ const Pagination = ({
   nextClickAction,
   pageBtnAction,
 }: Props) => {
+  const renderBtn = (pageNumber: number): React.ReactNode => {
+    return (
+      <button
+        onClick={() => {
+          if (selectedPage !== pageNumber) pageBtnAction(pageNumber);
+        }}
+        className={`${styles.pageBtn} ${
+          selectedPage === pageNumber && styles.activePage
+        }`}
+      >
+        {pageNumber}
+      </button>
+    );
+  };
+
   const renderLongPagination = (): React.ReactNode => {
+    const renderEllipsis = () => (
+      <>
+        <span style={{ marginRight: "0.8rem" }}>.</span>
+        <span style={{ marginRight: "0.8rem" }}>.</span>
+        <span>.</span>
+      </>
+    );
+
     return (
       <>
-        <button
-          onClick={() => {
-            if (selectedPage !== 1) pageBtnAction(1);
-            else return;
-          }}
-          className={`${styles.pageBtn} ${
-            selectedPage === 1 && styles.activePage
-          }`}
-        >
-          1
-        </button>
-        {selectedPage !== 2 && <span>...</span>}
-        {selectedPage !== 1 && selectedPage !== numberOfPages && (
-          <button className={`${styles.pageBtn} ${styles.activePage}`}>
-            {selectedPage}
-          </button>
-        )}
-        {selectedPage !== numberOfPages - 1 && <span>...</span>}
-        <button
-          onClick={() => {
-            if (selectedPage !== numberOfPages) pageBtnAction(numberOfPages);
-            else return;
-          }}
-          className={`${styles.pageBtn} ${
-            selectedPage === numberOfPages && styles.activePage
-          }`}
-        >
-          {numberOfPages}
-        </button>
+        {renderBtn(1)}
+        {selectedPage > 2 && renderEllipsis()}
+        {selectedPage === 1 && renderBtn(2)}
+        {selectedPage !== 1 &&
+          selectedPage !== numberOfPages &&
+          renderBtn(selectedPage)}
+        {selectedPage === numberOfPages && renderBtn(numberOfPages - 1)}
+        {selectedPage < numberOfPages - 1 && renderEllipsis()}
+        {renderBtn(numberOfPages)}
       </>
     );
   };
@@ -54,27 +57,15 @@ const Pagination = ({
   return (
     <div className={styles.container}>
       <button onClick={prevClickAction} className={styles.link}>
-        Previous Page
+        Previous
       </button>
-      {numberOfPages <= 6
+      {numberOfPages <= 5
         ? Array(numberOfPages)
             .fill(1)
-            .map((_, index) => (
-              <button
-                onClick={() => {
-                  if (selectedPage !== index + 1) pageBtnAction(index + 1);
-                  else return;
-                }}
-                className={`${styles.pageBtn} ${
-                  selectedPage === index + 1 && styles.activePage
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))
+            .map((_, index) => renderBtn(index + 1))
         : renderLongPagination()}
       <button onClick={nextClickAction} className={styles.link}>
-        Next Page
+        Next
       </button>
     </div>
   );
