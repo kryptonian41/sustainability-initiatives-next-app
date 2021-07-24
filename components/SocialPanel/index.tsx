@@ -43,7 +43,7 @@ export const SocialPanel: React.FC<Props> = ({ items = defaultItems, iconColor =
   return (
     <div className={styles.container}>
       {items && items.map(item =>
-        <a className={styles.item} href={item.url} target="_blank" style={{ backgroundColor: bgColor }}>
+        <a className={styles.item} href={item.url} target="_blank" style={{ backgroundColor: bgColor }} key={item.url}>
           <item.icon style={{ fill: iconColor }} />
         </a>
       )}
