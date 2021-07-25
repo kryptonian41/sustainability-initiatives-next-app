@@ -1,0 +1,55 @@
+.photosContainer {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem 1rem;
+}
+
+.gridItem img {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.position {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.photosSlider {
+  overflow: hidden;
+  margin: 2rem 0;
+
+  .photoSlidesContainer {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gridItem {
+      width: calc((100% - 3rem) / 4);
+      flex-shrink: 0;
+      scroll-snap-align: start;
+
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+.actionBtns {
+  display: flex;
+
+  svg {
+    cursor: pointer;
+
+    &:first-of-type {
+      margin-right: 2rem;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import Splitting from "splitting";
 
 interface Props {
   label: string,
-  actions: React.ReactNode
+  actions?: React.ReactNode
 }
 
 export const Heading = ({ label, actions }: Props) => {
