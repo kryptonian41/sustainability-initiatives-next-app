@@ -12,7 +12,7 @@ import styles from "./styles.module.css";
 const Footer = () => {
   return (
     <div className={styles.bg}>
-      <img src="static/media/assets/images/footer.png" />
+      <img src="images/footer.png" />
       <div className={styles.container}>
         <Layout>
           <div className={styles.content}>
