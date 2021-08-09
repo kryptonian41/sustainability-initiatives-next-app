@@ -1,4 +1,5 @@
 import { Article } from "utils/types";
+import { format } from 'date-fns'
 
 export const sortArticlesByDate = (articles: Article[]) => {
   return articles.sort((a, b) => {
@@ -13,4 +14,9 @@ export const sortArticlesByLocation = (articles: Article[]) => {
     else if (a.location.label === b.location.label) return 1
     return -1
   })
+}
+
+export const prettyDate = (dateStr: string) => {
+  const date = new Date(dateStr)
+  return format(date, 'd MMM yyyy')
 }

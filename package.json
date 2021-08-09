@@ -12,11 +12,14 @@
   "dependencies": {
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "date-fns": "^2.23.0",
     "next": "11.0.1",
     "next-images": "^1.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scroll-parallax": "^2.4.0",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
     "splitting": "^1.0.6",
     "strapi-sdk-javascript": "^0.3.3"
   },

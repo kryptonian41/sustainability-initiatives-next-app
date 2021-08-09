@@ -1,5 +1,6 @@
 import { Container } from 'components/Container'
 import { Header } from 'components/Header'
+import { Heading } from 'components/Heading'
 import { RecentArticlesGrid } from 'components/RecentArticlesGrid'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { API } from 'utils/api'
@@ -25,10 +26,14 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
     <div>
       <Container>
         <Header />
+        <div className="mt-12">
+          <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
+        </div>
+        <div className="mt-12">
+          <Heading label="Our Initiatives" />
+        </div>
+
       </Container>
-
-      <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
-
     </div>
   )
 }
