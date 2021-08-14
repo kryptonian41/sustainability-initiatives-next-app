@@ -21,7 +21,17 @@ export const Header = (props: Props) => {
         <div className={styles.nav}>
           <ul>
             <li>About Us</li>
-            <li>Initiatives</li>
+            <li>Initiatives
+
+              <ul>
+                <li>Subnav Item</li>
+                <li>Subnav Item</li>
+                <li>Subnav Item</li>
+                <li>Subnav Item</li>
+              </ul>
+
+
+            </li>
             <li>Associates</li>
             <li>Support</li>
             <li>Blogs</li>

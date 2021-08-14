@@ -9,11 +9,14 @@ interface Props {
 }
 
 export const BaseLayout = ({ children }: Props) => {
-  return <div>
-    <Container>
+  return <div className="relative z-0">
+    <Container className="z-50">
       <Header />
     </Container>
-    {children}
+    <div className="z-20">
+
+      {children}
+    </div>
     <Footer />
   </div>
 };

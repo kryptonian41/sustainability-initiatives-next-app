@@ -2,7 +2,8 @@ import React from "react";
 import { ParallaxBanner, ParallaxProvider } from "react-scroll-parallax";
 import { Button } from "../Button";
 import styles from "./styles.module.css";
-import { Container } from "components/Container";
+import { Container } from "../Container";
+import clsx from "clsx";
 
 export interface Props {
   isLight?: boolean;
@@ -34,14 +35,15 @@ const Parallax = ({
           className={styles.bgOverlay}
           style={{
             backgroundImage: isLight
-              ? "linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.2), transparent, transparent)"
-              : "linear-gradient(90deg, rgba(0,0,0,0.8), transparent)",
+              ? "linear-gradient(90deg, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.2), transparent)"
+              : "linear-gradient(90deg, rgba(0,0,0,0.8) 30%, transparent)",
           }}
         />
         <Container>
           <div
-            className={styles.content}
-            style={{ color: isLight ? "black" : "white" }}
+            className={clsx(styles.content, {
+              [styles.light]: isLight
+            })}
           >
             <div>
               {title && <h3>{title}</h3>}

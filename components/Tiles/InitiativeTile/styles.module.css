@@ -1,0 +1,13 @@
+.root {
+  @apply flex items-center;
+  .icon,
+  .body {
+    @apply w-1/2;
+  }
+  .body {
+    @apply pl-10;
+  }
+  .icon {
+    @apply block h-auto;
+  }
+}

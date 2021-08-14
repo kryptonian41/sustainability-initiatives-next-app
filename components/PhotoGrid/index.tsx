@@ -1,9 +1,9 @@
 import { Heading } from "../Heading";
 import GridPhoto from "./GridPhoto";
-import Layout from "../Layout";
 import NextButton from "../../assets/svgs/scroll-action-arrow.svg";
 import { People } from "./types";
 import styles from "./styles.module.css";
+import { Container } from "../Container";
 
 type Props = {
   people: People;
@@ -49,7 +49,7 @@ const PhotoGrid = ({
         padding: "4rem 0 3rem 0",
       }}
     >
-      <Layout>
+      <Container>
         {withAction ? (
           <div className={styles.photoGridContainer}>
             <Heading
@@ -74,7 +74,7 @@ const PhotoGrid = ({
             </div>
           </div>
         )}
-      </Layout>
+      </Container>
     </div>
   );
 };

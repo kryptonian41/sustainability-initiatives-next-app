@@ -1,6 +1,6 @@
 .root {
   position: relative;
-  @apply pt-40 pb-10;
+  @apply pt-80 pb-10;
   .bgImage {
     position: absolute;
     top: 0;

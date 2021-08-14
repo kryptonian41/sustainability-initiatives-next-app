@@ -3,19 +3,23 @@ import { Header } from 'components/Header'
 import { Heading } from 'components/Heading'
 import Parallax, { Props as ParallaxProps } from 'components/Parallax'
 import { RecentArticlesGrid } from 'components/RecentArticlesGrid'
+import { InitiaveTile } from 'components/Tiles/InitiativeTile'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { API } from 'utils/api'
-import { Article } from 'utils/types'
+import { Article, Initiative } from 'utils/types'
 import styles from '../styles/Home.module.css'
 interface Props {
-  recentArticles: Article[]
+  recentArticles: Article[],
+  initiatives: Initiative[]
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const recentArticles = await API.getRecentArticles()
+  const initiatives = await API.getInitiatives()
   return {
     props: {
-      recentArticles
+      recentArticles,
+      initiatives
     }
   }
 }
@@ -40,7 +44,7 @@ const supportUsSection: ParallaxProps = {
 
 
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({ recentArticles }) => {
+> = ({ recentArticles, initiatives }) => {
 
   return (
     <div>
@@ -56,9 +60,25 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
       <Container>
         <div className="mt-12">
           <Heading label="Our Initiatives" />
+
+          <div className="mt-8">
+            {
+              initiatives && <div className="flex flex-wrap">
+                {
+                  initiatives.map(initiative => {
+                    return <div className="w-1/2 my-14 pr-10">
+                      <InitiaveTile initiave={initiative} />
+                    </div>
+                  })
+                }
+              </div>
+            }
+          </div>
         </div>
         <div className="mt-12">
           <Heading label="Associates who stand with us" />
+
+
         </div>
       </Container>
 

@@ -7,8 +7,9 @@ import YT from "../../assets/svgs/footer-yt.svg";
 import FB from "../../assets/svgs/footer-fb.svg";
 import Insta from "../../assets/svgs/footer-insta.svg";
 import styles from "./styles.module.css";
-import { Container } from "components/Container";
+import { Container } from "../Container";
 import FooterBg from 'assets/images/footer.png'
+
 const Footer = () => {
   return (
     <div className={styles.root}>
