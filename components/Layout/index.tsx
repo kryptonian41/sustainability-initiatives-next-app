@@ -10,10 +10,10 @@ interface Props {
 
 export const BaseLayout = ({ children }: Props) => {
   return <div className="relative z-0">
-    <Container className="z-50">
+    <Container className="z-50 relative">
       <Header />
     </Container>
-    <div className="z-20">
+    <div>
 
       {children}
     </div>
