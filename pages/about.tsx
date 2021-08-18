@@ -10,7 +10,10 @@ const About = () => {
     <Wrapper>
       <Hero />
       <Promise />
-      <PhotoGrid people={peopleProps} />
+      <PhotoGrid
+        heading="The People who make it possible"
+        items={peopleProps}
+      />
     </Wrapper>
   );
 };

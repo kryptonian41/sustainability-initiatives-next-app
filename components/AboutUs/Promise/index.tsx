@@ -1,7 +1,7 @@
 import React from "react";
 import Section, { Props as SectionProps } from "./Section";
 import promiseStyles from "./promiseStyles.module.css";
-import Layout from "components/Layout";
+import {BaseLayout as Layout} from "components/Layout";
 
 const data: SectionProps[] = [
   {

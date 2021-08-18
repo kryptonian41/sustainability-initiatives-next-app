@@ -1,4 +1,4 @@
-import Layout from "components/Layout";
+import {BaseLayout as Layout} from "components/Layout";
 import React from "react";
 import heroStyles from "./heroStyles.module.css";
 

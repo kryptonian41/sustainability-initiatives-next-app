@@ -1,4 +1,3 @@
-import { Person } from "./types";
 import styles from "./styles.module.css";
 
 export interface GridItem {
