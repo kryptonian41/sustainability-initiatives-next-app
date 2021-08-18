@@ -47,7 +47,7 @@ const PhotoGrid = ({
     <div
       style={{
         backgroundColor: darkBg ? "#F6F0EB" : "white",
-        padding: "4rem 0 3rem 0",
+        padding: "6rem 0",
       }}
     >
       <Container>
