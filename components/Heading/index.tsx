@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import styles from './styles.module.css'
-import Splitting from "splitting";
 
 interface Props {
   label: string,
@@ -9,12 +8,17 @@ interface Props {
 
 export const Heading = ({ label, actions }: Props) => {
   const elementRef = useRef(null)
+
   useLayoutEffect(() => {
-    Splitting({
-      target: elementRef.current,
-      by: 'words'
-    })
+    (async () => {
+      const Splitting = (await import("splitting")).default
+      Splitting({
+        target: elementRef.current,
+        by: 'words'
+      })
+    })()
   }, [])
+
   return (
     <div className={styles.container} ref={elementRef}>
       {/* TODO: Use splitting text achieve the desired look on mobile devices */}

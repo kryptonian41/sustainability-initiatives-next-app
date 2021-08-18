@@ -1,4 +1,3 @@
-import Layout from "../Layout";
 import React from "react";
 import { Button } from "../Button";
 import Map from "./Map";
@@ -8,13 +7,15 @@ import YT from "../../assets/svgs/footer-yt.svg";
 import FB from "../../assets/svgs/footer-fb.svg";
 import Insta from "../../assets/svgs/footer-insta.svg";
 import styles from "./styles.module.css";
+import { Container } from "../Container";
+import FooterBg from 'assets/images/footer.png'
 
 const Footer = () => {
   return (
-    <div className={styles.bg}>
-      <img src="images/footer.png" />
+    <div className={styles.root}>
+      <img src={FooterBg.src} className={styles.bgImage} />
       <div className={styles.container}>
-        <Layout>
+        <Container>
           <div className={styles.content}>
             <div className={styles.contentOne}>
               <Logo />
@@ -69,7 +70,7 @@ const Footer = () => {
             <p>© Copyright 2020-21</p>
             <p>All rights reserved</p>
           </div>
-        </Layout>
+        </Container>
       </div>
     </div>
   );

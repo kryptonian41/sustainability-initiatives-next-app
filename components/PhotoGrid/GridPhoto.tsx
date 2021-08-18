@@ -1,18 +1,18 @@
 import { Person } from "./types";
 import styles from "./styles.module.css";
 
-type Props = {
-  person: Person;
-  showPositions: boolean;
+export interface GridItem {
+  title: string;
+  subTitle: string;
+  imgSrc: string;
 };
 
-const GridPhoto = ({ person, showPositions }: Props) => {
-  const { imgSrc, name, position } = person;
+const GridPhoto: React.FC<GridItem> = ({ imgSrc, subTitle, title }) => {
   return (
     <div className={styles.gridItem}>
-      <img src={imgSrc} alt={name} />
-      <p className={styles.name}>{name}</p>
-      {showPositions && <p className={styles.position}>{position}</p>}
+      <img src={imgSrc} alt={title} />
+      <p className={styles.name}>{title}</p>
+      {subTitle && <p className={styles.position}>{subTitle}</p>}
     </div>
   );
 };

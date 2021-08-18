@@ -1,0 +1,27 @@
+.root {
+  @apply relative w-full h-full;
+  .backgroundContainer {
+    @apply absolute left-0 top-0 w-full h-full;
+    :global(.slick-slider) {
+      height: 100%;
+      :global(.slick-prev) {
+        left: 20px;
+        z-index: 100;
+      }
+      :global(.slick-next) {
+        right: 20px;
+      }
+      :global(.slick-list),
+      :global(.slick-track),
+      :global(.slick-slide) {
+        height: 100%;
+      }
+      :global(.slick-slide) div {
+        height: 100%;
+      }
+    }
+  }
+  .bodyContainer {
+    @apply absolute bottom-8 left-8 text-white;
+  }
+}

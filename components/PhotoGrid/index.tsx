@@ -1,20 +1,20 @@
 import { Heading } from "../Heading";
-import GridPhoto from "./GridPhoto";
-import Layout from "../Layout";
+import GridPhoto, { GridItem } from "./GridPhoto";
 import NextButton from "../../assets/svgs/scroll-action-arrow.svg";
 import { People } from "./types";
 import styles from "./styles.module.css";
+import { Container } from "../Container";
 
 type Props = {
-  people: People;
-  showPositions?: boolean;
+  items: GridItem[];
+  heading: string;
   withAction?: boolean;
   darkBg?: boolean;
 };
 
 const PhotoGrid = ({
-  people,
-  showPositions = true,
+  items,
+  heading,
   withAction = false,
   darkBg = false,
 }: Props) => {
@@ -42,6 +42,7 @@ const PhotoGrid = ({
       </div>
     );
   };
+
   return (
     <div
       style={{
@@ -49,32 +50,32 @@ const PhotoGrid = ({
         padding: "6rem 0",
       }}
     >
-      <Layout>
+      <Container>
         {withAction ? (
           <div className={styles.photoGridContainer}>
             <Heading
-              label="The People who make it possible"
+              label={heading}
               actions={renderActions()}
             />
             <div className={styles.photosSlider}>
               <div className={styles.photoSlidesContainer} id="slider">
-                {people.map((person) => (
-                  <GridPhoto person={person} showPositions={showPositions} />
+                {items.map((item) => (
+                  <GridPhoto {...item} />
                 ))}
               </div>
             </div>
           </div>
         ) : (
           <div className={styles.photoGridContainer}>
-            <Heading label="The People who make it possible" />
+            <Heading label={heading} />
             <div className={styles.photosContainer}>
-              {people.map((person) => (
-                <GridPhoto person={person} showPositions={showPositions} />
+              {items.map((item) => (
+                <GridPhoto {...item} />
               ))}
             </div>
           </div>
         )}
-      </Layout>
+      </Container>
     </div>
   );
 };

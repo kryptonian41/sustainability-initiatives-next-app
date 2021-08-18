@@ -1,0 +1,5 @@
+.root {
+  @apply grid gap-4;
+  grid-template-columns: 2fr 1fr;
+  height: 55vh;
+}
