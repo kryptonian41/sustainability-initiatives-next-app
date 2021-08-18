@@ -18,11 +18,8 @@ export interface Author {
   id: number;
   name: string;
   position: string;
-  about: string;
-  education: string;
   created_at: string;
   updated_at: string;
-  picture: Picture;
 }
 
 export interface Picture {
@@ -46,13 +43,13 @@ export interface Picture {
 }
 
 export interface Formats {
-  thumbnail: Large;
-  large: Large;
-  medium: Large;
-  small: Large;
+  thumbnail: Format;
+  large: Format;
+  medium: Format;
+  small: Format;
 }
 
-export interface Large {
+export interface Format {
   name: string;
   hash: string;
   ext: string;
@@ -83,3 +80,15 @@ export interface Location {
 }
 
 
+export interface StakeHolder {
+  id: number;
+  name: string;
+  designation: string;
+  education: null;
+  about: null;
+  author: Author;
+  published_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  photo: Picture;
+}

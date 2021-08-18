@@ -2,24 +2,30 @@ import { Container } from 'components/Container'
 import { Header } from 'components/Header'
 import { Heading } from 'components/Heading'
 import Parallax, { Props as ParallaxProps } from 'components/Parallax'
+import PhotoGrid from 'components/PhotoGrid'
+import { GridItem } from 'components/PhotoGrid/GridPhoto'
 import { RecentArticlesGrid } from 'components/RecentArticlesGrid'
 import { InitiaveTile } from 'components/Tiles/InitiativeTile'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useMemo } from 'react'
 import { API } from 'utils/api'
-import { Article, Initiative } from 'utils/types'
+import { Article, Initiative, StakeHolder } from 'utils/types'
 import styles from '../styles/Home.module.css'
 interface Props {
   recentArticles: Article[],
-  initiatives: Initiative[]
+  initiatives: Initiative[],
+  stakeHolders: StakeHolder[]
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const recentArticles = await API.getRecentArticles()
   const initiatives = await API.getInitiatives()
+  const stakeHolders = await API.getStakeHolders()
   return {
     props: {
       recentArticles,
-      initiatives
+      initiatives,
+      stakeHolders
     }
   }
 }
@@ -44,7 +50,17 @@ const supportUsSection: ParallaxProps = {
 
 
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({ recentArticles, initiatives }) => {
+> = ({ recentArticles, initiatives, stakeHolders }) => {
+
+  const photoGridItems: GridItem[] = useMemo<GridItem[]>(() => {
+    return stakeHolders.map(stakeHolder => {
+      return {
+        imgSrc: stakeHolder.photo.url,
+        title: stakeHolder.name,
+        subTitle: stakeHolder.designation
+      }
+    })
+  }, [stakeHolders])
 
   return (
     <div>
@@ -77,10 +93,10 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
         </div>
         <div className="mt-12">
           <Heading label="Associates who stand with us" />
-
-
         </div>
       </Container>
+
+      <PhotoGrid items={photoGridItems} darkBg heading="The People who make it possible" />
 
       <div className="my-32">
         <Parallax {...supportUsSection} />

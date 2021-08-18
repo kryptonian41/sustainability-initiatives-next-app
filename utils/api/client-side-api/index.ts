@@ -1,5 +1,5 @@
 import Axios, { AxiosRequestConfig } from 'axios'
-import { Initiative } from 'utils/types'
+import { Initiative, StakeHolder } from 'utils/types'
 
 const axios = Axios.create({
   baseURL: process.env.NEXT_PUBLIC_CMS_ENDPOINT
@@ -35,5 +35,10 @@ export const getArticledByInitiative = async (initiativeId) => {
 
 export const getInitiatives = async () => {
   const { data } = await axios.get<Initiative[]>('/initiatives')
+  return data
+}
+
+export const getStakeHolders = async () => {
+  const { data } = await axios.get<StakeHolder[]>('/stake-holders')
   return data
 }
