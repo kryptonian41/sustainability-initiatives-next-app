@@ -1,0 +1,25 @@
+.container {
+  padding: 6rem 0;
+  margin-top: -2rem;
+
+  .imageContainer {
+    margin-bottom: 2rem;
+    position: relative;
+
+    img {
+      object-fit: cover;
+    }
+
+    h1 {
+      position: absolute;
+      color: white;
+      font-size: 2rem;
+      bottom: 2rem;
+      left: 2rem;
+    }
+  }
+
+  .paragraph {
+    column-count: 2;
+  }
+}
