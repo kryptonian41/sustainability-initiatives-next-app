@@ -1,13 +1,13 @@
 import { Heading } from "../Heading";
-import GridPhoto, { GridItem } from "./GridPhoto";
+import { GridItemProps, GridItem } from "./GridPhoto";
 import NextButton from "../../assets/svgs/scroll-action-arrow.svg";
-import { People } from "./types";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
 
 type Props = {
-  items: GridItem[];
+  items: GridItemProps[];
   heading: string;
+  itemsPerRow?: number,
   withAction?: boolean;
   darkBg?: boolean;
 };
@@ -15,6 +15,7 @@ type Props = {
 const PhotoGrid = ({
   items,
   heading,
+  itemsPerRow = 5,
   withAction = false,
   darkBg = false,
 }: Props) => {
@@ -60,7 +61,7 @@ const PhotoGrid = ({
             <div className={styles.photosSlider}>
               <div className={styles.photoSlidesContainer} id="slider">
                 {items.map((item) => (
-                  <GridPhoto {...item} />
+                  <GridItem {...item} />
                 ))}
               </div>
             </div>
@@ -68,9 +69,11 @@ const PhotoGrid = ({
         ) : (
           <div className={styles.photoGridContainer}>
             <Heading label={heading} />
-            <div className={styles.photosContainer}>
+            <div className={styles.photosContainer} style={{
+              gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`
+            }}>
               {items.map((item) => (
-                <GridPhoto {...item} />
+                <GridItem {...item} key={item.imgSrc} />
               ))}
             </div>
           </div>

@@ -92,3 +92,11 @@ export interface StakeHolder {
   updated_at: Date;
   photo: Picture;
 }
+export interface Associate {
+  id: number;
+  name: string;
+  published_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  logo: Picture;
+}

@@ -3,7 +3,7 @@ import { Header } from 'components/Header'
 import { Heading } from 'components/Heading'
 import Parallax, { Props as ParallaxProps } from 'components/Parallax'
 import PhotoGrid from 'components/PhotoGrid'
-import { GridItem } from 'components/PhotoGrid/GridPhoto'
+import { GridItemProps } from 'components/PhotoGrid/GridPhoto'
 import { RecentArticlesGrid } from 'components/RecentArticlesGrid'
 import { InitiaveTile } from 'components/Tiles/InitiativeTile'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -52,7 +52,7 @@ const supportUsSection: ParallaxProps = {
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ recentArticles, initiatives, stakeHolders }) => {
 
-  const photoGridItems: GridItem[] = useMemo<GridItem[]>(() => {
+  const photoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
     return stakeHolders.map(stakeHolder => {
       return {
         imgSrc: stakeHolder.photo.url,
@@ -96,7 +96,7 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
         </div>
       </Container>
 
-      <PhotoGrid items={photoGridItems} darkBg heading="The People who make it possible" />
+      <PhotoGrid items={photoGridItems} darkBg heading="The People who make it possible" itemsPerRow={5} />
 
       <div className="my-32">
         <Parallax {...supportUsSection} />

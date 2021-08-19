@@ -42,3 +42,7 @@ export const getStakeHolders = async () => {
   const { data } = await axios.get<StakeHolder[]>('/stake-holders')
   return data
 }
+export const getAssociates = async () => {
+  const { data } = await axios.get<StakeHolder[]>('/stake-holders')
+  return data
+}

@@ -1,7 +1,6 @@
 .photosContainer {
   margin: 2rem 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   gap: 2rem 1rem;
 }
 

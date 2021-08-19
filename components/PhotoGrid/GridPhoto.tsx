@@ -1,13 +1,12 @@
-import { Person } from "./types";
 import styles from "./styles.module.css";
 
-export interface GridItem {
+export interface GridItemProps {
   title: string;
   subTitle: string;
   imgSrc: string;
 };
 
-const GridPhoto: React.FC<GridItem> = ({ imgSrc, subTitle, title }) => {
+export const GridItem: React.FC<GridItemProps> = ({ imgSrc, subTitle, title }) => {
   return (
     <div className={styles.gridItem}>
       <img src={imgSrc} alt={title} />
@@ -17,4 +16,3 @@ const GridPhoto: React.FC<GridItem> = ({ imgSrc, subTitle, title }) => {
   );
 };
 
-export default GridPhoto;
