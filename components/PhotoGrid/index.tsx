@@ -10,6 +10,8 @@ type Props = {
   itemsPerRow?: number,
   withAction?: boolean;
   darkBg?: boolean;
+  containerStyles?: React.CSSProperties,
+  className?: string
 };
 
 const PhotoGrid = ({
@@ -18,6 +20,8 @@ const PhotoGrid = ({
   itemsPerRow = 5,
   withAction = false,
   darkBg = false,
+  containerStyles,
+  className
 }: Props) => {
   const handleClick = (direction: string): void => {
     const slider = document.getElementById("slider");
@@ -48,8 +52,8 @@ const PhotoGrid = ({
     <div
       style={{
         backgroundColor: darkBg ? "#F6F0EB" : "white",
-        padding: "6rem 0",
       }}
+      className={className}
     >
       <Container>
         {withAction ? (
@@ -59,7 +63,7 @@ const PhotoGrid = ({
               actions={renderActions()}
             />
             <div className={styles.photosSlider}>
-              <div className={styles.photoSlidesContainer} id="slider">
+              <div className={styles.photoSlidesContainer} id="slider" style={containerStyles ?? null}>
                 {items.map((item) => (
                   <GridItem {...item} />
                 ))}
@@ -70,6 +74,7 @@ const PhotoGrid = ({
           <div className={styles.photoGridContainer}>
             <Heading label={heading} />
             <div className={styles.photosContainer} style={{
+              ...containerStyles ?? null,
               gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`
             }}>
               {items.map((item) => (

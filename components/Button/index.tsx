@@ -57,7 +57,6 @@ export const OutlineButton: React.FunctionComponent<ButtonProps> = ({
   className,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
-  const { colors } = useThemeContext()
   return (
     <button
       type="button"

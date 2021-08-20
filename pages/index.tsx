@@ -1,3 +1,4 @@
+import { OutlineButton } from 'components/Button'
 import { Container } from 'components/Container'
 import { Header } from 'components/Header'
 import { Heading } from 'components/Heading'
@@ -9,23 +10,26 @@ import { InitiaveTile } from 'components/Tiles/InitiativeTile'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useMemo } from 'react'
 import { API } from 'utils/api'
-import { Article, Initiative, StakeHolder } from 'utils/types'
+import { Article, Associate, Initiative, StakeHolder } from 'utils/types'
 import styles from '../styles/Home.module.css'
 interface Props {
   recentArticles: Article[],
   initiatives: Initiative[],
-  stakeHolders: StakeHolder[]
+  stakeHolders: StakeHolder[],
+  associates: Associate[]
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const recentArticles = await API.getRecentArticles()
   const initiatives = await API.getInitiatives()
   const stakeHolders = await API.getStakeHolders()
+  const associates = await API.getAssociates()
   return {
     props: {
       recentArticles,
       initiatives,
-      stakeHolders
+      stakeHolders,
+      associates
     }
   }
 }
@@ -50,9 +54,9 @@ const supportUsSection: ParallaxProps = {
 
 
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({ recentArticles, initiatives, stakeHolders }) => {
+> = ({ recentArticles, initiatives, stakeHolders, associates }) => {
 
-  const photoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
+  const stakeHolderPhotoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
     return stakeHolders.map(stakeHolder => {
       return {
         imgSrc: stakeHolder.photo.url,
@@ -61,6 +65,21 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
       }
     })
   }, [stakeHolders])
+
+  const associatedPhotoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
+    return associates.map(associate => {
+      return {
+        imgSrc: associate.logo.url,
+        title: associate.name,
+        imageContainerStyles: {
+          height: 155,
+          display: 'flex',
+          alignItems: 'center'
+        }
+      }
+    })
+  }, [associates])
+
 
   return (
     <div>
@@ -74,7 +93,7 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
       </div>
 
       <Container>
-        <div className="mt-12">
+        <div className="my-12">
           <Heading label="Our Initiatives" />
 
           <div className="mt-8">
@@ -91,12 +110,21 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
             }
           </div>
         </div>
-        <div className="mt-12">
-          <Heading label="Associates who stand with us" />
-        </div>
+
       </Container>
 
-      <PhotoGrid items={photoGridItems} darkBg heading="The People who make it possible" itemsPerRow={5} />
+      <PhotoGrid items={stakeHolderPhotoGridItems} darkBg heading="The People who make it possible" itemsPerRow={5} className="py-20" />
+
+      <div className="py-20">
+        <PhotoGrid items={associatedPhotoGridItems} heading="Associates who stand with us" itemsPerRow={4} containerStyles={{
+          // @ts-ignore
+          '--gap': '10rem'
+        }} withAction className="py-6" />
+
+        <Container className="text-right">
+          <OutlineButton>View All</OutlineButton>
+        </Container>
+      </div>
 
       <div className="my-32">
         <Parallax {...supportUsSection} />
