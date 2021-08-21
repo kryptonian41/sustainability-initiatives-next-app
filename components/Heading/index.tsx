@@ -2,11 +2,11 @@ import React, { useLayoutEffect, useRef } from 'react'
 import styles from './styles.module.css'
 
 interface Props {
-  label: string,
+  label?: string,
   actions?: React.ReactNode
 }
 
-export const Heading = ({ label, actions }: Props) => {
+export const Heading: React.FC<Props> = ({ label, actions, children }) => {
   const elementRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -21,8 +21,7 @@ export const Heading = ({ label, actions }: Props) => {
 
   return (
     <div className={styles.container} ref={elementRef}>
-      {/* TODO: Use splitting text achieve the desired look on mobile devices */}
-      {label}
+      {children || label}
       <span className={styles.line}></span>
       {actions && <span className={styles.actionsContainer}>
         {actions}
