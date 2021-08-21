@@ -2,21 +2,24 @@ import { OutlineButton } from 'components/Button'
 import { Container } from 'components/Container'
 import { Header } from 'components/Header'
 import { Heading } from 'components/Heading'
+import { HeroSlideShow } from 'components/HeroCarousel'
 import Parallax, { Props as ParallaxProps } from 'components/Parallax'
 import PhotoGrid from 'components/PhotoGrid'
 import { GridItemProps } from 'components/PhotoGrid/GridPhoto'
+import { QuotesSlideShow } from 'components/QuotesSlider'
 import { RecentArticlesGrid } from 'components/RecentArticlesGrid'
 import { InitiaveTile } from 'components/Tiles/InitiativeTile'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useMemo } from 'react'
 import { API } from 'utils/api'
-import { Article, Associate, Initiative, StakeHolder } from 'utils/types'
+import { Article, Associate, Initiative, Quote, StakeHolder } from 'utils/types'
 import styles from '../styles/Home.module.css'
 interface Props {
   recentArticles: Article[],
   initiatives: Initiative[],
   stakeHolders: StakeHolder[],
-  associates: Associate[]
+  associates: Associate[],
+  quotes: Quote[]
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
@@ -24,12 +27,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const initiatives = await API.getInitiatives()
   const stakeHolders = await API.getStakeHolders()
   const associates = await API.getAssociates()
+  const quotes = await API.getQuotes()
+  console.log("🚀 ~ file: index.tsx ~ line 31 ~ constgetServerSideProps:GetServerSideProps<Props>= ~ quotes", quotes)
   return {
     props: {
       recentArticles,
       initiatives,
       stakeHolders,
-      associates
+      associates,
+      quotes
     }
   }
 }
@@ -54,7 +60,8 @@ const supportUsSection: ParallaxProps = {
 
 
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({ recentArticles, initiatives, stakeHolders, associates }) => {
+> = ({ recentArticles, initiatives, stakeHolders, associates, quotes }) => {
+  console.log("🚀 ~ file: index.tsx ~ line 63 ~ quotes", quotes)
 
   const stakeHolderPhotoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
     return stakeHolders.map(stakeHolder => {
@@ -84,7 +91,18 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
   return (
     <div>
       <Container>
-        <div className="mt-12">
+        <div className="mt-14" style={{
+          height: '50vh'
+        }}>
+          <HeroSlideShow items={[{
+            imgUrl: 'https://www.india-briefing.com/news/wp-content/uploads/2013/07/India-Briefing-Economy-of-Mumbai-Indias-Major-Commercial-Hub.jpg',
+            title: 'Development made sustainably'
+          }, {
+            imgUrl: 'https://www.india-briefing.com/news/wp-content/uploads/2013/07/India-Briefing-Economy-of-Mumbai-Indias-Major-Commercial-Hub.jpg',
+            title: 'Development sustainably'
+          }]} />
+        </div>
+        <div className="mt-32">
           <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
         </div>
       </Container>
@@ -95,7 +113,6 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
       <Container>
         <div className="my-12">
           <Heading label="Our Initiatives" />
-
           <div className="mt-8">
             {
               initiatives && <div className="flex flex-wrap">
@@ -110,7 +127,6 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
             }
           </div>
         </div>
-
       </Container>
 
       <PhotoGrid items={stakeHolderPhotoGridItems} darkBg heading="The People who make it possible" itemsPerRow={5} className="py-20" />
@@ -125,6 +141,10 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
           <OutlineButton>View All</OutlineButton>
         </Container>
       </div>
+      <Container className="py-10">
+
+        <QuotesSlideShow items={quotes} />
+      </Container>
 
       <div className="my-32">
         <Parallax {...supportUsSection} />

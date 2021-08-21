@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import Slider from "react-slick";
 import { Picture } from 'utils/types';
+import { NextArrow, PrevArrow } from './arrows';
 import styles from './styles.module.css'
 
 interface Props {
@@ -38,6 +39,8 @@ const carouselSettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />
 };
 
 interface CarouselProps {

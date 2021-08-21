@@ -1,0 +1,99 @@
+.root {
+  @apply relative w-full h-full;
+  :global(.slick-slider) {
+    height: 100%;
+    :global(.slick-prev) {
+      left: -40px;
+      z-index: 100;
+      transform: rotateZ(180deg);
+      svg {
+        stroke: #cb9a76;
+        path {
+          stroke-width: 2px;
+        }
+      }
+      &:before {
+        display: none;
+      }
+    }
+    :global(.slick-next) {
+      right: -40px;
+      z-index: 100;
+      svg {
+        stroke: #cb9a76;
+        path {
+          stroke-width: 2px;
+        }
+      }
+      &:before {
+        display: none;
+      }
+    }
+
+    :global(.slick-list),
+    :global(.slick-track),
+    :global(.slick-slide) {
+      height: 100%;
+    }
+    :global(.slick-dots) {
+      @apply left-8;
+      z-index: 100;
+      bottom: 25px;
+      width: auto;
+    }
+    :global(.slick-dots li) {
+      margin: 0;
+      margin-right: 5px;
+    }
+    :global(.slick-dots li button:before) {
+      color: white;
+      font-size: 10px;
+    }
+    :global(.slick-dots li.slick-active button:before) {
+      opacity: 1;
+    }
+    :global(.slick-slide) div {
+      height: 100%;
+    }
+  }
+}
+
+.quoteSlide {
+  @apply px-32;
+  @apply text-center;
+  .quote {
+    @apply relative overflow-visible py-20 px-10;
+    &::before,
+    &::after {
+      @apply absolute;
+      quotes: "“" "”";
+      content: open-quote;
+      font-size: 300px;
+      opacity: 0.1;
+      line-height: 0;
+    }
+    &::before {
+      top: 150px;
+      left: 0px;
+    }
+    &::after {
+      transform: rotateZ(180deg);
+      bottom: 150px;
+      right: 250px;
+    }
+    font-family: var(--secondary-font);
+    color: var(--text-dark);
+    font-size: 30px;
+  }
+
+  .author {
+    :global(span:not(.name)) {
+      @apply font-bold;
+    }
+
+    :global(span.name) {
+      @apply inline-block ml-4;
+      color: var(--text-light);
+    }
+  }
+}

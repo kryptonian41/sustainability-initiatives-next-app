@@ -1,6 +1,7 @@
 .container {
   @apply flex items-center flex-wrap;
   font-family: var(--secondary-font);
+  color: var(--text-dark);
   font-size: 35px;
   :global(.whitespace) {
     margin-left: 10px;

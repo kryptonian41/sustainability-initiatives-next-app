@@ -65,7 +65,7 @@ const PhotoGrid = ({
             <div className={styles.photosSlider}>
               <div className={styles.photoSlidesContainer} id="slider" style={containerStyles ?? null}>
                 {items.map((item) => (
-                  <GridItem {...item} />
+                  <GridItem {...item} key={item.imgSrc} />
                 ))}
               </div>
             </div>

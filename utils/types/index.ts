@@ -100,3 +100,11 @@ export interface Associate {
   updated_at: Date;
   logo: Picture;
 }
+export interface Quote {
+  id: number;
+  quote: string;
+  associate: Associate;
+  published_at: Date;
+  created_at: Date;
+  updated_at: Date;
+}

@@ -2,14 +2,20 @@
   @apply relative w-full h-full;
   .backgroundContainer {
     @apply absolute left-0 top-0 w-full h-full;
+    &::after {
+      @apply absolute left-0 top-0 w-full h-full;
+      content: "";
+      z-index: 2;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.782), transparent);
+    }
     :global(.slick-slider) {
       height: 100%;
       :global(.slick-prev) {
-        left: 20px;
+        left: -40px;
         z-index: 100;
         transform: rotateZ(180deg);
         svg {
-          stroke: #fff;
+          stroke: #cb9a76;
           path {
             stroke-width: 2px;
           }
@@ -19,10 +25,10 @@
         }
       }
       :global(.slick-next) {
-        right: 20px;
+        right: -40px;
         z-index: 100;
         svg {
-          stroke: #fff;
+          stroke: #cb9a76;
           path {
             stroke-width: 2px;
           }
@@ -31,10 +37,28 @@
           display: none;
         }
       }
+
       :global(.slick-list),
       :global(.slick-track),
       :global(.slick-slide) {
         height: 100%;
+      }
+      :global(.slick-dots) {
+        @apply left-8;
+        z-index: 100;
+        bottom: 25px;
+        width: auto;
+      }
+      :global(.slick-dots li) {
+        margin: 0;
+        margin-right: 5px;
+      }
+      :global(.slick-dots li button:before) {
+        color: white;
+        font-size: 10px;
+      }
+      :global(.slick-dots li.slick-active button:before) {
+        opacity: 1;
       }
       :global(.slick-slide) div {
         height: 100%;
@@ -42,6 +66,9 @@
     }
   }
   .bodyContainer {
-    @apply absolute bottom-8 left-8 text-white;
+    @apply absolute bottom-16 left-8 text-white;
+    z-index: 10;
+    width: 300px;
+    font-family: var(--secondary-font);
   }
 }
