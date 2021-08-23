@@ -30,8 +30,8 @@ a {
   --text-highlight: #984c16;
   --primary-font: "Montserrat";
   --secondary-font: "Begum";
-  --background-primary: "#fff";
-  --background-secondary: "#F7F0EB";
+  --background-primary: #fff;
+  --background-secondary: #f6f0eb;
   --tablet-breakpoint: 640px;
   --laptop-breakpoint: 1024px;
   --desktop-breakpoint: 1280px;

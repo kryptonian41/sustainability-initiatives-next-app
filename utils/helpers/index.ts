@@ -11,8 +11,8 @@ export const sortArticlesByDate = (articles: Article[]) => {
 export const sortArticlesByLocation = (articles: Article[]) => {
   return articles.sort((a, b) => {
     if (a.location.label < b.location.label) return 1
-    else if (a.location.label === b.location.label) return 1
-    return -1
+    else if (a.location.label > b.location.label) return -1
+    return 1
   })
 }
 

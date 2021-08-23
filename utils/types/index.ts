@@ -11,7 +11,9 @@ export interface Article {
   published_at: string;
   created_at: string;
   updated_at: string;
-  images: Picture[]
+  images: Picture[],
+  heroImage: Picture,
+  summary: string
 }
 
 export interface Author {

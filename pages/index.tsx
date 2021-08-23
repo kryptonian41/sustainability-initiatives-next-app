@@ -28,7 +28,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const stakeHolders = await API.getStakeHolders()
   const associates = await API.getAssociates()
   const quotes = await API.getQuotes()
-  console.log("🚀 ~ file: index.tsx ~ line 31 ~ constgetServerSideProps:GetServerSideProps<Props>= ~ quotes", quotes)
   return {
     props: {
       recentArticles,

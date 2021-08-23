@@ -29,10 +29,9 @@ export const Header = (props: Props) => {
             <li>
               Initiatives
               <ul>
-                <li>Subnav Item</li>
-                <li>Subnav Item</li>
-                <li>Subnav Item</li>
-                <li>Subnav Item</li>
+                <Link href="/initiatives/1"><li>Advocasy</li></Link>
+                <Link href="/initiatives/2"><li>Research</li></Link>
+                <Link href="/initiatives/3"><li>Awareness</li></Link>
               </ul>
             </li>
             <Link href="/associates"><li>Associates</li></Link>

@@ -38,6 +38,15 @@ export const getInitiatives = async () => {
   return data
 }
 
+export const getInitiaveById = async (initiativeId: number) => {
+  const { data } = await axios.get<Initiative[]>('/initiatives', {
+    params: {
+      id: initiativeId
+    }
+  })
+  return data[0]
+}
+
 export const getStakeHolders = async () => {
   const { data } = await axios.get<StakeHolder[]>('/stake-holders')
   return data
