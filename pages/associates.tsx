@@ -67,10 +67,10 @@ const Associates: React.FC<Props> = ({ associates }) => {
 
   return (
     <div>
-      <Container>
-        <PhotoGrid items={paginatedItems} heading="Associates who stand with us" itemsPerRow={4} containerStyles={{
+      <div className="py-40">
+        <PhotoGrid items={paginatedItems} heading="Our Associates" itemsPerRow={4} containerStyles={{
           // @ts-ignore
-          '--gap': '10rem'
+          '--gap': '6rem'
         }} />
 
         {
@@ -84,7 +84,7 @@ const Associates: React.FC<Props> = ({ associates }) => {
               pageBtnAction={createPaginationActionHandler('number')} />
           </div>
         }
-      </Container>
+      </div>
     </div>
   )
 }

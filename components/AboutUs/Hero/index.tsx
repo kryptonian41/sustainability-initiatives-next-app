@@ -1,10 +1,11 @@
-import {BaseLayout as Layout} from "components/Layout";
+import { Container } from "components/Container";
+import { BaseLayout as Layout } from "components/Layout";
 import React from "react";
 import heroStyles from "./heroStyles.module.css";
 
 const Hero: React.FC = () => {
   return (
-    <Layout>
+    <Container>
       <div className={heroStyles.container}>
         <div className={heroStyles.imageContainer}>
           <img src="images/about-us-hero.png" alt="" />
@@ -26,7 +27,7 @@ const Hero: React.FC = () => {
           decision making.
         </p>
       </div>
-    </Layout>
+    </Container>
   );
 };
 

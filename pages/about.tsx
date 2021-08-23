@@ -7,14 +7,16 @@ import { peopleProps } from "components/PhotoGrid/mockProps";
 
 const About = () => {
   return (
-    <Wrapper>
+    <>
       <Hero />
       <Promise />
-      <PhotoGrid
-        heading="The People who make it possible"
-        items={peopleProps}
-      />
-    </Wrapper>
+      <div className="py-20">
+        <PhotoGrid
+          heading="The People who make it possible"
+          items={peopleProps}
+        />
+      </div>
+    </>
   );
 };
 

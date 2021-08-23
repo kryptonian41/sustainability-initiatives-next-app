@@ -1,7 +1,8 @@
 import React from "react";
 import Section, { Props as SectionProps } from "./Section";
 import promiseStyles from "./promiseStyles.module.css";
-import {BaseLayout as Layout} from "components/Layout";
+import { BaseLayout as Layout } from "components/Layout";
+import { Container } from "components/Container";
 
 const data: SectionProps[] = [
   {
@@ -21,13 +22,13 @@ const data: SectionProps[] = [
 const Promise: React.FC = () => {
   return (
     <div className={promiseStyles.background}>
-      <Layout>
+      <Container>
         <div className={promiseStyles.container}>
           {data.map((section) => (
             <Section {...section} />
           ))}
         </div>
-      </Layout>
+      </Container>
     </div>
   );
 };
