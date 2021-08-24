@@ -1,5 +1,6 @@
 import Pagination from 'components/Pagination'
 import { ArticleTile } from 'components/Tiles/Article'
+import Link from 'next/link'
 import { getArticlesServerSide } from 'pages/api/articles'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { prettyDate, sortArticlesByDate, sortArticlesByLocation } from 'utils/helpers'
@@ -60,15 +61,17 @@ export const BlogList: React.FC<Props> = ({ articles }) => {
       <div className="flex-1 px-10 ">
         <div className="grid grid-cols-2 gap-y-8 gap-x-12">
           {articlesToDisplay.map(article => {
-            return <div className="mb-20" key={article.id}>
-              <ArticleTile
-                key={article.id}
-                title={article.title}
-                subtitle={`Posted on ${prettyDate(article.published_at)}`}
-                imgUrl={article.images[0].url}
-                body={article.summary}
-              />
-            </div>
+            return <Link href={`/blog/${article.id}`} key={article.id}>
+              <div className="mb-20 cursor-pointer" >
+                <ArticleTile
+                  key={article.id}
+                  title={article.title}
+                  subtitle={`Posted on ${prettyDate(article.published_at)}`}
+                  imgUrl={article.images[0].url}
+                  body={article.summary}
+                />
+              </div>
+            </Link>
           })}
         </div>
         {numberOfPages > 0 && <div className="mt-20">

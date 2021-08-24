@@ -1,12 +1,12 @@
 import Axios, { AxiosRequestConfig } from 'axios'
-import { Associate, Initiative, Quote, StakeHolder } from 'utils/types'
+import { Article, Associate, Initiative, Quote, StakeHolder } from 'utils/types'
 
 const axios = Axios.create({
   baseURL: process.env.NEXT_PUBLIC_CMS_ENDPOINT
 })
 
 export const getArticles = async (config?: AxiosRequestConfig) => {
-  const { data } = await axios.get('/articles', config || {})
+  const { data } = await axios.get<Article[]>('/articles', config || {})
   return data
 }
 
@@ -17,6 +17,16 @@ export const getRecentArticles = async () => {
     }
   })
 }
+
+export const getArticleById = async (id: number) => {
+  const { data } = await axios.get<Article[]>('/articles', {
+    params: {
+      id
+    }
+  })
+  return data[0]
+}
+
 
 export const getArticlesByAuthor = async (authorId) => {
   return await getArticles({
