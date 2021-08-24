@@ -1,7 +1,8 @@
 import Pagination from 'components/Pagination'
 import { ArticleTile } from 'components/Tiles/Article'
+import { getArticlesServerSide } from 'pages/api/articles'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { prettyDate, sortArticlesByDate } from 'utils/helpers'
+import { prettyDate, sortArticlesByDate, sortArticlesByLocation } from 'utils/helpers'
 import { usePagination } from 'utils/hooks/usePagination'
 import { Article } from 'utils/types'
 
@@ -13,7 +14,8 @@ const filters = [{
   label: 'Sort by Date',
   function: sortArticlesByDate
 }, {
-  label: 'Sort by Location'
+  label: 'Sort by Location',
+  function: sortArticlesByLocation
 }]
 
 export const BlogList: React.FC<Props> = ({ articles }) => {
@@ -56,7 +58,7 @@ export const BlogList: React.FC<Props> = ({ articles }) => {
       <div className="flex-1 px-10 ">
         <div className="grid grid-cols-2 gap-y-8 gap-x-12">
           {articlesToDisplay.map(article => {
-            return <div>
+            return <div className="mb-20" key={article.id}>
               <ArticleTile
                 key={article.id}
                 title={article.title}
