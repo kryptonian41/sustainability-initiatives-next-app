@@ -31,8 +31,10 @@ export const BlogList: React.FC<Props> = ({ articles }) => {
     setArticledToDisplay(_articles.slice(startIndex, endIndex))
   }, [startIndex, endIndex, _articles])
 
-  const createFilterClickHandler = useCallback((filterMethod) => () => {
-    setArticles(filterMethod(_articles))
+  const createFilterClickHandler = useCallback((sortMethod) => () => {
+    const sortedArticles = sortMethod(_articles)
+    console.log("🚀 ~ file: index.tsx ~ line 36 ~ createFilterClickHandler ~ sortedArticles", sortedArticles)
+    setArticles([...sortedArticles])
   }, [_articles])
 
 
