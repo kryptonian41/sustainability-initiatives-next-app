@@ -39,15 +39,17 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
   return <Slider {...carouselSettings} {...sliderProps} >
     {
-      quotes.map(({ quote, associate: { name } }) => <div className={styles.quoteSlide}>
-        <div className={styles.quote}>
-          {quote}
+      quotes.map(({ quote, associate: { name }, id }) =>
+        <div className={styles.quoteSlide} key={id}>
+          <div className={styles.quote}>
+            {quote}
+          </div>
+          <div className={clsx(styles.author)}>
+            <span>-Associate Name</span>
+            <span className="name">{name}</span>
+          </div>
         </div>
-        <div className={clsx(styles.author)}>
-          <span>-Associate Name</span>
-          <span className="name">{name}</span>
-        </div>
-      </div>)
+      )
     }
   </Slider>
 }
