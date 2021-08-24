@@ -18,7 +18,7 @@ export const sortArticlesByLocation = (articles: Article[]) => {
   return result
 }
 
-export const prettyDate = (dateStr: string) => {
+export const prettyDate = (dateStr: string, pattern: string = 'd MMM yyyy') => {
   const date = new Date(dateStr)
-  return format(date, 'd MMM yyyy')
+  return format(date, pattern)
 }
