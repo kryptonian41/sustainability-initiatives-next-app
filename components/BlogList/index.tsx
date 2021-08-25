@@ -1,7 +1,6 @@
 import Pagination from 'components/Pagination'
 import { ArticleTile } from 'components/Tiles/Article'
 import Link from 'next/link'
-import { getArticlesServerSide } from 'pages/api/articles'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { prettyDate, sortArticlesByDate, sortArticlesByLocation } from 'utils/helpers'
 import { usePagination } from 'utils/hooks/usePagination'

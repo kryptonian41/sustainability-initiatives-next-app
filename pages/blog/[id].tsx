@@ -37,9 +37,10 @@ const BlogPage: React.FC<Props> = ({ article }) => {
 
   return (
     <div className="py-20">
-      <Container className="h-96 mb-20">
+      {article?.heroImage && <Container className="h-96 mb-20">
         <img src={article.heroImage.url} className="object-cover w-full h-full" alt="" />
       </Container>
+      }
 
       <Container className="flex">
         <div className="w-1/5 mr-10">
