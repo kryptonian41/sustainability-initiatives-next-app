@@ -11,7 +11,9 @@ export const Header = (props: Props) => {
   return (
     <div className={styles.container}>
       <Link href="/">
-        <HeaderLogo className="cursor-pointer" />
+        <div>
+          <HeaderLogo className="cursor-pointer" />
+        </div>
       </Link>
       <div className={styles.body}>
         <div className={styles["sub-nav"]}>

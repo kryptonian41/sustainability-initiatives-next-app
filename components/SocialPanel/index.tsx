@@ -13,11 +13,12 @@ export interface SocialItem {
 }
 
 interface Props {
-  items: SocialItem[],
-  backgroundColor: string,
-  iconColor: string
+  items?: SocialItem[],
+  backgroundColor?: string,
+  iconColor?: string
 }
 
+// TODO: Update the urls for all the social handles
 export const defaultItems: SocialItem[] = [
   {
     icon: TwitterIcon,

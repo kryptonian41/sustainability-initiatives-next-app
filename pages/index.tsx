@@ -60,8 +60,6 @@ const supportUsSection: ParallaxProps = {
 
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ recentArticles, initiatives, stakeHolders, associates, quotes }) => {
-  console.log("🚀 ~ file: index.tsx ~ line 63 ~ quotes", quotes)
-
   const stakeHolderPhotoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
     return stakeHolders.map(stakeHolder => {
       return {
@@ -117,7 +115,7 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
               initiatives && <div className="flex flex-wrap">
                 {
                   initiatives.map(initiative => {
-                    return <div className="w-1/2 my-14 pr-10">
+                    return <div className="w-1/2 my-14 pr-10" key={initiative.id}>
                       <InitiaveTile initiave={initiative} />
                     </div>
                   })
