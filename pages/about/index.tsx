@@ -1,7 +1,7 @@
 import React from "react";
 import Wrapper from "components/Wrapper";
-import Hero from "components/AboutUs/Hero";
-import Promise from "components/AboutUs/Promise";
+import Hero from "./components/Hero";
+import Promise from "./components/Promise";
 import PhotoGrid from "components/PhotoGrid";
 import { peopleProps } from "components/PhotoGrid/mockProps";
 
