@@ -88,12 +88,12 @@ export interface StakeHolder {
   designation: string;
   education: null;
   about: null;
-  author: Author;
+  author: Author | null;
   published_at: Date;
   created_at: Date;
   updated_at: Date;
   photo: Picture;
-  socialLinks: SocialLinks;
+  socialLinks: SocialLinks | null;
 }
 export interface Associate {
   id: number;
@@ -114,8 +114,8 @@ export interface Quote {
 
 export interface SocialLinks {
   id: number;
-  Twitter: string;
-  YouTube: string;
-  Facebook: string;
-  Instagram: string;
+  Twitter: string | null;
+  YouTube: string | null;
+  Facebook: string | null;
+  Instagram: string | null;
 }
