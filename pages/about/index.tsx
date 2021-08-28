@@ -27,6 +27,7 @@ const About: React.FC<Props> = ({ stakeHolders }) => {
       imgSrc: stakeHolder.photo.url,
       title: stakeHolder.name,
       subTitle: stakeHolder.designation,
+      path: `/people/${stakeHolder.slug}`,
     }));
   return (
     <>

@@ -70,6 +70,7 @@ const People: React.FC<Props> = ({
       imgSrc: stakeHolder.photo.url,
       title: stakeHolder.name,
       subTitle: stakeHolder.designation,
+      path: `/people/${stakeHolder.slug}`,
     }));
   if (stakeHolder.length === 0) {
     // return not found component
