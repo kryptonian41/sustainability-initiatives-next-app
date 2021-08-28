@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 interface ThemeContext {
   colors: { [key: string]: any },
   font: { [key: string]: any },
-
+  breakpoints: { [key: string]: number }
 }
 
 const colorMap = {
@@ -26,9 +26,16 @@ const fontMap = {
   secondary: 'Begum',
 }
 
+const breakpoints = {
+  phone: 600,
+  tablet: 900,
+  laptop: 1200
+}
+
 const ThemeContext = React.createContext<ThemeContext>({
   colors: colorMap,
-  font: fontMap
+  font: fontMap,
+  breakpoints
 })
 
 
@@ -38,6 +45,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
   return <ThemeContext.Provider value={{
     colors: colorMap,
     font: fontMap,
+    breakpoints
   }}>
     {children}
   </ThemeContext.Provider>

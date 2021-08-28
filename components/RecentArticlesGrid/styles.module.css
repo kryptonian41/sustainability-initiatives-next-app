@@ -2,4 +2,16 @@
   @apply grid gap-4;
   grid-template-columns: 2fr 1fr;
   height: 55vh;
+  @media (max-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.slideShowWrapper {
+  @media (max-width: 640px) {
+    height: 300px;
+  }
 }

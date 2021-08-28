@@ -1,13 +1,21 @@
 import { Button } from "../Button";
-import React from "react";
+import React, { useEffect } from "react";
 import HeaderLogo from "../../assets/svgs/logo.svg";
 import SearchIcon from "../../assets/svgs/search-icon.svg";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useThemeContext } from "components/ThemeProvider";
 
 interface Props { }
 
 export const Header = (props: Props) => {
+  const { breakpoints } = useThemeContext()
+  const { matches } = useMediaQuery(`(min-width: ${breakpoints.phone}px)`)
+  console.log("🚀 ~ file: index.tsx ~ line 15 ~ Header ~ matches", matches)
+
+
+
   return (
     <div className={styles.container}>
       <Link href="/">
@@ -15,7 +23,7 @@ export const Header = (props: Props) => {
           <HeaderLogo className="cursor-pointer" />
         </div>
       </Link>
-      <div className={styles.body}>
+      {matches && <div className={styles.body}>
         <div className={styles["sub-nav"]}>
           <Button type="text" className="font-semibold">
             DOWNLOADS
@@ -43,6 +51,7 @@ export const Header = (props: Props) => {
           </ul>
         </div>
       </div>
+      }
     </div>
   );
 };

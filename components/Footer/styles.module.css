@@ -18,7 +18,9 @@
       margin-bottom: 1rem;
       border-bottom: 2px solid var(--text-light);
       padding-bottom: 1.5rem;
-
+      @media (max-width: 640px) {
+        grid-template-columns: 100%;
+      }
       .contentOne {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -42,7 +44,10 @@
           display: flex;
           border-bottom: 2px solid var(--text-light);
           padding-bottom: 1.5rem;
-
+          @media (max-width: 640px) {
+            @apply mt-10;
+            flex-wrap: wrap;
+          }
           .heading {
             margin-right: 1rem;
             margin-top: -0.4rem;
@@ -65,6 +70,9 @@
               margin-right: 0.5rem;
               padding: 0.25rem 0.5rem;
             }
+            @media (max-width: 640px) {
+              @apply mt-6;
+            }
           }
         }
 
@@ -72,7 +80,10 @@
           display: grid;
           grid-template-columns: 1.3fr 1.7fr;
           padding-top: 1.5rem;
-
+          @media (max-width: 640px) {
+            grid-template-columns: 100%;
+            grid-gap: 2rem;
+          }
           p {
             margin-bottom: 0.5rem;
           }

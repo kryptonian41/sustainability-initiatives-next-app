@@ -1,5 +1,6 @@
 .root {
   @apply relative w-full h-full;
+
   .backgroundContainer {
     @apply absolute left-0 top-0 w-full h-full;
     :global(.slick-slider) {

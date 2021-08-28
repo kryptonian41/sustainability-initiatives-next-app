@@ -20,15 +20,15 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
 
   return (
     <div className={clsx(styles.root)}>
-      <div>
+      <div className={clsx('flex-shrink-0', styles.slideShowWrapper)}>
         <SlideShow images={primaryPost.images} title={primaryPost.title} subTitle={prettyDate(primaryPost.published_at)} />
       </div>
       <div className="flex flex-col">
-        <div className="h-2/5">
+        <div className={clsx("tablet:h-2/5", styles.slideShowWrapper)}>
           <SlideShow images={secondaryPost.images} title={secondaryPost.title} subTitle={prettyDate(secondaryPost.published_at)} />
         </div>
-        <div className="flex-1"></div>
-        <div className="flex-1"></div>
+        <div className="tablet:flex-1"></div>
+        <div className="tablet:flex-1"></div>
       </div>
     </div>
   )

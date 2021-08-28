@@ -58,10 +58,10 @@ export const BlogList: React.FC<Props> = ({ articles }) => {
         }
       </div>
       <div className="flex-1 px-10 ">
-        <div className="grid grid-cols-2 gap-y-8 gap-x-12">
+        <div className="grid grid-cols-2 gap-x-12">
           {articlesToDisplay.map(article => {
             return <Link href={`/blog/${article.id}`} key={article.id}>
-              <div className="mb-20 cursor-pointer" >
+              <div className="mb-16 cursor-pointer" >
                 <ArticleTile
                   key={article.id}
                   title={article.title}

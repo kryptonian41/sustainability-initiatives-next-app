@@ -1,5 +1,5 @@
 .container {
-  @apply px-12 py-4 flex items-center;
+  @apply tablet:px-12 py-4 flex items-center;
   svg {
     width: 80px;
     height: auto;
