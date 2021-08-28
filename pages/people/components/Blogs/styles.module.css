@@ -1,0 +1,16 @@
+.container {
+  hr {
+    border-color: var(--secondary);
+  }
+
+  .title,
+  .link {
+    color: var(--secondary);
+  }
+
+  .link {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

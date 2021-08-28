@@ -1,17 +1,18 @@
 import { Heading } from "../Heading";
 import { GridItemProps, GridItem } from "./GridPhoto";
-import NextButton from "../../assets/svgs/scroll-action-arrow.svg";
+import { PrevArrow, NextArrow } from "components/SlideShow/arrows";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
+import { useThemeContext } from "components/ThemeProvider";
 
 type Props = {
   items: GridItemProps[];
   heading: string;
-  itemsPerRow?: number,
+  itemsPerRow?: number;
   withAction?: boolean;
   darkBg?: boolean;
-  containerStyles?: React.CSSProperties,
-  className?: string
+  containerStyles?: React.CSSProperties;
+  className?: string;
 };
 
 const PhotoGrid = ({
@@ -21,7 +22,7 @@ const PhotoGrid = ({
   withAction = false,
   darkBg = false,
   containerStyles,
-  className
+  className,
 }: Props) => {
   const handleClick = (direction: string): void => {
     const slider = document.getElementById("slider");
@@ -36,14 +37,24 @@ const PhotoGrid = ({
     }
   };
 
+  const { colors } = useThemeContext();
+
   const renderActions = (): React.ReactNode => {
     return (
       <div className={styles.actionBtns}>
-        <NextButton
-          style={{ transform: "rotate(180deg)" }}
+        <PrevArrow
+          style={{
+            stroke: colors.secondary,
+            transform: "rotate(180deg)",
+            marginRight: "2rem",
+            cursor: "pointer",
+          }}
           onClick={() => handleClick("left")}
         />
-        <NextButton onClick={() => handleClick("right")} />
+        <NextArrow
+          style={{ stroke: colors.secondary, cursor: "pointer" }}
+          onClick={() => handleClick("right")}
+        />
       </div>
     );
   };
@@ -58,12 +69,13 @@ const PhotoGrid = ({
       <Container>
         {withAction ? (
           <div className={styles.photoGridContainer}>
-            <Heading
-              label={heading}
-              actions={renderActions()}
-            />
+            <Heading label={heading} actions={renderActions()} />
             <div className={styles.photosSlider}>
-              <div className={styles.photoSlidesContainer} id="slider" style={containerStyles ?? null}>
+              <div
+                className={styles.photoSlidesContainer}
+                id="slider"
+                style={containerStyles ?? null}
+              >
                 {items.map((item) => (
                   <GridItem {...item} key={item.imgSrc} />
                 ))}
@@ -73,10 +85,13 @@ const PhotoGrid = ({
         ) : (
           <div className={styles.photoGridContainer}>
             <Heading label={heading} />
-            <div className={styles.photosContainer} style={{
-              ...containerStyles ?? null,
-              gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`
-            }}>
+            <div
+              className={styles.photosContainer}
+              style={{
+                ...(containerStyles ?? null),
+                gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`,
+              }}
+            >
               {items.map((item) => (
                 <GridItem {...item} key={item.imgSrc} />
               ))}
