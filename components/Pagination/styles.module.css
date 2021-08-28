@@ -1,6 +1,7 @@
 .container {
   display: flex;
   margin: 0 -0.4rem;
+  width: max-content;
 
   .link {
     font-size: 0.9rem;
