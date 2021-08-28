@@ -11,9 +11,9 @@ export interface Article {
   published_at: string;
   created_at: string;
   updated_at: string;
-  images: Picture[],
-  heroImage: Picture,
-  summary: string
+  images: Picture[];
+  heroImage: Picture;
+  summary: string;
 }
 
 export interface Author {
@@ -81,18 +81,19 @@ export interface Location {
   updated_at: string;
 }
 
-
 export interface StakeHolder {
   id: number;
   name: string;
+  slug: string;
   designation: string;
   education: null;
   about: null;
-  author: Author;
+  author: Author | null;
   published_at: Date;
   created_at: Date;
   updated_at: Date;
   photo: Picture;
+  socialLinks: SocialLinks | null;
 }
 export interface Associate {
   id: number;
@@ -109,4 +110,12 @@ export interface Quote {
   published_at: Date;
   created_at: Date;
   updated_at: Date;
+}
+
+export interface SocialLinks {
+  id: number;
+  Twitter: string | null;
+  YouTube: string | null;
+  Facebook: string | null;
+  Instagram: string | null;
 }
