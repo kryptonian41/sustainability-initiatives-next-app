@@ -33,7 +33,6 @@ export const BlogList: React.FC<Props> = ({ articles }) => {
 
   const createFilterClickHandler = useCallback((sortMethod) => () => {
     const sortedArticles = sortMethod(_articles)
-    console.log("🚀 ~ file: index.tsx ~ line 36 ~ createFilterClickHandler ~ sortedArticles", sortedArticles)
     setArticles([...sortedArticles])
   }, [_articles])
 

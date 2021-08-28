@@ -15,14 +15,11 @@ export const SlideShow: React.FC<Props> = ({
   title,
   subTitle
 }) => {
-  const hasMoreThanOneImage = useMemo(() => {
-    return Boolean(images) && images.length > 1
-  }, [images])
 
   return (
     <div className={styles.root}>
       <div className={styles.backgroundContainer}>
-        {hasMoreThanOneImage ? <Carousel images={images} /> : null}
+        <Carousel images={images} />
       </div>
       <div className={styles.bodyContainer}>
         <p className="text-2xl">{title}</p>

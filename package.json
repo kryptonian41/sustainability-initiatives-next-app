@@ -10,6 +10,7 @@
     "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
+    "@types/react-transition-group": "^4.4.2",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
     "cross-env": "^7.0.3",
@@ -20,6 +21,7 @@
     "react-dom": "17.0.2",
     "react-scroll-parallax": "^2.4.0",
     "react-slick": "^0.28.1",
+    "react-transition-group": "^4.4.2",
     "sanitize-html": "^2.4.0",
     "slick-carousel": "^1.8.1",
     "splitting": "^1.0.6",

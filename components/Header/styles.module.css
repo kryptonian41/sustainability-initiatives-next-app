@@ -1,6 +1,6 @@
 .container {
   @apply tablet:px-12 py-4 flex items-center;
-  svg {
+  svg.logo {
     width: 80px;
     height: auto;
   }
@@ -54,5 +54,40 @@
         }
       }
     }
+  }
+}
+
+.mobileSubNavList {
+  @apply fixed top-0 right-0 w-3/4 h-full p-12;
+  background: var(--primary);
+
+  ul {
+    @apply text-white uppercase text-xl;
+    li:not(:first-child) {
+      @apply mt-10;
+    }
+  }
+  button.contactButton {
+    @apply text-xl px-8 py-4;
+  }
+}
+
+.mobileNavRoot {
+  :global(.mobile-nav-enter) {
+    transform: translateX(100%);
+  }
+
+  :global(.mobile-nav-enter-active) {
+    transform: translateX(0%);
+    transition: transform 300ms ease-in-out;
+  }
+
+  :global(.mobile-nav-exit) {
+    transform: translateX(0%);
+  }
+
+  :global(.mobile-nav-exit-active) {
+    transform: translateX(100%);
+    transition: transform 300ms ease-in-out;
   }
 }

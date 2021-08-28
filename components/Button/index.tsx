@@ -6,6 +6,7 @@ interface ButtonProps {
   type?: 'primary' | 'outline' | 'text';
   size?: 'small' | 'medium' | 'large';
   label?: string;
+  light?: boolean;
   onClick?: () => void;
   [key: string]: any
 }
@@ -54,13 +55,15 @@ export const OutlineButton: React.FunctionComponent<ButtonProps> = ({
   label,
   type: buttonType,
   children,
-  className,
+  className, light,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
   return (
     <button
       type="button"
-      className={clsx('px-4 py-1', styles['outline-button'], className)}
+      className={clsx('px-4 py-1', styles['outline-button'], className, {
+        [styles.light]: light
+      })}
       {...props}
     >
       {children || label}
