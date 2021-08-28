@@ -8,10 +8,12 @@ import PhotoGrid from 'components/PhotoGrid'
 import { GridItemProps } from 'components/PhotoGrid/GridPhoto'
 import { QuotesSlideShow } from 'components/QuotesSlider'
 import { RecentArticlesGrid } from 'components/RecentArticlesGrid'
+import { useThemeContext } from 'components/ThemeProvider'
 import { InitiaveTile } from 'components/Tiles/InitiativeTile'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { API } from 'utils/api'
+import { useMediaQuery } from 'utils/hooks/useMediaQuery'
 import { Article, Associate, Initiative, Quote, StakeHolder } from 'utils/types'
 import styles from '../styles/Home.module.css'
 interface Props {
@@ -60,6 +62,13 @@ const supportUsSection: ParallaxProps = {
 
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ recentArticles, initiatives, stakeHolders, associates, quotes }) => {
+  const { breakpoints } = useThemeContext()
+  const { matches } = useMediaQuery(`(max-width: ${breakpoints.phone}px)`)
+
+  useEffect(() => {
+    console.log("🚀 ~ file: index.tsx ~ line 67 ~ matches", matches)
+  }, [matches])
+
   const stakeHolderPhotoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
     return stakeHolders.map(stakeHolder => {
       return {
@@ -87,8 +96,8 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
 
   return (
     <div>
-      <Container>
-        <div className="mt-14" style={{
+      <Container className="tablet:mt-14 tablet:my-0 tablet:mb-20">
+        <div style={{
           height: '50vh'
         }}>
           <HeroSlideShow items={[{
@@ -99,11 +108,12 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
             title: 'Development sustainably'
           }]} />
         </div>
-        <div className="mt-32">
+        <div className="mt-16 tablet:mt-24">
           <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
         </div>
       </Container>
-      <div className="my-32">
+
+      <div className="py-10">
         <Parallax {...missionSection} />
       </div>
 
@@ -112,10 +122,10 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
           <Heading label="Our Initiatives" />
           <div className="mt-8">
             {
-              initiatives && <div className="flex flex-wrap">
+              initiatives && <div className="flex flex-col justify-center items-center flex-wrap tablet:flex-row tablet:justify-start">
                 {
                   initiatives.map(initiative => {
-                    return <div className="w-1/2 my-14 pr-10" key={initiative.id}>
+                    return <div className="w-11/12 tablet:w-1/2 my-14 tablet:pr-10" key={initiative.id}>
                       <InitiaveTile initiave={initiative} />
                     </div>
                   })
@@ -126,10 +136,10 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
         </div>
       </Container>
 
-      <PhotoGrid items={stakeHolderPhotoGridItems} darkBg heading="The People who make it possible" itemsPerRow={5} className="py-20" />
+      <PhotoGrid items={stakeHolderPhotoGridItems} darkBg heading="The People who make it Possible" itemsPerRow={matches ? 2 : 5} className="py-20" />
 
       <div className="py-20">
-        <PhotoGrid items={associatedPhotoGridItems} heading="Associates who stand with us" itemsPerRow={4} containerStyles={{
+        <PhotoGrid items={associatedPhotoGridItems} heading="Associates who stand with us" itemsPerRow={matches ? 1 : 4} containerStyles={{
           // @ts-ignore
           '--gap': '10rem'
         }} withAction className="py-6" />
@@ -139,11 +149,10 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
         </Container>
       </div>
       <Container className="py-10">
-
         <QuotesSlideShow items={quotes} />
       </Container>
 
-      <div className="my-32">
+      <div className="my-16 tablet:my-32">
         <Parallax {...supportUsSection} />
       </div>
 

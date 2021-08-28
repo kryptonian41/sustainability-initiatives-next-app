@@ -1,0 +1,11 @@
+.root {
+  @apply tablet:mb-20 flex justify-center;
+  .button {
+    width: 0;
+    height: 0;
+    border-bottom: 35px solid var(--text-light);
+    opacity: 0.5;
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+  }
+}

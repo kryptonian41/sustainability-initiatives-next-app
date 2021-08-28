@@ -1,7 +1,9 @@
 import clsx from 'clsx';
 import { NextArrow, PrevArrow } from 'components/SlideShow/arrows';
-import React from 'react'
+import { useThemeContext } from 'components/ThemeProvider';
+import React, { useMemo } from 'react'
 import Slider from "react-slick";
+import { useMediaQuery } from 'utils/hooks/useMediaQuery';
 import { Quote } from 'utils/types';
 import styles from './styles.module.css'
 
@@ -21,15 +23,6 @@ export const QuotesSlideShow: React.FC<Props> = ({
 }
 
 
-const carouselSettings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />
-};
 
 interface CarouselProps {
   quotes: Quote[]
@@ -37,6 +30,22 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
+  const { breakpoints } = useThemeContext()
+  const { matches } = useMediaQuery(`(max-width: ${breakpoints.phone}px)`)
+
+  const carouselSettings = useMemo(() => {
+    return {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
+      arrows: !matches
+    };
+  }, [matches])
+
   return <Slider {...carouselSettings} {...sliderProps} >
     {
       quotes.map(({ quote, associate: { name }, id }) =>
@@ -46,7 +55,7 @@ const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
           </div>
           <div className={clsx(styles.author)}>
             <span>-Associate Name</span>
-            <span className="name">{name}</span>
+            <span className={styles.name}>{name}</span>
           </div>
         </div>
       )

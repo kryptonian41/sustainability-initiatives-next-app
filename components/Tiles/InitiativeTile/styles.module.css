@@ -1,11 +1,11 @@
 .root {
-  @apply flex items-center;
+  @apply flex flex-col justify-center tablet:flex-row items-center;
   .icon,
   .body {
-    @apply w-1/2;
+    @apply w-full tablet:w-1/2;
   }
   .body {
-    @apply pl-10;
+    @apply tablet:pl-10;
   }
   .icon {
     @apply block h-auto;

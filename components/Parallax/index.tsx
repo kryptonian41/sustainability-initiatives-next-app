@@ -39,7 +39,7 @@ const Parallax = ({
               : "linear-gradient(90deg, rgba(0,0,0,0.8) 30%, transparent)",
           }}
         />
-        <Container>
+        <div className={styles['content-wrapper']}>
           <div
             className={clsx(styles.content, {
               [styles.light]: isLight
@@ -51,7 +51,8 @@ const Parallax = ({
               {btnContent && <Button>{btnContent}</Button>}
             </div>
           </div>
-        </Container>
+        </div>
+
       </ParallaxBanner>
     </ParallaxProvider>
   );

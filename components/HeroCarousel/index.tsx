@@ -1,6 +1,8 @@
 import { NextArrow, PrevArrow } from 'components/SlideShow/arrows';
+import { useThemeContext } from 'components/ThemeProvider';
 import React, { useCallback, useMemo, useState } from 'react'
 import Slider from "react-slick";
+import { useMediaQuery } from 'utils/hooks/useMediaQuery';
 import styles from './styles.module.css'
 
 interface HeroGridItem {
@@ -44,22 +46,29 @@ export const HeroSlideShow: React.FC<Props> = ({
 }
 
 
-const carouselSettings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />
-};
-
 interface CarouselProps {
   images: string[],
   sliderProps?: {}
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images, sliderProps = {} }) => {
+
+  const { breakpoints } = useThemeContext()
+  const { matches } = useMediaQuery(`(max-width: ${breakpoints.phone}px)`)
+
+  const carouselSettings = useMemo(() => {
+    return {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
+      arrows: !matches
+    };
+  }, [matches])
+
   return <Slider {...carouselSettings} {...sliderProps} >
     {images.map(image =>
       <img src={image} key={image} className="object-cover block w-full h-full" />

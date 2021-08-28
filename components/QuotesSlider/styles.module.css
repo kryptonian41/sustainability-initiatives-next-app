@@ -59,10 +59,9 @@
 }
 
 .quoteSlide {
-  @apply px-32;
-  @apply text-center;
+  @apply tablet:px-32 tablet:text-center;
   .quote {
-    @apply relative overflow-visible py-20 px-10;
+    @apply relative overflow-visible pt-20 pb-10 text-lg tablet:py-20 tablet:px-10 tablet:text-xl laptop:text-3xl;
     &::before,
     &::after {
       @apply absolute;
@@ -71,28 +70,42 @@
       font-size: 300px;
       opacity: 0.1;
       line-height: 0;
+      @media (max-width: 640px) {
+        font-size: 170px;
+      }
     }
     &::before {
       top: 150px;
       left: 0px;
+      @media (max-width: 640px) {
+        top: 80px;
+        left: 0px;
+      }
     }
     &::after {
       transform: rotateZ(180deg);
-      bottom: 150px;
       right: 250px;
+      @media (max-width: 640px) {
+        bottom: 80px;
+        right: 0px;
+      }
     }
     font-family: var(--secondary-font);
     color: var(--text-dark);
-    font-size: 30px;
   }
 
   .author {
-    :global(span:not(.name)) {
+    @media (max-width: 640px) {
+      span {
+        @apply block text-xl;
+      }
+    }
+    span:not(.name) {
       @apply font-bold;
     }
 
-    :global(span.name) {
-      @apply inline-block ml-4;
+    span.name {
+      @apply inline-block tablet:ml-4;
       color: var(--text-light);
     }
   }
