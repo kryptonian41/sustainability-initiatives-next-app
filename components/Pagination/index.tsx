@@ -6,6 +6,7 @@ type Props = {
   prevClickAction: React.MouseEventHandler<HTMLButtonElement>;
   nextClickAction: React.MouseEventHandler<HTMLButtonElement>;
   pageBtnAction: Function;
+  isCentered?: boolean;
 };
 
 const Pagination = ({
@@ -14,6 +15,7 @@ const Pagination = ({
   prevClickAction,
   nextClickAction,
   pageBtnAction,
+  isCentered = false,
 }: Props) => {
   const renderBtn = (pageNumber: number): React.ReactNode => {
     return (
@@ -22,8 +24,9 @@ const Pagination = ({
         onClick={() => {
           if (selectedPage !== pageNumber) pageBtnAction(pageNumber);
         }}
-        className={`${styles.pageBtn} ${selectedPage === pageNumber && styles.activePage
-          }`}
+        className={`${styles.pageBtn} ${
+          selectedPage === pageNumber && styles.activePage
+        }`}
       >
         {pageNumber}
       </button>
@@ -55,14 +58,17 @@ const Pagination = ({
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={isCentered ? { margin: "auto" } : {}}
+    >
       <button onClick={prevClickAction} className={styles.link}>
         Previous
       </button>
       {numberOfPages <= 5
         ? Array(numberOfPages)
-          .fill(1)
-          .map((_, index) => renderBtn(index + 1))
+            .fill(1)
+            .map((_, index) => renderBtn(index + 1))
         : renderLongPagination()}
       <button onClick={nextClickAction} className={styles.link}>
         Next
