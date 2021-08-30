@@ -24,8 +24,15 @@ export const GridItem: React.FC<GridItemProps> = ({
       <div style={imageContainerStyles ?? null}>
         <img src={imgSrc} alt={title} style={imageStyles ?? null} />
       </div>
-      <p className={clsx(styles.name, "font-semibold mt-6")}>{title}</p>
-      {subTitle && <p className={styles.position}>{subTitle}</p>}
+      <p
+        className={clsx(
+          styles.name,
+          "font-semibold mt-6 text-sm laptop:text-base"
+        )}
+      >
+        {title}
+      </p>
+      {subTitle && <p className={clsx(styles.position, "text-xs laptop:text-sm")}>{subTitle}</p>}
     </div>
   );
 
