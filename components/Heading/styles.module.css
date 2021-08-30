@@ -1,13 +1,13 @@
 .container {
-  @apply flex items-center flex-wrap;
+  @apply flex items-center flex-wrap text-2xl;
   font-family: var(--secondary-font);
   color: var(--text-dark);
-  font-size: 35px;
   :global(.whitespace) {
     margin-left: 10px;
   }
-  @media (min-width: 1024px) {
-    font-size: 35px;
+
+  @media (min-width: 780px) {
+    @apply text-4xl;
   }
   .line {
     content: "";

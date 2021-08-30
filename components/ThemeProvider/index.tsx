@@ -27,10 +27,11 @@ const fontMap = {
 }
 
 const breakpoints = {
-  phone: 600,
+  phone: 500,
   tablet: 780,
-  laptop: 1024
-}
+  laptop: 1024,
+  desktop: 1280,
+};
 
 const ThemeContext = React.createContext<ThemeContext>({
   colors: colorMap,

@@ -6,8 +6,8 @@
 
   .infoContainer {
     .name {
+      @apply text-4xl;
       color: var(--secondary);
-      font-size: 2.1rem;
       margin-bottom: 1rem;
     }
 

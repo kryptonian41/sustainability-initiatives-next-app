@@ -4,18 +4,32 @@
   .container {
     padding: 6rem 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 5rem;
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
 
     .sectionContainer {
       h3 {
+        @apply text-2xl;
         color: var(--secondary);
-        font-size: 1.5rem;
+        font-family: var(--secondary-font);
         margin-bottom: 1.5rem;
+        @media screen and (min-width: 780px) {
+          @apply text-4xl;
+        }
       }
 
       p {
+        @apply text-sm;
         margin-bottom: 1.5rem;
+
+        @media screen and (min-width: 780px) {
+          @apply text-base;
+        }
       }
 
       img {

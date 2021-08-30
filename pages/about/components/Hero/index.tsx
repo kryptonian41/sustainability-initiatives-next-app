@@ -2,15 +2,29 @@ import { Container } from "components/Container";
 import { BaseLayout as Layout } from "components/Layout";
 import React from "react";
 import heroStyles from "./heroStyles.module.css";
+import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useThemeContext } from "components/ThemeProvider";
 
 const Hero: React.FC = () => {
+  const { breakpoints } = useThemeContext();
+  const isMobile = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
+    .matches;
+
+  const heroImage = () => {
+    const heroImageHtml = (
+      <div className={heroStyles.imageContainer}>
+        <img src="images/about-us-hero.png" alt="" />
+        <h1>What we do</h1>
+      </div>
+    );
+    if (isMobile) return heroImageHtml;
+    return <Container>{heroImageHtml}</Container>;
+  };
+
   return (
-    <Container>
-      <div className={heroStyles.container}>
-        <div className={heroStyles.imageContainer}>
-          <img src="images/about-us-hero.png" alt="" />
-          <h1>What we do</h1>
-        </div>
+    <div className={heroStyles.container}>
+      {heroImage()}
+      <Container>
         <p className={heroStyles.paragraph}>
           The functional areas of Sustainability Initiatives have emerged
           through identification of existing gaps. There is a severe gap in
@@ -26,8 +40,8 @@ const Hero: React.FC = () => {
           urban local bodies to carry out targeted research and analysis for
           decision making.
         </p>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 };
 
