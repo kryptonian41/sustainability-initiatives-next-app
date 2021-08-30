@@ -28,8 +28,8 @@ const fontMap = {
 
 const breakpoints = {
   phone: 600,
-  tablet: 900,
-  laptop: 1200
+  tablet: 780,
+  laptop: 1024
 }
 
 const ThemeContext = React.createContext<ThemeContext>({

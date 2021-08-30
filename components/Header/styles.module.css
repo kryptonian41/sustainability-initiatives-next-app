@@ -57,8 +57,13 @@
   }
 }
 
+.mobileNavBackgroundOverlay {
+  @apply fixed top-0 right-0 w-full h-full z-10;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .mobileSubNavList {
-  @apply fixed top-0 right-0 w-3/4 h-full p-12;
+  @apply fixed top-0 right-0 w-3/4 h-full p-12 z-20;
   background: var(--primary);
 
   ul {
@@ -69,25 +74,5 @@
   }
   button.contactButton {
     @apply text-xl px-8 py-4;
-  }
-}
-
-.mobileNavRoot {
-  :global(.mobile-nav-enter) {
-    transform: translateX(100%);
-  }
-
-  :global(.mobile-nav-enter-active) {
-    transform: translateX(0%);
-    transition: transform 300ms ease-in-out;
-  }
-
-  :global(.mobile-nav-exit) {
-    transform: translateX(0%);
-  }
-
-  :global(.mobile-nav-exit-active) {
-    transform: translateX(100%);
-    transition: transform 300ms ease-in-out;
   }
 }
