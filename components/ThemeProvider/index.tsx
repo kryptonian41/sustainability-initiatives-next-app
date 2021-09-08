@@ -28,7 +28,7 @@ const fontMap = {
 
 const breakpoints = {
   phone: 500,
-  tablet: 780,
+  tablet: 768,
   laptop: 1024,
   desktop: 1280,
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   getArticlesByAuthor,
   getStakeHolderBySlug,
@@ -16,6 +16,8 @@ import TwitterIcon from "assets/svgs/social-icons/twitter.svg";
 import Instagramicon from "assets/svgs/social-icons/instagram.svg";
 import PhotoGrid from "components/PhotoGrid";
 import { GridItemProps } from "components/PhotoGrid/GridPhoto";
+import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import clsx from "clsx";
 
 interface Props {
   stakeHolders: StakeHolder[];
@@ -77,15 +79,62 @@ const People: React.FC<Props> = ({
     return <div />;
   }
   const { name, education, about, photo, socialLinks, author } = stakeHolder[0];
-  const { colors } = useThemeContext();
+  const { colors, breakpoints } = useThemeContext();
+  const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
+    .matches;
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
+    .matches;
+
+  const itemsPerRow = useMemo(() => {
+    if (isDesktop) return 4;
+    if (isTablet) return 3;
+    return 2;
+  }, [isTablet, isDesktop]);
+
   return (
     <div>
       <Container>
         <div className={styles.container}>
+          <div>
+            <img
+              className={clsx("mb-8 tablet:w-80 tablet:float-right tablet:ml-8 laptop:float-none laptop:m-0 laptop:w-full", styles.picture)}
+              src={photo.url}
+              alt={photo.alternativeText}
+              title={photo.name}
+            />
+            {isDesktop && (
+              <div className="my-4">
+                {socialLinks && (
+                  <SocialPanel
+                    backgroundColor={colors.secondary}
+                    iconColor={colors.background.primary}
+                    items={createSocialItemArr(socialLinks)}
+                  />
+                )}
+              </div>
+            )}
+          </div>
           <div className={styles.infoContainer}>
-            <h1 className={styles.name}>{name}</h1>
-            <p className={styles.edu}>{education}</p>
-            <p className={styles.about}>{about}</p>
+            <h1 className={clsx("text-2xl tablet:text-4xl", styles.name)}>
+              {name}
+            </h1>
+            <p className={clsx("text-sm  tablet:text-base", styles.edu)}>
+              {education}
+            </p>
+            {!isDesktop && (
+              <div className="mb-8">
+                {socialLinks && (
+                  <SocialPanel
+                    backgroundColor={colors.secondary}
+                    iconColor={colors.background.primary}
+                    items={createSocialItemArr(socialLinks)}
+                  />
+                )}
+              </div>
+            )}
+            <p className="text-sm mb-8 tablet:text-base desktop:mb-0">
+              {about}
+            </p>
             {articlesByStakeHolder.length && (
               <Blogs
                 articles={articlesByStakeHolder.slice(0, 3)}
@@ -95,23 +144,6 @@ const People: React.FC<Props> = ({
               />
             )}
           </div>
-          <div>
-            <img
-              className={styles.picture}
-              src={photo.url}
-              alt={photo.alternativeText}
-              title={photo.name}
-            />
-            <div className="my-4">
-              {socialLinks && (
-                <SocialPanel
-                  backgroundColor={colors.secondary}
-                  iconColor={colors.background.primary}
-                  items={createSocialItemArr(socialLinks)}
-                />
-              )}
-            </div>
-          </div>
         </div>
       </Container>
       <div className="my-20">
@@ -119,7 +151,10 @@ const People: React.FC<Props> = ({
           <PhotoGrid
             heading="The People who make it possible"
             items={gridProps()}
-            withAction
+            withAction={isDesktop}
+            darkBg={!isDesktop}
+            itemsPerRow={itemsPerRow}
+            className="pt-8 pb-4"
           />
         )}
       </div>
