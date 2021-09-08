@@ -24,7 +24,7 @@ const Blogs: React.FC<Props> = ({
     const year = dateObj.toLocaleString("default", { year: "numeric" });
     return (
       <div className="my-6">
-        <h3 className="font-medium text-xl">{title}</h3>
+        <h3 className="font-medium tablet:text-xl">{title}</h3>
         <p style={{ color: dateColor }}>{`${month} ${day}, ${year}`}</p>
       </div>
     );
