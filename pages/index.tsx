@@ -122,7 +122,7 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
           <Heading label="Our Initiatives" />
           <div className="mt-8">
             {
-              initiatives && <div className="flex flex-col justify-center items-center flex-wrap tablet:flex-row desktop:flex-col tablet:justify-start">
+              initiatives && <div className="flex flex-col justify-center items-center flex-wrap tablet:flex-row tablet:justify-start">
                 {
                   initiatives.map(initiative => {
                     return <div className="w-11/12 tablet:w-1/2 my-14 tablet:pr-10" key={initiative.id}>
