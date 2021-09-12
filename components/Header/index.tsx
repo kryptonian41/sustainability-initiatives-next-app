@@ -13,7 +13,7 @@ interface Props { }
 
 export const Header = (props: Props) => {
   const { breakpoints } = useThemeContext()
-  const { matches } = useMediaQuery(`(min-width: ${breakpoints.phone}px)`)
+  const { matches } = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
   console.log("🚀 ~ file: index.tsx ~ line 15 ~ Header ~ matches", matches)
 
 
