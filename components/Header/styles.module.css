@@ -1,5 +1,5 @@
 .container {
-  @apply tablet:px-12 py-4 flex items-center;
+  @apply py-4 flex items-center;
   svg.logo {
     width: 80px;
     height: auto;
@@ -75,4 +75,14 @@
   button.contactButton {
     @apply text-xl px-8 py-4;
   }
+}
+
+.mobileNav--caret {
+  @apply ml-6 inline-block;
+  transform: rotateZ(45deg);
+  width: 14px;
+  height: 14px;
+  /* border: 2px solid transparent; */
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
 }
