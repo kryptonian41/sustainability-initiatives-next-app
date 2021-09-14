@@ -31,7 +31,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
   const { breakpoints } = useThemeContext()
-  const { matches } = useMediaQuery(`(max-width: ${breakpoints.phone}px)`)
+  const { matches } = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
 
   const carouselSettings = useMemo(() => {
     return {
