@@ -69,3 +69,19 @@ a {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
+
+.filter-list-enter {
+  opacity: 0;
+}
+.filter-list-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.filter-list-exit {
+  opacity: 1;
+}
+
+.filter-list-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

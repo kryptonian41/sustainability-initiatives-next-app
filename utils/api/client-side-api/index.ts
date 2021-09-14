@@ -33,6 +33,15 @@ export const getArticleById = async (id: number) => {
   return data[0];
 };
 
+export const getArticleBySlug = async (slug: string) => {
+  const { data } = await axios.get<Article[]>("/articles", {
+    params: {
+      slug,
+    },
+  });
+  return data[0];
+};
+
 export const getArticlesByAuthor = async (authorId, sortByLatest = false) => {
   let params: Object = {
     "author.id": authorId,
@@ -46,10 +55,10 @@ export const getArticlesByAuthor = async (authorId, sortByLatest = false) => {
     params,
   });
 };
-export const getArticledByInitiative = async (initiativeId) => {
+export const getArticledByInitiativeSlug = async (slug: string) => {
   return await getArticles({
     params: {
-      "initiative.id": initiativeId,
+      "initiative.slug": slug,
     },
   });
 };
@@ -63,6 +72,15 @@ export const getInitiaveById = async (initiativeId: number) => {
   const { data } = await axios.get<Initiative[]>("/initiatives", {
     params: {
       id: initiativeId,
+    },
+  });
+  return data[0];
+};
+
+export const getInitiaveBySlug = async (slug: string) => {
+  const { data } = await axios.get<Initiative[]>("/initiatives", {
+    params: {
+      slug,
     },
   });
   return data[0];

@@ -1,6 +1,5 @@
 import { OutlineButton } from 'components/Button'
 import { Container } from 'components/Container'
-import { Header } from 'components/Header'
 import { Heading } from 'components/Heading'
 import { HeroSlideShow } from 'components/HeroCarousel'
 import Parallax, { Props as ParallaxProps } from 'components/Parallax'
@@ -15,7 +14,6 @@ import { useEffect, useMemo } from 'react'
 import { API } from 'utils/api'
 import { useMediaQuery } from 'utils/hooks/useMediaQuery'
 import { Article, Associate, Initiative, Quote, StakeHolder } from 'utils/types'
-import styles from '../styles/Home.module.css'
 interface Props {
   recentArticles: Article[],
   initiatives: Initiative[],
@@ -63,11 +61,8 @@ const supportUsSection: ParallaxProps = {
 export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ recentArticles, initiatives, stakeHolders, associates, quotes }) => {
   const { breakpoints } = useThemeContext()
-  const { matches } = useMediaQuery(`(max-width: ${breakpoints.phone}px)`)
+  const { matches: matchesPhone } = useMediaQuery(`(max-width: ${breakpoints.phone}px)`)
 
-  useEffect(() => {
-    console.log("🚀 ~ file: index.tsx ~ line 67 ~ matches", matches)
-  }, [matches])
 
   const stakeHolderPhotoGridItems: GridItemProps[] = useMemo<GridItemProps[]>(() => {
     return stakeHolders.map(stakeHolder => {
@@ -136,14 +131,20 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
         </div>
       </Container>
 
-      <PhotoGrid items={stakeHolderPhotoGridItems} darkBg heading="The People who make it Possible" itemsPerRow={matches ? 2 : 5} className="py-20" />
+      <PhotoGrid items={stakeHolderPhotoGridItems} darkBg heading="The People who make it Possible" itemsPerRow={matchesPhone ? 2 : 5} className="py-20" />
 
       <div className="py-20">
-        <PhotoGrid items={associatedPhotoGridItems} heading="Associates who stand with us" itemsPerRow={matches ? 1 : 4} containerStyles={{
-          // @ts-ignore
-          '--gap': '10rem'
-        }} withAction className="py-6" />
-
+        <PhotoGrid
+          items={associatedPhotoGridItems}
+          heading="Associates who stand with us"
+          itemsPerRow={matchesPhone ? 1 : 4}
+          withAction
+          className="py-6"
+          containerStyles={{
+            // @ts-ignore
+            '--gap': '10rem'
+          }}
+        />
         <Container className="text-right">
           <OutlineButton>View All</OutlineButton>
         </Container>

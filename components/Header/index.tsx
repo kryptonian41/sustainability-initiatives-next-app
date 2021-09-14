@@ -14,10 +14,6 @@ interface Props { }
 export const Header = (props: Props) => {
   const { breakpoints } = useThemeContext()
   const { matches } = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
-  console.log("🚀 ~ file: index.tsx ~ line 15 ~ Header ~ matches", matches)
-
-
-
   return (
     <div className={styles.container}>
       <Link href="/">
@@ -47,9 +43,9 @@ const DesktopSubNav = () => {
         <li>
           Initiatives
           <ul>
-            <Link href="/initiatives/1"><li>Advocasy</li></Link>
-            <Link href="/initiatives/2"><li>Research</li></Link>
-            <Link href="/initiatives/3"><li>Awareness</li></Link>
+            <Link href="/initiatives/advocasy"><li>Advocasy</li></Link>
+            <Link href="/initiatives/awareness"><li>Awareness</li></Link>
+            <Link href="/initiatives/research"><li>Research</li></Link>
           </ul>
         </li>
         <Link href="/associates"><li>Associates</li></Link>

@@ -1,0 +1,18 @@
+.filter-list {
+  &--item {
+    @apply cursor-pointer mt-3 first:mt-0;
+    color: var(--text-dark);
+  }
+}
+
+.mobile-filter-list {
+  @apply absolute top-0 -right-3 bg-white p-4 shadow-xl rounded-md;
+  transform: translateX(100%);
+  &--item {
+    @apply mt-3 whitespace-nowrap cursor-pointer text-lg;
+    color: var(--text-dark);
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
