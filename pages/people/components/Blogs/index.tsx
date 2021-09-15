@@ -46,7 +46,7 @@ const Blogs: React.FC<Props> = ({
         ))}
         {displayViewMore && (
           <div className={styles.link}>
-            <Link href={`/articles?authour=${authorId}`}>
+            <Link href={`/articles?authourId=${authorId}`}>
               More Articles &gt;
             </Link>
           </div>
