@@ -19,7 +19,7 @@
       left: 2rem;
       font-family: var(--secondary-font);
 
-      @media screen and (min-width: 780px) {
+      @media screen and (min-width: 768px) {
         @apply text-4xl;
       }
     }
@@ -27,7 +27,7 @@
 
   .paragraph {
     @apply text-sm;
-    @media screen and (min-width: 780px) {
+    @media screen and (min-width: 768px) {
       font-size: 1rem;
     }
     @media screen and (min-width: 1024px) {

@@ -35,16 +35,18 @@ const Blogs: React.FC<Props> = ({
       <div className="py-8">
         <h2 className={clsx("text-xl uppercase mb-6", styles.title)}>Blogs</h2>
         {articles.map((article, index) => (
-          <div key={index}>
-            {BlogSummary(article.title, article.published_at)}
-            {index < articles.length - 1 && (
-              <hr style={{ borderColor: dateColor }} />
-            )}
-          </div>
+          <Link href={`/blog/${article.slug}`} key={index}>
+            <div className="cursor-pointer">
+              {BlogSummary(article.title, article.published_at)}
+              {index < articles.length - 1 && (
+                <hr style={{ borderColor: dateColor }} />
+              )}
+            </div>
+          </Link>
         ))}
         {displayViewMore && (
           <div className={styles.link}>
-            <Link href={`/articles?authour=${authorId}`}>
+            <Link href={`/articles?authourId=${authorId}`}>
               More Articles &gt;
             </Link>
           </div>

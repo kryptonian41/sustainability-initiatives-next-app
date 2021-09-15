@@ -24,6 +24,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
     }
   }
 }
+
 const Initiaves: React.FC<Props> = ({ articles, initiative }) => {
   return (
     <div className="py-20">

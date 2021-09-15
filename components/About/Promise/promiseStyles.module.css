@@ -18,7 +18,7 @@
         color: var(--secondary);
         font-family: var(--secondary-font);
         margin-bottom: 1.5rem;
-        @media screen and (min-width: 780px) {
+        @media screen and (min-width: 768px) {
           @apply text-4xl;
         }
       }
@@ -27,7 +27,7 @@
         @apply text-sm;
         margin-bottom: 1.5rem;
 
-        @media screen and (min-width: 780px) {
+        @media screen and (min-width: 768px) {
           @apply text-base;
         }
       }

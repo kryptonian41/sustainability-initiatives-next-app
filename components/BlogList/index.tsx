@@ -77,30 +77,34 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
           </div>
       }
       <div className="flex-1 tablet:px-10">
-        <div className="grid tablet:grid-cols-2 gap-x-12">
-          {articlesToDisplay.map(article => {
-            return <Link href={`/blog/${article.slug}`} key={article.id}>
-              <div className="mb-16 cursor-pointer" >
-                <ArticleTile
-                  key={article.id}
-                  title={article.title}
-                  subtitle={`Posted on ${prettyDate(article.published_at)}`}
-                  imgUrl={article.images[0].url}
-                  body={article.summary}
-                />
-              </div>
-            </Link>
-          })}
-        </div>
-        {numberOfPages > 0 && <div className="tablet:mt-20">
-          <Pagination
-            nextClickAction={() => setCurrentPage(page => page + 1)}
-            prevClickAction={() => setCurrentPage(page => page - 1)}
-            numberOfPages={numberOfPages}
-            selectedPage={currentPage}
-            pageBtnAction={pageNumber => setCurrentPage(pageNumber)}
-          />
-        </div>}
+        {
+          articlesToDisplay.length > 0 ? <>
+            <div className="grid tablet:grid-cols-2 gap-x-12">
+              {articlesToDisplay.map(article => {
+                return <Link href={`/blog/${article.slug}`} key={article.id}>
+                  <div className="mb-16 cursor-pointer" >
+                    <ArticleTile
+                      key={article.id}
+                      title={article.title}
+                      subtitle={`Posted on ${prettyDate(article.published_at)}`}
+                      imgUrl={article.images[0].url}
+                      body={article.summary}
+                    />
+                  </div>
+                </Link>
+              })}
+            </div>
+            {numberOfPages > 0 && <div className="tablet:mt-20">
+              <Pagination
+                nextClickAction={() => setCurrentPage(page => page + 1)}
+                prevClickAction={() => setCurrentPage(page => page - 1)}
+                numberOfPages={numberOfPages}
+                selectedPage={currentPage}
+                pageBtnAction={pageNumber => setCurrentPage(pageNumber)}
+              />
+            </div>}
+          </> : <h1 className="text-center text-3xl">No Articles Found</h1>
+        }
       </div>
     </div>
   )

@@ -16,6 +16,16 @@
   color: var(--text-light);
 }
 
+.photoGridContainer {
+  :global(.slick-track) {
+    margin: 0;
+  }
+
+  :global(.slick-list) {
+    margin-right: -2rem;
+  }
+}
+
 .actionBtns {
   display: flex;
   justify-content: center;

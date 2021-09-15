@@ -46,7 +46,7 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
 
   return (
     <div className="py-20">
-      <Container>
+      <Container className="overflow-hidden">
         <Heading
           label="Associates who stand with us"
           actions={isDesktop ? <ActionBtns sliderRef={sliderRef} /> : null}

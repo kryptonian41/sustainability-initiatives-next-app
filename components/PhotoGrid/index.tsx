@@ -32,6 +32,7 @@ const PhotoGrid = ({
   const sliderSettings = {
     dots: false,
     infinite: false,
+    arrows: false,
     slidesToShow: itemsToShowInSlider,
     slidesToScroll: 1,
   };
@@ -43,18 +44,20 @@ const PhotoGrid = ({
       }}
       className={className}
     >
-      <Container>
+      <Container className="overflow-hidden">
         {withAction ? (
           <div className={styles.photoGridContainer}>
             <Heading
               label={heading}
               actions={<ActionBtns sliderRef={sliderRef} />}
             />
-            <Slider {...sliderSettings} ref={sliderRef}>
-              {items.map((item) => (
-                <GridItem {...item} key={item.imgSrc} className="mr-8" />
-              ))}
-            </Slider>
+            <div className="my-8">
+              <Slider {...sliderSettings} ref={sliderRef}>
+                {items.map((item) => (
+                  <GridItem {...item} key={item.imgSrc} className="mr-8" />
+                ))}
+              </Slider>
+            </div>
           </div>
         ) : (
           <div className={styles.photoGridContainer}>

@@ -24,7 +24,11 @@ export const GridItem: React.FC<GridItemProps> = ({
   nameClasses,
 }) => {
   const item = (
-    <div className={clsx(className, styles.gridItem)}>
+    <div
+      className={clsx(styles.gridItem, className, {
+        "cursor-pointer": Boolean(path),
+      })}
+    >
       <div style={imageContainerStyles ?? null}>
         <img src={imgSrc} alt={title} style={imageStyles ?? null} />
       </div>
@@ -45,11 +49,6 @@ export const GridItem: React.FC<GridItemProps> = ({
     </div>
   );
 
-  if (path)
-    return (
-      <div style={{ cursor: "pointer" }}>
-        <Link href={path}>{item}</Link>
-      </div>
-    );
+  if (path) return <Link href={path}>{item}</Link>;
   return item;
 };
