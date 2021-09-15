@@ -1,0 +1,20 @@
+.slider {
+  :global(.slick-arrow)::before {
+    color: var(--text-dark);
+  }
+
+  :global(.slick-prev) {
+    left: 0;
+    z-index: 1;
+  }
+
+  :global(.slick-next) {
+    right: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    :global(.slick-list) {
+      margin-right: -2rem;
+    }
+  }
+}

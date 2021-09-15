@@ -16,32 +16,18 @@
   color: var(--text-light);
 }
 
-.photosSlider {
-  overflow: hidden;
-  margin: 2rem 0;
+.photoGridContainer {
+  :global(.slick-track) {
+    margin: 0;
+  }
 
-  .photoSlidesContainer {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    justify-content: space-between;
-    --gap: 3rem;
-    gap: var(--gap);
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    .gridItem {
-      width: calc((100% - var(--gap)) / 4);
-      flex-shrink: 0;
-      scroll-snap-align: start;
-    }
+  :global(.slick-list) {
+    margin-right: -2rem;
   }
 }
 
 .actionBtns {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
