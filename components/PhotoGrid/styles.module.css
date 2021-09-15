@@ -20,10 +20,6 @@
   :global(.slick-track) {
     margin: 0;
   }
-
-  :global(.slick-list) {
-    margin-right: -2rem;
-  }
 }
 
 .actionBtns {
