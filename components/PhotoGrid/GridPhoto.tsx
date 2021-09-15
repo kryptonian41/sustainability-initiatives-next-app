@@ -9,6 +9,8 @@ export interface GridItemProps {
   imageContainerStyles?: React.CSSProperties;
   imageStyles?: React.CSSProperties;
   path?: string;
+  className?: string;
+  nameClasses?: string;
 }
 
 export const GridItem: React.FC<GridItemProps> = ({
@@ -18,21 +20,28 @@ export const GridItem: React.FC<GridItemProps> = ({
   imageStyles,
   imageContainerStyles,
   path,
+  className,
+  nameClasses,
 }) => {
   const item = (
-    <div className={styles.gridItem}>
+    <div className={clsx(className, styles.gridItem)}>
       <div style={imageContainerStyles ?? null}>
         <img src={imgSrc} alt={title} style={imageStyles ?? null} />
       </div>
       <p
         className={clsx(
           styles.name,
+          nameClasses,
           "font-semibold mt-6 text-sm laptop:text-base"
         )}
       >
         {title}
       </p>
-      {subTitle && <p className={clsx(styles.position, "text-xs laptop:text-sm")}>{subTitle}</p>}
+      {subTitle && (
+        <p className={clsx(styles.position, "text-xs laptop:text-sm")}>
+          {subTitle}
+        </p>
+      )}
     </div>
   );
 

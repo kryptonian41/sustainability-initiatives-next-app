@@ -1,11 +1,10 @@
 import { useRef } from "react";
 import { Heading } from "../Heading";
 import { GridItemProps, GridItem } from "./GridPhoto";
-import { PrevArrow, NextArrow } from "components/SlideShow/arrows";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
-import { useThemeContext } from "components/ThemeProvider";
 import Slider from "react-slick";
+import ActionBtns from "./ActionBtns";
 
 type Props = {
   items: GridItemProps[];
@@ -28,41 +27,7 @@ const PhotoGrid = ({
   containerStyles,
   className,
 }: Props) => {
-  const handleClick = (direction: string): void => {
-    switch (direction) {
-      case "right":
-        sliderRef.current?.slickNext();
-        break;
-      case "left":
-        sliderRef.current?.slickPrev();
-        break;
-      default:
-    }
-  };
-
-  const { colors } = useThemeContext();
-
   const sliderRef = useRef(null);
-
-  const renderActions = (): React.ReactNode => {
-    return (
-      <div className={styles.actionBtns}>
-        <PrevArrow
-          style={{
-            stroke: colors.secondary,
-            transform: "rotate(180deg)",
-            marginRight: "2rem",
-            cursor: "pointer",
-          }}
-          onClick={() => handleClick("left")}
-        />
-        <NextArrow
-          style={{ stroke: colors.secondary, cursor: "pointer" }}
-          onClick={() => handleClick("right")}
-        />
-      </div>
-    );
-  };
 
   const sliderSettings = {
     dots: false,
@@ -81,23 +46,15 @@ const PhotoGrid = ({
       <Container>
         {withAction ? (
           <div className={styles.photoGridContainer}>
-            <Heading label={heading} actions={renderActions()} />
+            <Heading
+              label={heading}
+              actions={<ActionBtns sliderRef={sliderRef} />}
+            />
             <Slider {...sliderSettings} ref={sliderRef}>
               {items.map((item) => (
-                <GridItem {...item} key={item.imgSrc} />
+                <GridItem {...item} key={item.imgSrc} className="mr-8" />
               ))}
             </Slider>
-            {/* <div className={styles.photosSlider}>
-              <div
-                className={styles.photoSlidesContainer}
-                id="slider"
-                style={containerStyles ?? null}
-              >
-                {items.map((item) => (
-                  <GridItem {...item} key={item.imgSrc} />
-                ))}
-              </div>
-            </div> */}
           </div>
         ) : (
           <div className={styles.photoGridContainer}>
