@@ -18,7 +18,6 @@ import PhotoGrid from "components/PhotoGrid";
 import { GridItemProps } from "components/PhotoGrid/GridPhoto";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
 import clsx from "clsx";
-import { peopleProps } from "components/PhotoGrid/mockProps";
 
 interface Props {
   stakeHolders: StakeHolder[];
@@ -154,7 +153,7 @@ const People: React.FC<Props> = ({
         {stakeHolders.length && (
           <PhotoGrid
             heading="The People who make it possible"
-            items={peopleProps}
+            items={gridProps()}
             withAction={isDesktop}
             darkBg={!isDesktop}
             itemsPerRow={itemsPerRow}
