@@ -55,6 +55,7 @@ export const getArticlesByAuthor = async (authorId, sortByLatest = false) => {
     params,
   });
 };
+
 export const getArticledByInitiativeSlug = async (slug: string) => {
   return await getArticles({
     params: {

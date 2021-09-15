@@ -142,7 +142,7 @@ export const Home: React.FC<InferGetServerSidePropsType<typeof getServerSideProp
           className="py-6"
           containerStyles={{
             // @ts-ignore
-            '--gap': '10rem'
+            '--gap': '4rem'
           }}
         />
         <Container className="text-right">
