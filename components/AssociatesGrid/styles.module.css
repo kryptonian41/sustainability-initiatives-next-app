@@ -11,10 +11,4 @@
   :global(.slick-next) {
     right: 0;
   }
-
-  @media screen and (min-width: 768px) {
-    :global(.slick-list) {
-      margin-right: -2rem;
-    }
-  }
 }

@@ -51,7 +51,7 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
           label="Associates who stand with us"
           actions={isDesktop ? <ActionBtns sliderRef={sliderRef} /> : null}
         />
-        <Slider {...sliderSettings} ref={sliderRef} className={styles.slider}>
+        <Slider {...sliderSettings} ref={sliderRef} className={clsx(styles.slider, isTablet && "-mr-8", "my-8")}>
           {associatedPhotoGridItems.map((item) => (
             <GridItem
               {...item}

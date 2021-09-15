@@ -52,7 +52,7 @@ const PhotoGrid = ({
               actions={<ActionBtns sliderRef={sliderRef} />}
             />
             <div className="my-8">
-              <Slider {...sliderSettings} ref={sliderRef}>
+              <Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
                 {items.map((item) => (
                   <GridItem {...item} key={item.imgSrc} className="mr-8" />
                 ))}
