@@ -44,5 +44,8 @@
   }
   .bodyContainer {
     @apply absolute bottom-8 left-8 text-white;
+    &.small {
+      @apply bottom-4 left-4;
+    }
   }
 }

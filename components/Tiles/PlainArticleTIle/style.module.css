@@ -1,0 +1,21 @@
+.root {
+  @apply py-4 pt-6;
+  border-bottom: 2px solid var(--text-light);
+  .title {
+    @apply text-2xl;
+    color: var(--text-dark);
+  }
+  .date {
+    @apply text-lg;
+    color: var(--text-light);
+  }
+  .summary {
+    @apply mt-2 overflow-ellipsis;
+    /* white-space: nowrap; */
+    width: 100%;
+    overflow: hidden;
+    span {
+      color: var(--text-light);
+    }
+  }
+}
