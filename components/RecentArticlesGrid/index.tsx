@@ -33,7 +33,7 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
           </Link>
         </div>
         {restPosts.map(post => {
-          return <div className="p-6 tablet:flex-1">
+          return <div className="p-6 tablet:p-0 tablet:flex-1">
             <PlainArticleTile article={post} />
           </div>
         })}

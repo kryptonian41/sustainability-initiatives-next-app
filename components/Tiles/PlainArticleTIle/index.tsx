@@ -12,7 +12,7 @@ export const PlainArticleTile: React.FC<PlainArticleTileProps> = ({ article }) =
     <p className={styles.title}>{article.title}</p>
     <p className={styles.date}>Posted on {prettyDate(article.published_at)}</p>
     <p className={styles.summary}>{article.summary.slice(0, 90)}......
-      <Link href={`/blog/${article.slug}`}><span>&nbsp; Read More &gt;</span></Link>
+      <Link href={`/blog/${article.slug}`}><span className="cursor-pointer">&nbsp; Read More &gt;</span></Link>
     </p>
   </div>;
 };
