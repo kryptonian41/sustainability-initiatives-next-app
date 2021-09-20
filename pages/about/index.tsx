@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import Wrapper from "components/Wrapper";
-import Hero from "./components/Hero";
+import Hero from "../../components/About/Hero";
 import { getStakeHolders } from "utils/api/client-side-api";
-import Promise from "./components/Promise";
+import Promise from "../../components/About/Promise";
 import PhotoGrid from "components/PhotoGrid";
 import { peopleProps } from "components/PhotoGrid/mockProps";
 import { StakeHolder } from "utils/types";

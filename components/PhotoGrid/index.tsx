@@ -1,14 +1,16 @@
+import { useRef } from "react";
 import { Heading } from "../Heading";
 import { GridItemProps, GridItem } from "./GridPhoto";
-import { PrevArrow, NextArrow } from "components/SlideShow/arrows";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
-import { useThemeContext } from "components/ThemeProvider";
+import Slider from "react-slick";
+import ActionBtns from "./ActionBtns";
 
 type Props = {
   items: GridItemProps[];
   heading: string;
   itemsPerRow?: number;
+  itemsToShowInSlider?: number;
   withAction?: boolean;
   darkBg?: boolean;
   containerStyles?: React.CSSProperties;
@@ -19,44 +21,20 @@ const PhotoGrid = ({
   items,
   heading,
   itemsPerRow = 5,
+  itemsToShowInSlider = 4,
   withAction = false,
   darkBg = false,
   containerStyles,
   className,
 }: Props) => {
-  const handleClick = (direction: string): void => {
-    const slider = document.getElementById("slider");
-    switch (direction) {
-      case "right":
-        slider.scrollBy(50, 0);
-        break;
-      case "left":
-        slider.scrollBy(-50, 0);
-        break;
-      default:
-    }
-  };
+  const sliderRef = useRef(null);
 
-  const { colors } = useThemeContext();
-
-  const renderActions = (): React.ReactNode => {
-    return (
-      <div className={styles.actionBtns}>
-        <PrevArrow
-          style={{
-            stroke: colors.secondary,
-            transform: "rotate(180deg)",
-            marginRight: "2rem",
-            cursor: "pointer",
-          }}
-          onClick={() => handleClick("left")}
-        />
-        <NextArrow
-          style={{ stroke: colors.secondary, cursor: "pointer" }}
-          onClick={() => handleClick("right")}
-        />
-      </div>
-    );
+  const sliderSettings = {
+    dots: false,
+    infinite: false,
+    arrows: false,
+    slidesToShow: itemsToShowInSlider,
+    slidesToScroll: 1,
   };
 
   return (
@@ -66,20 +44,19 @@ const PhotoGrid = ({
       }}
       className={className}
     >
-      <Container>
+      <Container className="overflow-hidden">
         {withAction ? (
           <div className={styles.photoGridContainer}>
-            <Heading label={heading} actions={renderActions()} />
-            <div className={styles.photosSlider}>
-              <div
-                className={styles.photoSlidesContainer}
-                id="slider"
-                style={containerStyles ?? null}
-              >
+            <Heading
+              label={heading}
+              actions={<ActionBtns sliderRef={sliderRef} />}
+            />
+            <div className="my-8">
+              <Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
                 {items.map((item) => (
-                  <GridItem {...item} key={item.imgSrc} />
+                  <GridItem {...item} key={item.imgSrc} className="mr-8" />
                 ))}
-              </div>
+              </Slider>
             </div>
           </div>
         ) : (

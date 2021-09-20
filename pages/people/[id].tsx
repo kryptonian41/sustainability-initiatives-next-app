@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 import { Container } from "components/Container";
 import { SocialPanel, SocialItem } from "components/SocialPanel";
 import { useThemeContext } from "components/ThemeProvider";
-import Blogs from "./components/Blogs";
+import Blogs from "../../components/People/Blogs";
 import YoutubeIcon from "assets/svgs/social-icons/youtube.svg";
 import FacebookIcon from "assets/svgs/social-icons/facebook.svg";
 import TwitterIcon from "assets/svgs/social-icons/twitter.svg";
@@ -97,7 +97,10 @@ const People: React.FC<Props> = ({
         <div className={styles.container}>
           <div>
             <img
-              className={clsx("mb-8 tablet:w-80 tablet:float-right tablet:ml-8 laptop:float-none laptop:m-0 laptop:w-full", styles.picture)}
+              className={clsx(
+                "mb-8 tablet:w-80 tablet:float-right tablet:ml-8 laptop:float-none laptop:m-0 laptop:w-full",
+                styles.picture
+              )}
               src={photo.url}
               alt={photo.alternativeText}
               title={photo.name}
