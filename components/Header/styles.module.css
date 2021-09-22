@@ -25,6 +25,23 @@
         &:not(:first-child) {
           @apply ml-10;
         }
+        &.active {
+          &::after {
+            opacity: 1;
+          }
+        }
+
+        &::after {
+          @apply absolute -bottom-2;
+          content: "";
+          opacity: 0;
+          left: 50%;
+          width: 75%;
+          height: 1px;
+          background: var(--primary);
+          transform: translateX(-50%);
+          transition: opacity 0.3s ease;
+        }
 
         &:hover {
           ul {
@@ -35,7 +52,7 @@
         }
 
         ul {
-          @apply pointer-events-none;
+          @apply pointer-events-none shadow-md;
           @apply absolute flex flex-col p-4;
           background: white;
           bottom: 0;

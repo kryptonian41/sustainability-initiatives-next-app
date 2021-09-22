@@ -1,5 +1,5 @@
 import { Button } from "../Button";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderLogo from "../../assets/svgs/logo.svg";
 import SearchIcon from "../../assets/svgs/search-icon.svg";
 import styles from "./styles.module.css";
@@ -8,6 +8,8 @@ import { useMediaQuery } from "utils/hooks/useMediaQuery";
 import { useThemeContext } from "components/ThemeProvider";
 import { MobileSubNav } from "./MobileSubNav";
 import clsx from "clsx";
+import { useRouter } from 'next/router'
+
 
 interface Props { }
 
@@ -37,18 +39,16 @@ const DesktopSubNav = () => {
     </div>
     <div className={styles.nav}>
       <ul>
-        <li>
-          <Link href="/about">About Us</Link>
-        </li>
-        <li>
-          Initiatives
+        <DesktopNavItem label="About US" href="/about" />
+
+        <DesktopNavItem label="Initiatives" activeHref="/initiatives">
           <ul>
             <Link href="/initiatives/advocasy"><li>Advocasy</li></Link>
             <Link href="/initiatives/awareness"><li>Awareness</li></Link>
             <Link href="/initiatives/research"><li>Research</li></Link>
           </ul>
-        </li>
-        <Link href="/associates"><li>Associates</li></Link>
+        </DesktopNavItem>
+        <DesktopNavItem href="/associates" label="Associates" />
         <li>Support</li>
         <li>Blogs</li>
         <li>Contact</li>
@@ -57,3 +57,33 @@ const DesktopSubNav = () => {
   </div>;
 }
 
+interface Props {
+  label: string,
+  href?: string,
+  activeHref?: string
+}
+
+const DesktopNavItem: React.FC<Props> = ({ href, label, children, activeHref }) => {
+  const { pathname } = useRouter()
+  const [isActive, setIsActive] = useState(false)
+
+  useEffect(() => {
+    if (pathname.includes(href) || pathname.includes(activeHref)) setIsActive(true)
+    else setIsActive(false)
+  }, [pathname, href, activeHref])
+
+  const content = <li className={clsx({
+    [styles.active]: isActive
+  })}>
+    {label}
+    {children}
+  </li>
+
+  if (!href) {
+    return content
+  }
+
+  return <Link href={href}>
+    {content}
+  </Link>
+}
