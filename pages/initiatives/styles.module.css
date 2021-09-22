@@ -1,4 +1,4 @@
 .heroContainer {
-  @apply py-14;
+  @apply py-12;
   background: var(--background-secondary);
 }

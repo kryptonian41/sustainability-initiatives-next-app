@@ -10,6 +10,8 @@ import { Article } from 'utils/types'
 import styles from './style.module.css'
 import FilterIcon from "../../assets/svgs/filter-icon.svg";
 import { CSSTransition } from 'react-transition-group'
+import clsx from 'clsx'
+import { OutlineButton } from 'components/Button'
 
 interface BlogListProps {
   articles: Article[]
@@ -72,7 +74,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
             <MobileBlogFilters clickHandlerFactory={createFilterClickHandler} />
           </div>
           :
-          <div className="w-1/4">
+          <div className="w-1/6">
             <BlogFilters clickHandlerFactory={createFilterClickHandler} />
           </div>
       }
@@ -81,17 +83,20 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
           articlesToDisplay.length > 0 ? <>
             <div className="grid tablet:grid-cols-2 gap-x-12">
               {articlesToDisplay.map(article => {
-                return <Link href={`/blog/${article.slug}`} key={article.id}>
-                  <div className="mb-16 cursor-pointer" >
-                    <ArticleTile
-                      key={article.id}
-                      title={article.title}
-                      subtitle={`Posted on ${prettyDate(article.published_at)}`}
-                      imgUrl={article.images[0].url}
-                      body={article.summary}
-                    />
-                  </div>
-                </Link>
+                return <div className="mb-16 cursor-pointer" key={article.id}>
+                  <ArticleTile
+                    key={article.id}
+                    title={article.title}
+                    subtitle={`Posted on ${prettyDate(article.published_at)}`}
+                    imgUrl={article.images[0].url}
+                    body={article.summary}
+                    actions={
+                      <Link href={`/blog/${article.slug}`} >
+                        <OutlineButton label="READ MORE" />
+                      </Link>
+                    }
+                  />
+                </div>
               })}
             </div>
             {numberOfPages > 0 && <div className="tablet:mt-20">
@@ -115,15 +120,19 @@ interface BlogFilterProps {
 }
 
 export const BlogFilters: React.FC<BlogFilterProps> = ({ clickHandlerFactory }) => {
+  const { colors } = useThemeContext()
   return <>
     <h3 className="text-xl">Filters</h3>
-    <hr className="my-4" />
+    <hr className="my-4 no-outline border-none" style={{
+      background: colors.secondary,
+      height: 1,
+    }} />
     {filters &&
       <ul>
         {filters.map(filter =>
           <li
             key={filter.label}
-            className={styles['filter-list--item']}
+            className={clsx(styles['filter-list--item'], "font-medium")}
             onClick={clickHandlerFactory(filter)}
           >
             {filter.label}

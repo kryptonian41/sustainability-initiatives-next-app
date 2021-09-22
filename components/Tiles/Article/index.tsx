@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import styles from './styles.module.css'
-import Image from 'next/image'
+import clsx from 'clsx'
 
 interface Props {
   imgUrl: string,
@@ -16,7 +16,7 @@ export const ArticleTile = ({ body, imgUrl, subtitle, title, actions }: PropsWit
       <img src={imgUrl} alt="" className={styles.image} />
       <p className={styles.title}>{title}</p>
       <p className={styles.subtitle}>{subtitle}</p>
-      <p className={styles.body}>{body}</p>
+      <p className={clsx(styles.body, "font-medium")}>{body}</p>
       {actions &&
         <div className={styles.actionContainer}>
           {actions}

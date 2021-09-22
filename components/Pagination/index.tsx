@@ -24,9 +24,8 @@ const Pagination = ({
         onClick={() => {
           if (selectedPage !== pageNumber) pageBtnAction(pageNumber);
         }}
-        className={`${styles.pageBtn} ${
-          selectedPage === pageNumber && styles.activePage
-        }`}
+        className={`${styles.pageBtn} ${selectedPage === pageNumber && styles.activePage
+          }`}
       >
         {pageNumber}
       </button>
@@ -63,15 +62,15 @@ const Pagination = ({
       style={isCentered ? { margin: "auto" } : {}}
     >
       <button onClick={prevClickAction} className={styles.link}>
-        Previous
+        Previous Page
       </button>
       {numberOfPages <= 5
         ? Array(numberOfPages)
-            .fill(1)
-            .map((_, index) => renderBtn(index + 1))
+          .fill(1)
+          .map((_, index) => renderBtn(index + 1))
         : renderLongPagination()}
       <button onClick={nextClickAction} className={styles.link}>
-        Next
+        Next Page
       </button>
     </div>
   );
