@@ -105,7 +105,8 @@ const Associates: React.FC<Props> = ({ associates }) => {
           itemsPerRow={itemsPerRow}
           containerStyles={{
             // @ts-ignore
-            "--gap": "6rem",
+            "--gap": "3rem",
+            marginTop: 90
           }}
         />
 
