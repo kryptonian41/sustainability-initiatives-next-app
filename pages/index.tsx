@@ -54,6 +54,7 @@ const missionSection: ParallaxProps = {
   subTitle:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim iaculis purus pretium ultrices. Suspendisse et condim entum libero. Proin vehicula dolor nibh.",
   btnContent: "READ MORE ABOUT US",
+  btnLink: '/about'
 };
 
 const supportUsSection: ParallaxProps = {

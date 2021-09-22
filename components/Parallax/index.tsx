@@ -4,13 +4,14 @@ import { Button } from "../Button";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
 import clsx from "clsx";
-
+import Link from 'next/link'
 export interface Props {
   isLight?: boolean;
   bgImg: string;
   title: string;
   subTitle?: string;
   btnContent: string | React.ReactNode;
+  btnLink?: string
 }
 
 const Parallax = ({
@@ -19,6 +20,7 @@ const Parallax = ({
   subTitle,
   btnContent,
   isLight = false,
+  btnLink
 }: Props) => {
   return (
     <ParallaxProvider>
@@ -48,7 +50,9 @@ const Parallax = ({
             <div>
               {title && <h3>{title}</h3>}
               {subTitle && <p>{subTitle}</p>}
-              {btnContent && <Button>{btnContent}</Button>}
+              {btnContent && (btnLink ? <Link href={btnLink}>
+                <Button>{btnContent}</Button>
+              </Link> : <Button>{btnContent}</Button>)}
             </div>
           </div>
         </div>
