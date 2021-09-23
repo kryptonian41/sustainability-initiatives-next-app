@@ -7,7 +7,7 @@ import Instagramicon from '../../assets/svgs/social-icons/instagram.svg'
 import { useThemeContext } from '../../components/ThemeProvider'
 
 export interface SocialItem {
-  icon: SvgrComponent,
+  icon: any,
   url: string,
   label?: string
 }
@@ -44,10 +44,28 @@ export const SocialPanel: React.FC<Props> = ({ items = defaultItems, iconColor =
   return (
     <div className={styles.container}>
       {items && items.map(item =>
-        <a className={styles.item} href={item.url} target="_blank" style={{ backgroundColor: bgColor }} key={item.url}>
-          <item.icon style={{ fill: iconColor }} />
-        </a>
+        <SocialPanelIcon icon={item.icon} url={item.url} iconColor={iconColor} bgColor={bgColor} />
       )}
     </div>
   )
+}
+
+interface SocialPanelIconProps {
+  icon: any,
+  url?: string,
+  bgColor?: string,
+  iconColor?: string
+}
+
+export const SocialPanelIcon: React.FC<SocialPanelIconProps> = ({ icon: Icon, url, bgColor, iconColor }) => {
+
+  if (!url) {
+    return <span className={styles.item} style={{ backgroundColor: bgColor }}>
+      <Icon style={{ fill: iconColor }} />
+    </span>
+  }
+
+  return <a className={styles.item} href={url} target="_blank" style={{ backgroundColor: bgColor }}>
+    <Icon style={{ fill: iconColor }} />
+  </a>
 }

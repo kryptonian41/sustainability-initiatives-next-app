@@ -1,15 +1,19 @@
 import clsx from 'clsx';
 import { Container } from 'components/Container';
-import { SocialPanel } from 'components/SocialPanel';
+import { SocialPanelIcon } from 'components/SocialPanel';
 import { useThemeContext } from 'components/ThemeProvider';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import React, { useMemo } from 'react'
+import React, { useMemo } from 'react';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import sanitizeHtml from 'sanitize-html';
-import { getArticleById, getArticleBySlug, getArticles } from 'utils/api/client-side-api';
+import { getArticleBySlug, getArticles } from 'utils/api/client-side-api';
 import { prettyDate } from 'utils/helpers';
 import { useMediaQuery } from 'utils/hooks/useMediaQuery';
 import { Article } from 'utils/types';
-import styles from './styles.module.css'
+import FacebookIcon from '../../assets/svgs/social-icons/facebook.svg';
+import TwitterIcon from '../../assets/svgs/social-icons/twitter.svg'
+import styles from './styles.module.css';
+
 interface Props {
   article: Article
 }
@@ -36,8 +40,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
 const BlogPage: React.FC<Props> = ({ article }) => {
   const articleDate = useMemo(() => `${prettyDate(article.published_at, 'd MMMM')} '${prettyDate(article.published_at, 'yy')}`, [article])
-  const { breakpoints } = useThemeContext()
+  const { breakpoints, colors } = useThemeContext()
   const { matches: matchesTablet } = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
+  const articleUrl = useMemo(() => {
+    return typeof window === 'undefined' ? '' : window.location.href
+  }, [])
 
   return (
     <div className="py-20">
@@ -58,8 +65,21 @@ const BlogPage: React.FC<Props> = ({ article }) => {
             "mt-6": matchesTablet
           })}>
             <p className="mb-6">Share:</p>
-            <div>
-              <SocialPanel iconColor="#fff" />
+            <div className="flex">
+              <FacebookShareButton
+                url={articleUrl}
+                quote={article.title}
+                className="flex-none"
+              >
+                <SocialPanelIcon icon={FacebookIcon} iconColor="white" bgColor={colors.primary} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={articleUrl}
+                title={article.title}
+                className="ml-3"
+              >
+                <SocialPanelIcon icon={TwitterIcon} iconColor="white" bgColor={colors.primary} />
+              </TwitterShareButton>
             </div>
           </div>
         </div>

@@ -85,3 +85,10 @@ a {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
+.react-share__ShareButton {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
