@@ -72,6 +72,7 @@ export interface Initiative {
   created_at: string;
   updated_at: string;
   icon: Picture;
+  slug: string
 }
 
 export interface Location {
