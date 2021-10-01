@@ -11,6 +11,7 @@
     grid-row: 2;
     .name {
       color: var(--secondary);
+      font-family: var(--secondary-font);
       margin-bottom: 1rem;
     }
 

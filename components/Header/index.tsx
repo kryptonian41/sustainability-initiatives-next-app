@@ -58,7 +58,7 @@ const DesktopSubNav = () => {
 }
 
 interface Props {
-  label: string,
+  label?: string,
   href?: string,
   activeHref?: string
 }
