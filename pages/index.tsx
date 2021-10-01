@@ -54,7 +54,7 @@ const missionSection: ParallaxProps = {
   subTitle:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim iaculis purus pretium ultrices. Suspendisse et condim entum libero. Proin vehicula dolor nibh.",
   btnContent: "READ MORE ABOUT US",
-  btnLink: '/about'
+  btnLink: "/about",
 };
 
 const supportUsSection: ParallaxProps = {
@@ -81,6 +81,7 @@ export const Home: React.FC<
         imgSrc: stakeHolder.photo.url,
         title: stakeHolder.name,
         subTitle: stakeHolder.designation,
+        path: `/people/${stakeHolder.slug}`,
       };
     });
   }, [stakeHolders]);
