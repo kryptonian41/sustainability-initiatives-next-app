@@ -48,8 +48,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 };
 
 const missionSection: ParallaxProps = {
-  bgImg:
-    "https://images.unsplash.com/photo-1498092651296-641e88c3b057?auto=format&fit=crop&w=1778&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D",
+  bgImg: "/images/homepage-mission-parallax.png",
   title: "Our mission is to make the world sustainable",
   subTitle:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim iaculis purus pretium ultrices. Suspendisse et condim entum libero. Proin vehicula dolor nibh.",
@@ -58,8 +57,7 @@ const missionSection: ParallaxProps = {
 };
 
 const supportUsSection: ParallaxProps = {
-  bgImg:
-    "https://images.unsplash.com/photo-1498092651296-641e88c3b057?auto=format&fit=crop&w=1778&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D",
+  bgImg: "/images/homepage-support-parallax.png",
   title: "We believe that we can make more impact with your support",
   btnContent: "SUPPORT US",
   isLight: true,
@@ -113,13 +111,11 @@ export const Home: React.FC<
           <HeroSlideShow
             items={[
               {
-                imgUrl:
-                  "https://www.india-briefing.com/news/wp-content/uploads/2013/07/India-Briefing-Economy-of-Mumbai-Indias-Major-Commercial-Hub.jpg",
+                imgUrl: "/images/hero-carousel-1.jpg",
                 title: "Development made sustainably",
               },
               {
-                imgUrl:
-                  "https://www.india-briefing.com/news/wp-content/uploads/2013/07/India-Briefing-Economy-of-Mumbai-Indias-Major-Commercial-Hub.jpg",
+                imgUrl: "/images/hero-carousel-1.jpg",
                 title: "Development sustainably",
               },
             ]}
