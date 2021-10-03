@@ -33,13 +33,13 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
       <div className="flex flex-col">
         <div className={clsx("cursor-pointer", styles.slideShowWrapper)}>
           <Link href={`/blog/${secondaryPost.slug}`}>
-            <div className="relative">
+            <div className="relative h-full">
               <img
                 src={secondaryPost.images[0].url}
                 alt={secondaryPost.title}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute text-white bottom-2 px-2">
+              <div className="absolute text-white bottom-4 w-full px-6 tablet:px-4">
                 <p className="text-lg">{secondaryPost.title}</p>
                 <p className="text-sm">
                   {prettyDate(secondaryPost.published_at)}
