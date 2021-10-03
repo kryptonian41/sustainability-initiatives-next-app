@@ -3,6 +3,10 @@
     color: var(--text-dark);
   }
 
+  :global(.slick-slide) {
+    height: max-content;
+  }
+
   :global(.slick-prev) {
     left: 0;
     z-index: 1;

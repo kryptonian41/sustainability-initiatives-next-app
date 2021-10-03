@@ -38,12 +38,13 @@ const Associates: React.FC<Props> = ({ associates }) => {
   }, [associates, itemsPerPage]);
 
   const gridItems = useMemo<GridItemProps[]>(() => {
-    return associates.map((associate) => {
+    const test = associates.map((associate) => {
       return {
         title: associate.name,
         imgSrc: associate.logo.url,
       };
     });
+    return [...test, ...test];
   }, [associates, itemsPerPage]);
 
   const paginatedItems = useMemo<GridItemProps[]>(() => {
@@ -98,7 +99,7 @@ const Associates: React.FC<Props> = ({ associates }) => {
 
   return (
     <div>
-      <div className="py-40">
+      <div className="py-20">
         <PhotoGrid
           items={paginatedItems}
           heading="Our Associates"
@@ -106,7 +107,9 @@ const Associates: React.FC<Props> = ({ associates }) => {
           containerStyles={{
             // @ts-ignore
             "--gap": "3rem",
-            marginTop: 90
+            gridRowGap: "5rem",
+            marginTop: 90,
+            alignItems: "baseline",
           }}
         />
 

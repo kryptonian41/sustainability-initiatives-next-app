@@ -2,11 +2,11 @@
   @apply py-4 pt-6;
   border-bottom: 2px solid var(--text-light);
   .title {
-    @apply text-2xl;
+    @apply text-xl;
     color: var(--text-dark);
   }
   .date {
-    @apply text-lg;
+    @apply text-sm;
     color: var(--text-light);
   }
   .summary {

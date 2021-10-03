@@ -125,11 +125,9 @@ export const Home: React.FC<
           <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
         </div>
       </Container>
-
       <div className="py-10">
         <Parallax {...missionSection} />
       </div>
-
       <Container>
         <div className="my-12">
           <Heading label="Our Initiatives" />
@@ -151,7 +149,6 @@ export const Home: React.FC<
           </div>
         </div>
       </Container>
-
       <PhotoGrid
         items={stakeHolderPhotoGridItems}
         darkBg
@@ -159,16 +156,23 @@ export const Home: React.FC<
         itemsPerRow={matchesPhone ? 2 : 5}
         className="py-20"
       />
-
       <AssociatesGrid associatedPhotoGridItems={associatedPhotoGridItems} />
-
       <Container className="py-10">
         <QuotesSlideShow items={quotes} />
       </Container>
-
       <div className="my-16 tablet:my-32">
         <Parallax {...supportUsSection} />
       </div>
+
+      {/* Social Container, just for mockup */}
+      <Container className="py-10">
+        <Heading label="Join our network" />
+        <div className="py-20 grid gap-8 tablet:grid-cols-3">
+          <img src="/images/Social 1.jpg" />
+          <img src="/images/Social 2.jpg" />
+          <img src="/images/Social 3.jpg" />
+        </div>
+      </Container>
     </div>
   );
 };
