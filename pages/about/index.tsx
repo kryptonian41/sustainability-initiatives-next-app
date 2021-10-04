@@ -49,7 +49,7 @@ const About: React.FC<Props> = ({ stakeHolders }) => {
       <Hero />
       <Promise />
       {stakeHolders.length > 0 && (
-        <div className="py-20">
+        <div className="py-32">
           <PhotoGrid
             heading="The People who make it possible"
             items={gridProps()}

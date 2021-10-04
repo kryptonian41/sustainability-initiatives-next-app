@@ -44,14 +44,17 @@ const DesktopSubNav = () => {
 
           <DesktopNavItem label="Initiatives" activeHref="/initiatives">
             <ul>
-              <Link href="/initiatives/advocacy">
-                <li>Advocasy</li>
+              <Link href="/initiatives/advocacy-and-outreach">
+                <li>Advocacy and Outreach</li>
               </Link>
-              <Link href="/initiatives/awareness">
-                <li>Awareness</li>
+              <Link href="/initiatives/capacity-building">
+                <li>Capacity Building</li>
               </Link>
-              <Link href="/initiatives/research">
-                <li>Research</li>
+              <Link href="/initiatives/research-and-publication">
+                <li>Research and Publication</li>
+              </Link>
+              <Link href="/initiatives/other-activities">
+                <li>Other Activities</li>
               </Link>
             </ul>
           </DesktopNavItem>

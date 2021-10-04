@@ -1,6 +1,6 @@
 import { Container } from "components/Container";
 import Footer from "components/Footer";
-import { GoToTopButton } from "components/GoToTopButton";
+// import { GoToTopButton } from "components/GoToTopButton";
 import { Header } from "components/Header";
 import React from "react";
 
@@ -17,7 +17,7 @@ export const BaseLayout = ({ children }: Props) => {
 
       {children}
     </div>
-    <GoToTopButton />
+    {/* <GoToTopButton /> */}
     <Footer />
   </div>
 };

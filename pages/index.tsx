@@ -102,7 +102,7 @@ export const Home: React.FC<
 
   return (
     <div>
-      <Container className="tablet:mt-14 tablet:my-0 tablet:mb-20" fullWidth>
+      <Container className="tablet:mt-14 tablet:my-0 tablet:mb-24" fullWidth>
         <div
           style={{
             height: "50vh",
@@ -121,7 +121,7 @@ export const Home: React.FC<
             ]}
           />
         </div>
-        <div className="mt-16 tablet:mt-24">
+        <div className="mt-16 tablet:mt-36">
           <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
         </div>
       </Container>
@@ -129,7 +129,7 @@ export const Home: React.FC<
         <Parallax {...missionSection} />
       </div>
       <Container>
-        <div className="my-12">
+        <div className="my-24">
           <Heading label="Our Initiatives" />
           <div className="mt-8">
             {initiatives && (

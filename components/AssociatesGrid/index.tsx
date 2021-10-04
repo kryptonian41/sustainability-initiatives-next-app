@@ -44,7 +44,7 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
   };
 
   return (
-    <div className="py-20">
+    <div className="py-32">
       <Container className="overflow-hidden">
         <Heading
           label="Associates who stand with us"
@@ -53,7 +53,7 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
         <Slider
           {...sliderSettings}
           ref={sliderRef}
-          className={clsx(styles.slider, isTablet && "-mr-8", "my-8")}
+          className={clsx(styles.slider, isTablet && "-mr-8", "my-20")}
         >
           {associatedPhotoGridItems.map((item) => (
             <div key={item.imgSrc}>
