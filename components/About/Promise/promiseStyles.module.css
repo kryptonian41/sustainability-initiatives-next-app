@@ -2,7 +2,7 @@
   background-color: var(--tertiary);
 
   .container {
-    padding: 6rem 0;
+    padding: 6rem 0 8rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 5rem;
