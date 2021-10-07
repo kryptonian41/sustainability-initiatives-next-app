@@ -13,7 +13,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import { API } from "utils/api";
-import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useDeviceMediaQuery, useMediaQuery } from "utils/hooks/useMediaQuery";
 import {
   Article,
   Associate,
@@ -65,13 +65,13 @@ const supportUsSection: ParallaxProps = {
   isLight: true,
 };
 
+
+
 export const Home: React.FC<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ recentArticles, initiatives, stakeHolders, associates, quotes }) => {
-  const { breakpoints } = useThemeContext();
-  const { matches: matchesPhone } = useMediaQuery(
-    `(max-width: ${breakpoints.phone}px)`
-  );
+  const matchesPhone = useDeviceMediaQuery('phone');
+  const matchedTablet = useDeviceMediaQuery('tablet');
 
   const stakeHolderPhotoGridItems: GridItemProps[] = useMemo<
     GridItemProps[]
@@ -103,7 +103,7 @@ export const Home: React.FC<
 
   return (
     <div>
-      <Container className="tablet:mt-14 tablet:my-0 tablet:mb-20" fullWidth>
+      <Container className="tablet:mt-14 tablet:my-0 tablet:mb-20" fullWidth={matchesPhone}>
         <div
           style={{
             height: "50vh",
@@ -142,7 +142,7 @@ export const Home: React.FC<
                 {initiatives.map((initiative) => {
                   return (
                     <div
-                      className="w-11/12 tablet:w-1/2 my-14 tablet:pr-10"
+                      className="w-11/12 laptop:w-1/2 my-14 tablet:pr-10"
                       key={initiative.id}
                     >
                       <InitiaveTile initiave={initiative} />
@@ -159,7 +159,7 @@ export const Home: React.FC<
         items={stakeHolderPhotoGridItems}
         darkBg
         heading="The People who make it Possible"
-        itemsPerRow={matchesPhone ? 2 : 5}
+        itemsPerRow={matchedTablet ? 3 : matchesPhone ? 2 : 5}
         className="py-20"
       />
 

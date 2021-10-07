@@ -46,7 +46,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
   const [articlesToDisplay, setArticledToDisplay] = useState(_articles.slice(startIndex, endIndex))
   const [filterName, setFilterName] = useState(null)
   const { breakpoints } = useThemeContext()
-  const { matches: matchesTablet } = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
+  const { matches: matchesTablet } = useMediaQuery(`(max-width: ${breakpoints.laptop}px) and (min-width: ${breakpoints.tablet}px)`)
 
   // Pagination Effect
   useEffect(() => {
@@ -67,7 +67,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
 
 
   return (
-    <div className="flex flex-col tablet:flex-row">
+    <div className="flex flex-col laptop:flex-row">
       {
         matchesTablet ?
           <div className="mb-8">
@@ -78,10 +78,10 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
             <BlogFilters clickHandlerFactory={createFilterClickHandler} />
           </div>
       }
-      <div className="flex-1 tablet:px-10">
+      <div className="flex-1 laptop:px-10">
         {
           articlesToDisplay.length > 0 ? <>
-            <div className="grid tablet:grid-cols-2 gap-x-12">
+            <div className="grid phone:grid-cols-2 gap-x-12">
               {articlesToDisplay.map(article => {
                 return <div className="mb-16 cursor-pointer" key={article.id}>
                   <ArticleTile

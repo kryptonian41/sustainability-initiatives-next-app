@@ -8,10 +8,10 @@ import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import sanitizeHtml from 'sanitize-html';
 import { getArticleBySlug, getArticles } from 'utils/api/client-side-api';
 import { prettyDate } from 'utils/helpers';
-import { useMediaQuery } from 'utils/hooks/useMediaQuery';
+import { useDeviceMediaQuery } from 'utils/hooks/useMediaQuery';
 import { Article } from 'utils/types';
 import FacebookIcon from '../../assets/svgs/social-icons/facebook.svg';
-import TwitterIcon from '../../assets/svgs/social-icons/twitter.svg'
+import TwitterIcon from '../../assets/svgs/social-icons/twitter.svg';
 import styles from './styles.module.css';
 
 interface Props {
@@ -40,8 +40,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
 const BlogPage: React.FC<Props> = ({ article }) => {
   const articleDate = useMemo(() => `${prettyDate(article.published_at, 'd MMMM')} '${prettyDate(article.published_at, 'yy')}`, [article])
-  const { breakpoints, colors } = useThemeContext()
-  const { matches: matchesTablet } = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
+  const { colors } = useThemeContext()
+  const matchesTablet = useDeviceMediaQuery('tablet')
   const articleUrl = useMemo(() => {
     return typeof window === 'undefined' ? '' : window.location.href
   }, [])

@@ -30,11 +30,11 @@ const Initiaves: React.FC<Props> = ({ articles, initiative }) => {
     <div className="py-20">
       <div className={clsx(styles.heroContainer)}>
         <Container className="flex items-center flex-wrap">
-          <div className="flex-1 pr-12 order-2 tablet:order-1">
+          <div className="flex-1 pr-12 order-2 laptop:order-1">
             <Heading label={initiative.title} key={initiative.title} />
             <p className="mt-10">{initiative.description}</p>
           </div>
-          <div className="w-full desktop:w-3/6 order-1 mb-20 tablet:mb-0">
+          <div className="w-full laptop:w-3/6 order-1 mb-20 laptop:mb-0">
             <img src={initiative.icon.url} alt={`${initiative.title} Icon`} className="block w-full" />
           </div>
         </Container>

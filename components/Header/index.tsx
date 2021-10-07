@@ -15,7 +15,7 @@ interface Props { }
 
 export const Header = (props: Props) => {
   const { breakpoints } = useThemeContext()
-  const { matches } = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
+  const { matches } = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
   return (
     <div className={styles.container}>
       <Link href="/">
