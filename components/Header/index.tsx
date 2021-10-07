@@ -19,7 +19,7 @@ export const Header = (props: Props) => {
   return (
     <div className={styles.container}>
       <Link href="/">
-        <div className="laptop:-mb-4">
+        <div>
           <HeaderLogo className={clsx("cursor-pointer", styles.logo)} />
         </div>
       </Link>
