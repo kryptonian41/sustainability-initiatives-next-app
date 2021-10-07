@@ -76,7 +76,7 @@ export const Home: React.FC<
   >(() => {
     return stakeHolders.map((stakeHolder) => {
       return {
-        imgSrc: stakeHolder.photo.url,
+        imgSrc: stakeHolder.gridPhoto.url,
         title: stakeHolder.name,
         subTitle: stakeHolder.designation,
         path: `/people/${stakeHolder.slug}`,
