@@ -29,36 +29,47 @@ export const Header = (props: Props) => {
 };
 
 const DesktopSubNav = () => {
-  return <div className={styles.body}>
-    <div className={styles["sub-nav"]}>
-      <Button type="text" className="font-semibold">
-        DOWNLOADS
-      </Button>
-      <Button className="ml-4">GET IN TOUCH</Button>
-      <SearchIcon />
-    </div>
-    <div className={styles.nav}>
-      <ul>
-        <DesktopNavItem label="About US" href="/about" />
+  return (
+    <div className={styles.body}>
+      <div className={styles["sub-nav"]}>
+        <Button type="text" className="font-medium">
+          DOWNLOADS
+        </Button>
+        <Button className="ml-4 font-medium">GET IN TOUCH</Button>
+        <SearchIcon />
+      </div>
+      <div className={styles.nav}>
+        <ul>
+          <DesktopNavItem label="About US" href="/about" />
 
-        <DesktopNavItem label="Initiatives" activeHref="/initiatives">
-          <ul>
-            <Link href="/initiatives/advocasy"><li>Advocasy</li></Link>
-            <Link href="/initiatives/awareness"><li>Awareness</li></Link>
-            <Link href="/initiatives/research"><li>Research</li></Link>
-          </ul>
-        </DesktopNavItem>
-        <DesktopNavItem href="/associates" label="Associates" />
-        <li>Support</li>
-        <li>Blogs</li>
-        <li>Contact</li>
-      </ul>
+          <DesktopNavItem label="Initiatives" activeHref="/initiatives">
+            <ul>
+              <Link href="/initiatives/advocacy-and-outreach">
+                <li>Advocacy and Outreach</li>
+              </Link>
+              <Link href="/initiatives/capacity-building">
+                <li>Capacity Building</li>
+              </Link>
+              <Link href="/initiatives/research-and-publication">
+                <li>Research and Publication</li>
+              </Link>
+              <Link href="/initiatives/other-activities">
+                <li>Other Activities</li>
+              </Link>
+            </ul>
+          </DesktopNavItem>
+          <DesktopNavItem href="/associates" label="Associates" />
+          <li>Support</li>
+          <li>Blogs</li>
+          <li>Contact</li>
+        </ul>
+      </div>
     </div>
-  </div>;
+  );
 }
 
 interface Props {
-  label: string,
+  label?: string,
   href?: string,
   activeHref?: string
 }

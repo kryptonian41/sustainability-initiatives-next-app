@@ -22,18 +22,46 @@ export const MobileSubNav = (props: Props) => {
     <div className={clsx("flex-1 flex justify-end")}>
       <HamburgerIcon className="w-14 cursor-pointer" onClick={toggleNav} />
       <Portal>
-        <CSSTransition in={showNav} classNames="mobile-nav-overlay" timeout={300} unmountOnExit>
-          <div className={styles.mobileNavBackgroundOverlay} onClick={toggleNav}></div>
+        <CSSTransition
+          in={showNav}
+          classNames="mobile-nav-overlay"
+          timeout={300}
+          unmountOnExit
+        >
+          <div
+            className={styles.mobileNavBackgroundOverlay}
+            onClick={toggleNav}
+          ></div>
         </CSSTransition>
-        <CSSTransition in={showNav} classNames="mobile-nav" timeout={300} unmountOnExit>
-          <div className={styles.mobileSubNavList} >
-            <h3 className="text-white text-4xl uppercase text font-thin">Menu</h3>
+        <CSSTransition
+          in={showNav}
+          classNames="mobile-nav"
+          timeout={300}
+          unmountOnExit
+        >
+          <div className={styles.mobileSubNavList}>
+            <h3 className="text-white text-4xl uppercase text font-thin">
+              Menu
+            </h3>
             <ul className="mt-10">
               <MobileSubNavListItem label="About Us" link="/about" />
               <MobileSubNavListItem label="Initiatives">
-                <MobileSubNavListItem label="advocasy" link="/initiatives/advocasy" />
-                <MobileSubNavListItem label="awareness" link="/initiatives/awareness" />
-                <MobileSubNavListItem label="research" link="/initiatives/research" />
+                <MobileSubNavListItem
+                  label="Advocacy and Outreach"
+                  link="/initiatives/advocacy-and-outreach"
+                />
+                <MobileSubNavListItem
+                  label="Capacity Building"
+                  link="/initiatives/capacity-building"
+                />
+                <MobileSubNavListItem
+                  label="Research and Publication"
+                  link="/initiatives/research-and-publication"
+                />
+                <MobileSubNavListItem
+                  label="Other Activities"
+                  link="/initiatives/other-activities"
+                />
                 check
               </MobileSubNavListItem>
               <MobileSubNavListItem label="Associates" link="/associates" />
@@ -41,13 +69,18 @@ export const MobileSubNav = (props: Props) => {
               <MobileSubNavListItem label="Downloads" link="/downloads" />
             </ul>
             <div className="mt-20">
-              <Button className={styles.contactButton} type="outline" label="GET IN TOUCH" light />
+              <Button
+                className={styles.contactButton}
+                type="outline"
+                label="GET IN TOUCH"
+                light
+              />
             </div>
           </div>
         </CSSTransition>
       </Portal>
     </div>
-  )
+  );
 }
 
 interface MobileSubNavListItemProps {

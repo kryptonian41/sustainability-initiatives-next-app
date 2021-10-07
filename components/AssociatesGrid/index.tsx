@@ -26,7 +26,6 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
     slidesToShow: 4,
     arrows: false,
     slidesToScroll: 1,
-    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: breakpoints.laptop,
@@ -45,20 +44,25 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
   };
 
   return (
-    <div className="py-20">
+    <div className="py-32">
       <Container className="overflow-hidden">
         <Heading
           label="Associates who stand with us"
           actions={isDesktop ? <ActionBtns sliderRef={sliderRef} /> : null}
         />
-        <Slider {...sliderSettings} ref={sliderRef} className={clsx(styles.slider, isTablet && "-mr-8", "my-8")}>
+        <Slider
+          {...sliderSettings}
+          ref={sliderRef}
+          className={clsx(styles.slider, isTablet && "-mr-8", "my-20")}
+        >
           {associatedPhotoGridItems.map((item) => (
-            <GridItem
-              {...item}
-              key={item.imgSrc}
-              className={clsx(isTablet && "mr-8", !isTablet && "mx-12")}
-              nameClasses={clsx(!isTablet && "text-center")}
-            />
+            <div key={item.imgSrc}>
+              <GridItem
+                {...item}
+                className={clsx(isTablet && "mr-8", !isTablet && "mx-12")}
+                nameClasses={clsx(!isTablet && "text-center")}
+              />
+            </div>
           ))}
         </Slider>
         <div

@@ -72,7 +72,7 @@ export interface Initiative {
   created_at: string;
   updated_at: string;
   icon: Picture;
-  slug: string
+  slug: string;
 }
 
 export interface Location {
@@ -93,6 +93,7 @@ export interface StakeHolder {
   published_at: Date;
   created_at: Date;
   updated_at: Date;
+  gridPhoto: Picture;
   photo: Picture;
   socialLinks: SocialLinks | null;
 }

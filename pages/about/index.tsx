@@ -26,7 +26,7 @@ export const getServerSideProps = async () => {
 const About: React.FC<Props> = ({ stakeHolders }) => {
   const gridProps = (): GridItemProps[] =>
     stakeHolders.map((stakeHolder) => ({
-      imgSrc: stakeHolder.photo.url,
+      imgSrc: stakeHolder.gridPhoto.url,
       title: stakeHolder.name,
       subTitle: stakeHolder.designation,
       path: `/people/${stakeHolder.slug}`,
@@ -49,7 +49,7 @@ const About: React.FC<Props> = ({ stakeHolders }) => {
       <Hero />
       <Promise />
       {stakeHolders.length > 0 && (
-        <div className="py-20">
+        <div className="py-32">
           <PhotoGrid
             heading="The People who make it possible"
             items={gridProps()}

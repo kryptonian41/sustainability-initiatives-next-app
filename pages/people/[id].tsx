@@ -69,7 +69,7 @@ const People: React.FC<Props> = ({
 }) => {
   const gridProps = (): GridItemProps[] =>
     stakeHolders.map((stakeHolder) => ({
-      imgSrc: stakeHolder.photo.url,
+      imgSrc: stakeHolder.gridPhoto.url,
       title: stakeHolder.name,
       subTitle: stakeHolder.designation,
       path: `/people/${stakeHolder.slug}`,

@@ -48,18 +48,16 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 };
 
 const missionSection: ParallaxProps = {
-  bgImg:
-    "https://images.unsplash.com/photo-1498092651296-641e88c3b057?auto=format&fit=crop&w=1778&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D",
+  bgImg: "/images/homepage-mission-parallax.png",
   title: "Our mission is to make the world sustainable",
   subTitle:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim iaculis purus pretium ultrices. Suspendisse et condim entum libero. Proin vehicula dolor nibh.",
   btnContent: "READ MORE ABOUT US",
-  btnLink: '/about'
+  btnLink: "/about",
 };
 
 const supportUsSection: ParallaxProps = {
-  bgImg:
-    "https://images.unsplash.com/photo-1498092651296-641e88c3b057?auto=format&fit=crop&w=1778&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D",
+  bgImg: "/images/homepage-support-parallax.png",
   title: "We believe that we can make more impact with your support",
   btnContent: "SUPPORT US",
   isLight: true,
@@ -78,9 +76,10 @@ export const Home: React.FC<
   >(() => {
     return stakeHolders.map((stakeHolder) => {
       return {
-        imgSrc: stakeHolder.photo.url,
+        imgSrc: stakeHolder.gridPhoto.url,
         title: stakeHolder.name,
         subTitle: stakeHolder.designation,
+        path: `/people/${stakeHolder.slug}`,
       };
     });
   }, [stakeHolders]);
@@ -112,29 +111,25 @@ export const Home: React.FC<
           <HeroSlideShow
             items={[
               {
-                imgUrl:
-                  "https://www.india-briefing.com/news/wp-content/uploads/2013/07/India-Briefing-Economy-of-Mumbai-Indias-Major-Commercial-Hub.jpg",
+                imgUrl: "/images/hero-carousel-1.jpg",
                 title: "Development made sustainably",
               },
               {
-                imgUrl:
-                  "https://www.india-briefing.com/news/wp-content/uploads/2013/07/India-Briefing-Economy-of-Mumbai-Indias-Major-Commercial-Hub.jpg",
+                imgUrl: "/images/hero-carousel-1.jpg",
                 title: "Development sustainably",
               },
             ]}
           />
         </div>
-        <div className="mt-16 tablet:mt-24">
+        <div className="mt-16 tablet:mt-36">
           <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
         </div>
       </Container>
-
       <div className="py-10">
         <Parallax {...missionSection} />
       </div>
-
       <Container>
-        <div className="my-12">
+        <div className="my-24">
           <Heading label="Our Initiatives" />
           <div className="mt-8">
             {initiatives && (
@@ -154,7 +149,6 @@ export const Home: React.FC<
           </div>
         </div>
       </Container>
-
       <PhotoGrid
         items={stakeHolderPhotoGridItems}
         darkBg
@@ -162,16 +156,23 @@ export const Home: React.FC<
         itemsPerRow={matchedTablet ? 3 : matchesPhone ? 2 : 5}
         className="py-20"
       />
-
       <AssociatesGrid associatedPhotoGridItems={associatedPhotoGridItems} />
-
       <Container className="py-10">
         <QuotesSlideShow items={quotes} />
       </Container>
-
       <div className="my-16 tablet:my-32">
         <Parallax {...supportUsSection} />
       </div>
+
+      {/* Social Container, just for mockup */}
+      <Container className="py-10">
+        <Heading label="Join our network" />
+        <div className="py-20 grid gap-8 tablet:grid-cols-3">
+          <img src="/images/Social 1.jpg" />
+          <img src="/images/Social 2.jpg" />
+          <img src="/images/Social 3.jpg" />
+        </div>
+      </Container>
     </div>
   );
 };

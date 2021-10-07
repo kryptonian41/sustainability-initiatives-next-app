@@ -1,13 +1,13 @@
 .container {
-  @apply py-4 flex items-center;
+  @apply py-4 flex items-center laptop:pt-10;
   svg.logo {
-    width: 80px;
+    width: 100px;
     height: auto;
   }
   .body {
     @apply flex-1 flex flex-col justify-end;
     .sub-nav {
-      @apply flex justify-end;
+      @apply flex justify-end items-center;
       svg {
         @apply ml-8;
         width: 30px;

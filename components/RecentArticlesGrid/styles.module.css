@@ -1,7 +1,7 @@
 .root {
   @apply grid gap-6;
   grid-template-columns: 2fr 1fr;
-  height: 55vh;
+  min-height: 55vh;
   @media (max-width: 640px) {
     @apply gap-12;
     display: flex;
