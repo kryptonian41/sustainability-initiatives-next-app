@@ -13,6 +13,8 @@ interface Props { }
 
 export const Header = () => {
   const matchesLaptop = useDeviceMediaQuery('laptop')
+  const desktopMatches = useDeviceMediaQuery('desktop')
+
   return (
     <div className={styles.container}>
       <Link href="/">
@@ -20,7 +22,7 @@ export const Header = () => {
           <HeaderLogo className={clsx("cursor-pointer", styles.logo)} />
         </div>
       </Link>
-      {matchesLaptop ? <DesktopSubNav /> : <MobileSubNav />}
+      {matchesLaptop || desktopMatches ? <DesktopSubNav /> : <MobileSubNav />}
     </div>
   );
 };
