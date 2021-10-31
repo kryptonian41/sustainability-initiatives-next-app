@@ -12,7 +12,7 @@ import FooterBg from 'assets/images/footer.png'
 
 const Footer = () => {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} id="footer">
       <img src={FooterBg.src} className={styles.bgImage} />
       <div className={styles.container}>
         <Container>

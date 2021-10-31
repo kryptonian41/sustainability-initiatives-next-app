@@ -10,11 +10,12 @@ interface Props {
 
 export const BaseLayout = ({ children }: Props) => {
   return <div className="relative z-0">
-    <Container className="z-50 relative">
-      <Header />
-    </Container>
+    <div className="z-50 sticky top-0 bg-white">
+      <Container className="relativeA">
+        <Header />
+      </Container>
+    </div>
     <div>
-
       {children}
     </div>
     {/* <GoToTopButton /> */}

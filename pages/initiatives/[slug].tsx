@@ -34,7 +34,7 @@ const Initiaves: React.FC<Props> = ({ articles, initiative }) => {
             <Heading label={initiative.title} key={initiative.title} />
             <p className="mt-10">{initiative.description}</p>
           </div>
-          <div className="w-full laptop:w-3/6 order-1 mb-20 laptop:mb-0">
+          <div className="w-full laptop:w-4/12 order-1 mb-20 laptop:mb-0">
             <img src={initiative.icon.url} alt={`${initiative.title} Icon`} className="block w-full" />
           </div>
         </Container>

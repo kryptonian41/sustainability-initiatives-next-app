@@ -1,4 +1,4 @@
-import { OutlineButton } from "components/Button";
+import AssociatesGrid from "components/AssociatesGrid";
 import { Container } from "components/Container";
 import { Heading } from "components/Heading";
 import { HeroSlideShow } from "components/HeroCarousel";
@@ -7,21 +7,18 @@ import PhotoGrid from "components/PhotoGrid";
 import { GridItemProps } from "components/PhotoGrid/GridPhoto";
 import { QuotesSlideShow } from "components/QuotesSlider";
 import { RecentArticlesGrid } from "components/RecentArticlesGrid";
-import { useThemeContext } from "components/ThemeProvider";
 import { InitiaveTile } from "components/Tiles/InitiativeTile";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useEffect, useMemo } from "react";
-import Link from "next/link";
+import { useMemo } from "react";
 import { API } from "utils/api";
-import { useDeviceMediaQuery, useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useDeviceMediaQuery } from "utils/hooks/useMediaQuery";
 import {
   Article,
   Associate,
   Initiative,
   Quote,
-  StakeHolder,
+  StakeHolder
 } from "utils/types";
-import AssociatesGrid from "components/AssociatesGrid";
 interface Props {
   recentArticles: Article[];
   initiatives: Initiative[];
@@ -105,7 +102,7 @@ export const Home: React.FC<
       <Container className="tablet:mt-14 tablet:my-0 tablet:mb-20" fullWidth={matchesPhone}>
         <div
           style={{
-            height: "50vh",
+            height: "73vh",
           }}
         >
           <HeroSlideShow

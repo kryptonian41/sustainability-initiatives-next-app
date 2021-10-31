@@ -1,9 +1,8 @@
 import { NextArrow, PrevArrow } from 'components/SlideShow/arrows';
-import { useThemeContext } from 'components/ThemeProvider';
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react';
 import Slider from "react-slick";
-import { useDeviceMediaQuery, useMediaQuery } from 'utils/hooks/useMediaQuery';
-import styles from './styles.module.css'
+import { useDeviceMediaQuery } from 'utils/hooks/useMediaQuery';
+import styles from './styles.module.css';
 
 interface HeroGridItem {
   title: string
@@ -52,6 +51,7 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images, sliderProps = {} }) => {
+  const matchesPhone = useDeviceMediaQuery('phone');
 
   const carouselSettings = useMemo(() => {
     return {

@@ -1,5 +1,5 @@
 import { Button } from "../Button";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import HeaderLogo from "../../assets/svgs/logo.svg";
 import SearchIcon from "../../assets/svgs/search-icon.svg";
 import styles from "./styles.module.css";
@@ -29,6 +29,11 @@ export const Header = (props: Props) => {
 };
 
 const DesktopSubNav = () => {
+  const scrollToFooter = useCallback(() => {
+    const top = (document.querySelector('#footer') as HTMLElement).offsetTop
+    window.scroll({ behavior: 'smooth', top })
+  }, [])
+
   return (
     <div className={styles.body}>
       <div className={styles["sub-nav"]}>
@@ -44,7 +49,7 @@ const DesktopSubNav = () => {
 
           <DesktopNavItem label="Initiatives" activeHref="/initiatives">
             <ul>
-              <Link href="/initiatives/advocacy-and-outreach">
+              <Link href="/initiatives/advocasy-and-outreach">
                 <li>Advocacy and Outreach</li>
               </Link>
               <Link href="/initiatives/capacity-building">
@@ -61,7 +66,7 @@ const DesktopSubNav = () => {
           <DesktopNavItem href="/associates" label="Associates" />
           <li>Support</li>
           <li>Blogs</li>
-          <li>Contact</li>
+          <li onClick={scrollToFooter}>Contact</li>
         </ul>
       </div>
     </div>
