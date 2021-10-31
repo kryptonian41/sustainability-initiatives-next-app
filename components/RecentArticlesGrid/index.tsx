@@ -39,7 +39,9 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
                 alt={secondaryPost.title}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute text-white bottom-4 w-full px-6 tablet:px-4">
+              <div className="absolute text-white bottom-0 py-4 w-full px-6 tablet:px-4" style={{
+                background: 'linear-gradient(to top, #000, transparent)'
+              }}>
                 <p className="text-lg">{secondaryPost.title}</p>
                 <p className="text-sm">
                   {prettyDate(secondaryPost.published_at)}
