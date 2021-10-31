@@ -1,21 +1,18 @@
-import { Button } from "../Button";
+import clsx from "clsx";
+import Link from "next/link";
+import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useState } from "react";
+import { useDeviceMediaQuery } from "utils/hooks/useMediaQuery";
 import HeaderLogo from "../../assets/svgs/logo.svg";
 import SearchIcon from "../../assets/svgs/search-icon.svg";
-import styles from "./styles.module.css";
-import Link from "next/link";
-import { useMediaQuery } from "utils/hooks/useMediaQuery";
-import { useThemeContext } from "components/ThemeProvider";
+import { Button } from "../Button";
 import { MobileSubNav } from "./MobileSubNav";
-import clsx from "clsx";
-import { useRouter } from 'next/router'
-
+import styles from "./styles.module.css";
 
 interface Props { }
 
-export const Header = (props: Props) => {
-  const { breakpoints } = useThemeContext()
-  const { matches } = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
+export const Header = () => {
+  const matchesLaptop = useDeviceMediaQuery('laptop')
   return (
     <div className={styles.container}>
       <Link href="/">
@@ -23,7 +20,7 @@ export const Header = (props: Props) => {
           <HeaderLogo className={clsx("cursor-pointer", styles.logo)} />
         </div>
       </Link>
-      {matches ? <DesktopSubNav /> : <MobileSubNav />}
+      {matchesLaptop ? <DesktopSubNav /> : <MobileSubNav />}
     </div>
   );
 };

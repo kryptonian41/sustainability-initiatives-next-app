@@ -2,17 +2,18 @@ import { useThemeContext } from "components/ThemeProvider"
 import { useEffect, useRef, useState } from "react"
 
 export const useMediaQuery = (query: string) => {
-  console.log("🚀 ~ file: useMediaQuery.ts ~ line 4 ~ useMediaQuery ~ query", query)
-  const [mediaQuery, setQuery] = useState(typeof window === 'undefined' ? null : window.matchMedia(query))
+  const [mediaQuery, setQuery] = useState(typeof window === 'undefined' && query ? null : window.matchMedia(query))
   const [matches, setMatches] = useState<boolean>()
 
   useEffect(() => {
+    if (!query) return
     const mq = window.matchMedia(query)
     setQuery(mq)
     setMatches(mq.matches)
   }, [query])
 
   useEffect(() => {
+    if (!mediaQuery) return
     const eventHandler = (event) => {
       setMatches(event.matches)
     }
