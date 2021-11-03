@@ -108,7 +108,7 @@ export interface Associate {
 export interface Quote {
   id: number;
   quote: string;
-  associate: Associate;
+  quotee: Quotee;
   published_at: Date;
   created_at: Date;
   updated_at: Date;
@@ -120,4 +120,10 @@ export interface SocialLinks {
   YouTube: string | null;
   Facebook: string | null;
   Instagram: string | null;
+}
+
+export interface Quotee {
+  id: number;
+  name: string;
+  designation: string | null;
 }

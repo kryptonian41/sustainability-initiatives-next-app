@@ -1,37 +1,33 @@
-import clsx from 'clsx';
-import { NextArrow, PrevArrow } from 'components/SlideShow/arrows';
-import { useThemeContext } from 'components/ThemeProvider';
-import React, { useMemo } from 'react'
+import clsx from "clsx";
+import { NextArrow, PrevArrow } from "components/SlideShow/arrows";
+import { useThemeContext } from "components/ThemeProvider";
+import React, { useMemo } from "react";
 import Slider from "react-slick";
-import { useMediaQuery } from 'utils/hooks/useMediaQuery';
-import { Quote } from 'utils/types';
-import styles from './styles.module.css'
+import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { Quote } from "utils/types";
+import styles from "./styles.module.css";
 
 interface Props {
-  items: Quote[],
+  items: Quote[];
 }
 
-export const QuotesSlideShow: React.FC<Props> = ({
-  items
-}) => {
-  if (!items.length) return null
+export const QuotesSlideShow: React.FC<Props> = ({ items }) => {
+  if (!items.length) return null;
   return (
     <div className={styles.root}>
       <Carousel quotes={items} />
     </div>
-  )
-}
-
-
+  );
+};
 
 interface CarouselProps {
-  quotes: Quote[]
-  sliderProps?: {}
+  quotes: Quote[];
+  sliderProps?: {};
 }
 
 const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
-  const { breakpoints } = useThemeContext()
-  const { matches } = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
+  const { breakpoints } = useThemeContext();
+  const { matches } = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`);
 
   const carouselSettings = useMemo(() => {
     return {
@@ -42,23 +38,21 @@ const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
       slidesToScroll: 1,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />,
-      arrows: !matches
+      arrows: !matches,
     };
-  }, [matches])
+  }, [matches]);
 
-  return <Slider {...carouselSettings} {...sliderProps} >
-    {
-      quotes.map(({ quote, associate: { name }, id }) =>
+  return (
+    <Slider {...carouselSettings} {...sliderProps}>
+      {quotes.map(({ quote, quotee: { name, designation }, id }) => (
         <div className={styles.quoteSlide} key={id}>
-          <div className={styles.quote}>
-            {quote}
-          </div>
+          <div className={styles.quote}>{quote}</div>
           <div className={clsx(styles.author)}>
-            <span>-Associate Name</span>
-            <span className={styles.name}>{name}</span>
+            <span>{`- ${name}`}</span>
+            <span className={styles.name}>{designation}</span>
           </div>
         </div>
-      )
-    }
-  </Slider>
-}
+      ))}
+    </Slider>
+  );
+};
