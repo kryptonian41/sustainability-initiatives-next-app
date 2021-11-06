@@ -63,7 +63,7 @@ const DesktopSubNav = () => {
             </ul>
           </DesktopNavItem>
           <DesktopNavItem href="/associates" label="Associates" />
-          <li>Support</li>
+          <DesktopNavItem href="/support" label="Support" />
           <li>Blogs</li>
           <li onClick={scrollToFooter}>Contact</li>
         </ul>
