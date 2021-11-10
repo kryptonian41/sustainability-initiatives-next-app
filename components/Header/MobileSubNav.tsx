@@ -65,6 +65,7 @@ export const MobileSubNav = (props: Props) => {
                 check
               </MobileSubNavListItem>
               <MobileSubNavListItem label="Associates" link="/associates" />
+              <MobileSubNavListItem label="Support" link="/support" />
               <MobileSubNavListItem label="Contact" link="/contact" />
               <MobileSubNavListItem label="Downloads" link="/downloads" />
             </ul>

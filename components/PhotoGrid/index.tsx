@@ -8,13 +8,14 @@ import ActionBtns from "./ActionBtns";
 
 type Props = {
   items: GridItemProps[];
-  heading: string;
+  heading?: string;
   itemsPerRow?: number;
   itemsToShowInSlider?: number;
   withAction?: boolean;
   darkBg?: boolean;
   containerStyles?: React.CSSProperties;
   className?: string;
+  openItemOnNewPage?: boolean;
 };
 
 const PhotoGrid = ({
@@ -26,6 +27,7 @@ const PhotoGrid = ({
   darkBg = false,
   containerStyles,
   className,
+  openItemOnNewPage = false,
 }: Props) => {
   const sliderRef = useRef(null);
 
@@ -47,21 +49,28 @@ const PhotoGrid = ({
       <Container className="overflow-hidden">
         {withAction ? (
           <div className={styles.photoGridContainer}>
-            <Heading
-              label={heading}
-              actions={<ActionBtns sliderRef={sliderRef} />}
-            />
+            {heading && (
+              <Heading
+                label={heading}
+                actions={<ActionBtns sliderRef={sliderRef} />}
+              />
+            )}
             <div className="my-8 tablet:my-20" style={containerStyles}>
               <Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
                 {items.map((item) => (
-                  <GridItem {...item} key={item.imgSrc} className="mr-8" />
+                  <GridItem
+                    {...item}
+                    key={item.imgSrc}
+                    openItemOnNewPage={openItemOnNewPage}
+                    className="mr-8"
+                  />
                 ))}
               </Slider>
             </div>
           </div>
         ) : (
           <div className={styles.photoGridContainer}>
-            <Heading label={heading} />
+            {heading && <Heading label={heading} />}
             <div
               className={styles.photosContainer}
               style={{
@@ -70,7 +79,11 @@ const PhotoGrid = ({
               }}
             >
               {items.map((item) => (
-                <GridItem {...item} key={item.imgSrc} />
+                <GridItem
+                  {...item}
+                  key={item.imgSrc}
+                  openItemOnNewPage={openItemOnNewPage}
+                />
               ))}
             </div>
           </div>

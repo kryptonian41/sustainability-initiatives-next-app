@@ -127,3 +127,12 @@ export interface Quotee {
   name: string;
   designation: string | null;
 }
+
+export interface Report {
+  id: number;
+  title: string;
+  published_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  report: Picture;
+}
