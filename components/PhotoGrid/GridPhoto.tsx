@@ -11,6 +11,7 @@ export interface GridItemProps {
   path?: string;
   className?: string;
   nameClasses?: string;
+  openItemOnNewPage?: boolean;
 }
 
 export const GridItem: React.FC<GridItemProps> = ({
@@ -22,6 +23,7 @@ export const GridItem: React.FC<GridItemProps> = ({
   path,
   className,
   nameClasses,
+  openItemOnNewPage = false,
 }) => {
   const item = (
     <div
@@ -49,6 +51,12 @@ export const GridItem: React.FC<GridItemProps> = ({
     </div>
   );
 
+  if (path && openItemOnNewPage)
+    return (
+      <a href={path} target="_blank">
+        {item}
+      </a>
+    );
   if (path) return <Link href={path}>{item}</Link>;
   return item;
 };

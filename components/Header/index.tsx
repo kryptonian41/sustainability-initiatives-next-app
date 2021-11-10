@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDeviceMediaQuery } from "utils/hooks/useMediaQuery";
 import HeaderLogo from "../../assets/svgs/logo.svg";
@@ -9,11 +9,11 @@ import { Button } from "../Button";
 import { MobileSubNav } from "./MobileSubNav";
 import styles from "./styles.module.css";
 
-interface Props { }
+interface Props {}
 
 export const Header = () => {
-  const matchesLaptop = useDeviceMediaQuery('laptop')
-  const desktopMatches = useDeviceMediaQuery('desktop')
+  const matchesLaptop = useDeviceMediaQuery("laptop");
+  const desktopMatches = useDeviceMediaQuery("desktop");
 
   return (
     <div className={styles.container}>
@@ -29,15 +29,15 @@ export const Header = () => {
 
 const DesktopSubNav = () => {
   const scrollToFooter = useCallback(() => {
-    const top = (document.querySelector('#footer') as HTMLElement).offsetTop
-    window.scroll({ behavior: 'smooth', top })
-  }, [])
+    const top = (document.querySelector("#footer") as HTMLElement).offsetTop;
+    window.scroll({ behavior: "smooth", top });
+  }, []);
 
   return (
     <div className={styles.body}>
       <div className={styles["sub-nav"]}>
         <Button type="text" className="font-medium">
-          DOWNLOADS
+          <Link href="/downloads">DOWNLOADS</Link>
         </Button>
         <Button className="ml-4 font-medium">GET IN TOUCH</Button>
         <SearchIcon />
@@ -70,35 +70,43 @@ const DesktopSubNav = () => {
       </div>
     </div>
   );
-}
+};
 
 interface Props {
-  label?: string,
-  href?: string,
-  activeHref?: string
+  label?: string;
+  href?: string;
+  activeHref?: string;
 }
 
-const DesktopNavItem: React.FC<Props> = ({ href, label, children, activeHref }) => {
-  const { pathname } = useRouter()
-  const [isActive, setIsActive] = useState(false)
+const DesktopNavItem: React.FC<Props> = ({
+  href,
+  label,
+  children,
+  activeHref,
+}) => {
+  const { pathname } = useRouter();
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if (pathname.includes(href) || pathname.includes(activeHref)) setIsActive(true)
-    else setIsActive(false)
-  }, [pathname, href, activeHref])
+    if (pathname.includes(href) || pathname.includes(activeHref))
+      setIsActive(true);
+    else setIsActive(false);
+  }, [pathname, href, activeHref]);
 
-  const content = <li className={clsx({
-    [styles.active]: isActive
-  })}>
-    {label}
-    {children}
-  </li>
+  const content = (
+    <li
+      className={clsx({
+        [styles.active]: isActive,
+      })}
+    >
+      {label}
+      {children}
+    </li>
+  );
 
   if (!href) {
-    return content
+    return content;
   }
 
-  return <Link href={href}>
-    {content}
-  </Link>
-}
+  return <Link href={href}>{content}</Link>;
+};
