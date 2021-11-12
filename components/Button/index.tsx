@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { forwardRef, PropsWithChildren } from 'react';
 import { useThemeContext } from '../ThemeProvider';
 import clsx from 'clsx'
 import styles from './styles.module.css'
@@ -50,26 +50,30 @@ export const SolidButton: React.FunctionComponent<ButtonProps> = ({
 };
 
 
-export const OutlineButton: React.FunctionComponent<ButtonProps> = ({
-  size = 'medium',
-  label,
-  type: buttonType,
-  children,
-  className, light,
-  ...props
-}: PropsWithChildren<ButtonProps>) => {
-  return (
-    <button
-      type="button"
-      className={clsx('px-4 py-1 font-medium', styles['outline-button'], className, {
-        [styles.light]: light
-      })}
-      {...props}
-    >
-      {children || label}
-    </button>
-  );
-};
+export const OutlineButton: React.FunctionComponent<ButtonProps> = forwardRef(
+  ({
+    size = 'medium',
+    label,
+    type: buttonType,
+    children,
+    className, light,
+    ...props
+  }, ref) => {
+    return (
+      <button
+        type="button"
+        ref={ref}
+        className={clsx('px-4 py-1 font-medium', styles['outline-button'], className, {
+          [styles.light]: light
+        })}
+        {...props}
+      >
+        {children || label}
+      </button>
+    );
+  }
+)
+
 
 export const TextButton: React.FunctionComponent<ButtonProps> = ({
   size = 'medium',

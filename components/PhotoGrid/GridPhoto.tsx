@@ -2,32 +2,39 @@ import clsx from "clsx";
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-export interface GridItemProps {
-  title: string;
-  subTitle?: string;
-  imgSrc: string;
-  imageContainerStyles?: React.CSSProperties;
-  imageStyles?: React.CSSProperties;
-  path?: string;
+export interface GridItemProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  item: {
+    title: string;
+    subTitle?: string;
+    imgSrc: string;
+    imageContainerStyles?: React.CSSProperties;
+    imageStyles?: React.CSSProperties;
+    path?: string;
+  },
   className?: string;
-  nameClasses?: string;
+  titleClasses?: string;
+  id?: string | number
 }
 
 export const GridItem: React.FC<GridItemProps> = ({
-  imgSrc,
-  subTitle,
-  title,
-  imageStyles,
-  imageContainerStyles,
-  path,
+  item: {
+    imgSrc,
+    subTitle,
+    title,
+    imageStyles,
+    imageContainerStyles,
+    path
+  },
   className,
-  nameClasses,
+  titleClasses,
+  ...restProps
 }) => {
   const item = (
     <div
       className={clsx(styles.gridItem, className, {
         "cursor-pointer": Boolean(path),
       })}
+      {...restProps}
     >
       <div style={imageContainerStyles ?? null}>
         <img src={imgSrc} alt={title} style={imageStyles ?? null} />
@@ -35,7 +42,7 @@ export const GridItem: React.FC<GridItemProps> = ({
       <p
         className={clsx(
           styles.name,
-          nameClasses,
+          titleClasses,
           "font-semibold mt-6 text-sm laptop:text-base"
         )}
       >

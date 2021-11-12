@@ -1,0 +1,43 @@
+.modal-container :global {
+  .overlay {
+    @apply fixed top-0 right-0 w-full h-full z-10;
+    background: rgba(0, 0, 0, 0.5);
+    &-enter {
+      opacity: 0;
+    }
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    &-exit {
+      opacity: 1;
+    }
+    &-exit-active {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  .root {
+    @apply fixed top-1/2 left-1/2 z-20 w-full;
+    transform: translate(-50%, -50%);
+    &-enter {
+      opacity: 0;
+      transform: translate(-50%, -65%);
+    }
+    &-enter-active {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    &-exit {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+    &-exit-active {
+      opacity: 0;
+      transform: translate(-50%, -40%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  }
+}

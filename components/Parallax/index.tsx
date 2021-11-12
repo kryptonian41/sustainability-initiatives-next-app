@@ -1,10 +1,9 @@
+import clsx from "clsx";
+import Link from 'next/link';
 import React from "react";
 import { ParallaxBanner, ParallaxProvider } from "react-scroll-parallax";
 import { Button } from "../Button";
 import styles from "./styles.module.css";
-import { Container } from "../Container";
-import clsx from "clsx";
-import Link from 'next/link'
 export interface Props {
   isLight?: boolean;
   bgImg: string;

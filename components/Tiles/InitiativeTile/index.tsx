@@ -7,7 +7,7 @@ interface Props {
   initiave: Initiative
 }
 
-export const InitiaveTile: React.FC<Props> = ({ initiave }) => {
+export const InitiativeTile: React.FC<Props> = ({ initiave }) => {
   return (
     <div className={styles.root}>
       <img src={initiave.icon.url} className={styles.icon} />

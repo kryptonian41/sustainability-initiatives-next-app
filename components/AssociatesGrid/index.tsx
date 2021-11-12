@@ -1,24 +1,32 @@
-import React, { useRef } from "react";
 import clsx from "clsx";
-import { Container } from "components/Container";
 import { OutlineButton, SolidButton } from "components/Button";
-import Link from "next/link";
-import { useThemeContext } from "components/ThemeProvider";
-import { useMediaQuery } from "utils/hooks/useMediaQuery";
-import { GridItem } from "components/PhotoGrid/GridPhoto";
-import Slider from "react-slick";
+import { Container } from "components/Container";
 import { Heading } from "components/Heading";
+import AssociateModal from "components/Modal/AssociateModal";
 import ActionBtns from "components/PhotoGrid/ActionBtns";
+import { GridItem, GridItemProps } from "components/PhotoGrid/GridPhoto";
+import { useThemeContext } from "components/ThemeProvider";
+import Link from "next/link";
+import React, { useCallback, useRef, useState } from "react";
+import Slider from "react-slick";
+import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { Associate } from "utils/types";
 import styles from "./styles.module.css";
 
-const AssociatesGrid = ({ associatedPhotoGridItems }) => {
-  const sliderRef = useRef(null);
+export interface AssociateGridItem extends GridItemProps {
+  associate: Associate
+}
+interface Props {
+  items: AssociateGridItem[]
+}
 
+const AssociatesGrid: React.FC<Props> = ({ items }) => {
+  const [isModalopen, setIsModalopen] = useState(false)
+  const [selectedAssociate, setSelectedAssociate] = useState(null)
   const { breakpoints } = useThemeContext();
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
-    .matches;
-  const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
-    .matches;
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`).matches
+  const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`).matches
+  const sliderRef = useRef(null);
 
   const sliderSettings = {
     dots: false,
@@ -43,6 +51,16 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
     ],
   };
 
+  const handleModalOpen = useCallback((associate) => () => {
+    setSelectedAssociate(associate)
+    setIsModalopen(true)
+  }, [])
+
+  const handleModalClose = useCallback(() => {
+    setIsModalopen(false)
+    // setSelectedAssociate(null)
+  }, [])
+
   return (
     <div className="py-32">
       <Container className="overflow-hidden">
@@ -55,12 +73,13 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
           ref={sliderRef}
           className={clsx(styles.slider, isTablet && "-mr-8", "my-20")}
         >
-          {associatedPhotoGridItems.map((item) => (
+          {items.map(({ item, className, titleClasses, associate }) => (
             <div key={item.imgSrc}>
               <GridItem
-                {...item}
-                className={clsx(isTablet && "mr-8", !isTablet && "mx-12")}
-                nameClasses={clsx(!isTablet && "text-center")}
+                item={item}
+                className={clsx(isTablet && "mr-8", !isTablet && "mx-12", className)}
+                titleClasses={clsx(!isTablet && "text-center", titleClasses)}
+                onClick={handleModalOpen(associate)}
               />
             </div>
           ))}
@@ -84,6 +103,8 @@ const AssociatesGrid = ({ associatedPhotoGridItems }) => {
             </OutlineButton>
           )}
         </div>
+
+        <AssociateModal isOpen={isModalopen} associate={selectedAssociate} onClose={handleModalClose} />
       </Container>
     </div>
   );

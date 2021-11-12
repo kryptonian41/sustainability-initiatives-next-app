@@ -53,8 +53,8 @@ const PhotoGrid = ({
             />
             <div className="my-8 tablet:my-20" style={containerStyles}>
               <Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
-                {items.map((item) => (
-                  <GridItem {...item} key={item.imgSrc} className="mr-8" />
+                {items.map(({ item, id }) => (
+                  <GridItem item={item} key={id} className="mr-8" />
                 ))}
               </Slider>
             </div>
@@ -69,8 +69,8 @@ const PhotoGrid = ({
                 gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`,
               }}
             >
-              {items.map((item) => (
-                <GridItem {...item} key={item.imgSrc} />
+              {items.map(({ item, id }) => (
+                <GridItem item={item} key={id} />
               ))}
             </div>
           </div>

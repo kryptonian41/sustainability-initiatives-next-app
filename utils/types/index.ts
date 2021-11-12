@@ -104,6 +104,7 @@ export interface Associate {
   created_at: Date;
   updated_at: Date;
   logo: Picture;
+  description: string;
 }
 export interface Quote {
   id: number;

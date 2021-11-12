@@ -1,4 +1,4 @@
-import AssociatesGrid from "components/AssociatesGrid";
+import AssociatesGrid, { AssociateGridItem } from "components/AssociatesGrid";
 import { Container } from "components/Container";
 import { Heading } from "components/Heading";
 import { HeroSlideShow } from "components/HeroCarousel";
@@ -7,7 +7,7 @@ import PhotoGrid from "components/PhotoGrid";
 import { GridItemProps } from "components/PhotoGrid/GridPhoto";
 import { QuotesSlideShow } from "components/QuotesSlider";
 import { RecentArticlesGrid } from "components/RecentArticlesGrid";
-import { InitiaveTile } from "components/Tiles/InitiativeTile";
+import { InitiativeTile } from "components/Tiles/InitiativeTile";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useMemo } from "react";
 import { API } from "utils/api";
@@ -19,6 +19,7 @@ import {
   Quote,
   StakeHolder
 } from "utils/types";
+
 interface Props {
   recentArticles: Article[];
   initiatives: Initiative[];
@@ -60,39 +61,45 @@ const supportUsSection: ParallaxProps = {
   isLight: true,
 };
 
-
-
 export const Home: React.FC<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ recentArticles, initiatives, stakeHolders, associates, quotes }) => {
   const matchesPhone = useDeviceMediaQuery('phone');
   const matchedTablet = useDeviceMediaQuery('tablet');
 
-  const stakeHolderPhotoGridItems: GridItemProps[] = useMemo<
+  const stakeHolderPhotoGridItems = useMemo<
     GridItemProps[]
   >(() => {
     return stakeHolders.map((stakeHolder) => {
       return {
-        imgSrc: stakeHolder.gridPhoto.url,
-        title: stakeHolder.name,
-        subTitle: stakeHolder.designation,
-        path: `/people/${stakeHolder.slug}`,
+        item: {
+          imgSrc: stakeHolder.gridPhoto.url,
+          title: stakeHolder.name,
+          subTitle: stakeHolder.designation,
+          path: `/people/${stakeHolder.slug}`,
+        },
+        id: stakeHolder.id,
       };
     });
   }, [stakeHolders]);
 
-  const associatedPhotoGridItems: GridItemProps[] = useMemo<
-    GridItemProps[]
+  const associatedPhotoGridItems = useMemo<
+    AssociateGridItem[]
   >(() => {
     return associates.map((associate) => {
       return {
-        imgSrc: associate.logo.url,
-        title: associate.name,
-        imageContainerStyles: {
-          height: 155,
-          display: "flex",
-          alignItems: "center",
+        item: {
+          imgSrc: associate.logo.url,
+          title: associate.name,
+          imageContainerStyles: {
+            height: 155,
+            display: "flex",
+            alignItems: "center",
+          },
         },
+        id: associate.id,
+        associate,
+        className: "cursor-pointer",
       };
     });
   }, [associates]);
@@ -137,7 +144,7 @@ export const Home: React.FC<
                       className="w-11/12 laptop:w-1/2 my-14 tablet:pr-10"
                       key={initiative.id}
                     >
-                      <InitiaveTile initiave={initiative} />
+                      <InitiativeTile initiave={initiative} />
                     </div>
                   );
                 })}
@@ -153,7 +160,7 @@ export const Home: React.FC<
         itemsPerRow={matchedTablet ? 3 : matchesPhone ? 2 : 5}
         className="py-20"
       />
-      <AssociatesGrid associatedPhotoGridItems={associatedPhotoGridItems} />
+      <AssociatesGrid items={associatedPhotoGridItems} />
       <Container className="py-10">
         <QuotesSlideShow items={quotes} />
       </Container>

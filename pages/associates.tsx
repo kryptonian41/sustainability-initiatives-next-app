@@ -38,13 +38,15 @@ const Associates: React.FC<Props> = ({ associates }) => {
   }, [associates, itemsPerPage]);
 
   const gridItems = useMemo<GridItemProps[]>(() => {
-    const test = associates.map((associate) => {
-      return {
+    const test = associates.map((associate) => ({
+      item: {
         title: associate.name,
         imgSrc: associate.logo.url,
-      };
-    });
-    return [...test, ...test];
+      },
+      associate,
+      id: associate.id,
+    }))
+    return [...test];
   }, [associates, itemsPerPage]);
 
   const paginatedItems = useMemo<GridItemProps[]>(() => {

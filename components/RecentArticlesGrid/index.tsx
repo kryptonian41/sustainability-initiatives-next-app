@@ -21,18 +21,18 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
 
   return (
     <div className={clsx(styles.root)}>
-      <div className={clsx("flex-shrink-0", styles.slideShowWrapper)}>
-        <Link href={`/blog/${primaryPost.slug}`}>
+      <Link href={`/blog/${primaryPost.slug}`}>
+        <div className={clsx("flex-shrink-0 cursor-pointer", styles.slideShowWrapper)}>
           <SlideShow
             images={primaryPost.images}
             title={primaryPost.title}
             subTitle={prettyDate(primaryPost.published_at)}
           />
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div className="flex flex-col">
-        <div className={clsx("cursor-pointer", styles.slideShowWrapper)}>
-          <Link href={`/blog/${secondaryPost.slug}`}>
+        <Link href={`/blog/${secondaryPost.slug}`}>
+          <div className={clsx("cursor-pointer", styles.slideShowWrapper)}>
             <div className="relative h-full">
               <img
                 src={secondaryPost.images[0].url}
@@ -48,11 +48,11 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
                 </p>
               </div>
             </div>
-          </Link>
-        </div>
+          </div>
+        </Link>
         {restPosts.map((post) => {
           return (
-            <div className="p-6 tablet:p-0 tablet:flex-1">
+            <div className="p-6 tablet:p-0 tablet:flex-1" key={post.id}>
               <PlainArticleTile article={post} />
             </div>
           );
