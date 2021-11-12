@@ -2,29 +2,6 @@
   padding: 6rem 0;
   margin-top: -2rem;
 
-  .imageContainer {
-    margin-bottom: 2rem;
-    position: relative;
-
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    h1 {
-      position: absolute;
-      color: white;
-      font-size: 1.5rem;
-      bottom: 2rem;
-      left: 2rem;
-      font-family: var(--secondary-font);
-
-      @media screen and (min-width: 768px) {
-        @apply text-4xl;
-      }
-    }
-  }
-
   .paragraph {
     @apply text-sm;
     @media screen and (min-width: 768px) {
@@ -32,6 +9,29 @@
     }
     @media screen and (min-width: 1024px) {
       column-count: 2;
+    }
+  }
+}
+
+.imageContainer {
+  margin-bottom: 2rem;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  h1 {
+    position: absolute;
+    color: white;
+    font-size: 1.5rem;
+    bottom: 2rem;
+    left: 2rem;
+    font-family: var(--secondary-font);
+
+    @media screen and (min-width: 768px) {
+      @apply text-4xl;
     }
   }
 }

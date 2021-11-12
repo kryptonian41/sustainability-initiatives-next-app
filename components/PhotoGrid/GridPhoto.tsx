@@ -14,6 +14,7 @@ export interface GridItemProps extends React.DetailedHTMLProps<React.HTMLAttribu
   className?: string;
   titleClasses?: string;
   id?: string | number
+  openItemOnNewPage?: boolean;
 }
 
 export const GridItem: React.FC<GridItemProps> = ({
@@ -27,6 +28,7 @@ export const GridItem: React.FC<GridItemProps> = ({
   },
   className,
   titleClasses,
+  openItemOnNewPage = false,
   ...restProps
 }) => {
   const item = (
@@ -56,6 +58,12 @@ export const GridItem: React.FC<GridItemProps> = ({
     </div>
   );
 
-  if (path) return <Link href={path}>{item}</Link>;
-  return item;
+  if (path && openItemOnNewPage)
+    return (
+      <a href={path} target="_blank">
+        {item}
+      </a>
+    );
+  else if (path) return <Link href={path}>{item}</Link>;
+  else return item;
 };

@@ -1,29 +1,12 @@
 import { Container } from "components/Container";
-import { BaseLayout as Layout } from "components/Layout";
 import React from "react";
 import heroStyles from "./heroStyles.module.css";
-import { useMediaQuery } from "utils/hooks/useMediaQuery";
-import { useThemeContext } from "components/ThemeProvider";
+import HeroImage from "./HeroImage";
 
 const Hero: React.FC = () => {
-  const { breakpoints } = useThemeContext();
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
-    .matches;
-
-  const heroImage = () => {
-    const heroImageHtml = (
-      <div className={heroStyles.imageContainer}>
-        <img src="images/about-us-hero.png" alt="" />
-        <h1>What we do</h1>
-      </div>
-    );
-    if (isMobile) return heroImageHtml;
-    return <Container>{heroImageHtml}</Container>;
-  };
-
   return (
     <div className={heroStyles.container}>
-      {heroImage()}
+      <HeroImage bgImgSrc="images/about-us-hero.png" alt="alt" heading="What we do" />
       <Container>
         <p className={heroStyles.paragraph}>
           The functional areas of Sustainability Initiatives have emerged

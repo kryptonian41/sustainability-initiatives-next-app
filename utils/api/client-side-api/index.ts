@@ -112,3 +112,8 @@ export const getQuotes = async () => {
   const { data } = await axios.get<Quote[]>("/quotes");
   return data;
 };
+
+export const getAnnualReports = async () => {
+  const { data } = await axios.get<Quote[]>("/annual-reports");
+  return data;
+}

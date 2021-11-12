@@ -8,13 +8,14 @@ import ActionBtns from "./ActionBtns";
 
 type Props = {
   items: GridItemProps[];
-  heading: string;
+  heading?: string;
   itemsPerRow?: number;
   itemsToShowInSlider?: number;
   withAction?: boolean;
   darkBg?: boolean;
   containerStyles?: React.CSSProperties;
   className?: string;
+  openItemOnNewPage?: boolean;
 };
 
 const PhotoGrid = ({
@@ -26,6 +27,7 @@ const PhotoGrid = ({
   darkBg = false,
   containerStyles,
   className,
+  openItemOnNewPage = false,
 }: Props) => {
   const sliderRef = useRef(null);
 
@@ -47,21 +49,23 @@ const PhotoGrid = ({
       <Container className="overflow-hidden">
         {withAction ? (
           <div className={styles.photoGridContainer}>
-            <Heading
-              label={heading}
-              actions={<ActionBtns sliderRef={sliderRef} />}
-            />
+            {heading && (
+              <Heading
+                label={heading}
+                actions={<ActionBtns sliderRef={sliderRef} />}
+              />
+            )}
             <div className="my-8 tablet:my-20" style={containerStyles}>
               <Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
                 {items.map(({ item, id }) => (
-                  <GridItem item={item} key={id} className="mr-8" />
+                  <GridItem item={item} key={id} className="mr-8" openItemOnNewPage={openItemOnNewPage} />
                 ))}
               </Slider>
             </div>
           </div>
         ) : (
           <div className={styles.photoGridContainer}>
-            <Heading label={heading} />
+            {heading && <Heading label={heading} />}
             <div
               className={styles.photosContainer}
               style={{
@@ -69,14 +73,16 @@ const PhotoGrid = ({
                 gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`,
               }}
             >
-              {items.map(({ item, id }) => (
-                <GridItem item={item} key={id} />
-              ))}
-            </div>
-          </div>
+              {
+                items.map(({ item, id }) => (
+                  <GridItem item={item} key={id} openItemOnNewPage={openItemOnNewPage} />
+                ))
+              }
+            </div >
+          </div >
         )}
-      </Container>
-    </div>
+      </Container >
+    </div >
   );
 };
 
