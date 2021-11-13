@@ -1,6 +1,6 @@
 import { useThemeContext } from "components/ThemeProvider";
 import React from "react";
-import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useDeviceMediaQuery } from "utils/hooks/useMediaQuery";
 import heroStyles from "./heroStyles.module.css";
 import { Container } from "components/Container";
 
@@ -12,8 +12,7 @@ interface Props {
 
 const HeroImage: React.FC<Props> = ({ bgImgSrc, heading = "", alt = "" }) => {
   const { breakpoints } = useThemeContext();
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`)
-    .matches;
+  const isMobile = useDeviceMediaQuery('phone');
 
   const heroImageHtml = (
     <div className={heroStyles.imageContainer}>

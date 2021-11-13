@@ -13,8 +13,8 @@ export interface GridItemProps extends React.DetailedHTMLProps<React.HTMLAttribu
   },
   className?: string;
   titleClasses?: string;
-  id?: string | number
-  openItemOnNewPage?: boolean;
+  key?: string | number
+  openItemOnNewPage?: boolean
 }
 
 export const GridItem: React.FC<GridItemProps> = ({

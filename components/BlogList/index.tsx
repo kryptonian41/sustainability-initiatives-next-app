@@ -4,7 +4,7 @@ import { ArticleTile } from 'components/Tiles/Article'
 import Link from 'next/link'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { prettyDate, sortArticlesByDate, sortArticlesByLocation } from 'utils/helpers'
-import { useMediaQuery } from 'utils/hooks/useMediaQuery'
+import { useDeviceMediaQuery, useMediaQuery } from 'utils/hooks/useMediaQuery'
 import { usePagination } from 'utils/hooks/usePagination'
 import { Article } from 'utils/types'
 import styles from './style.module.css'
@@ -45,8 +45,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
   const [_articles, setArticles] = useState([...articles])
   const [articlesToDisplay, setArticledToDisplay] = useState(_articles.slice(startIndex, endIndex))
   const [filterName, setFilterName] = useState(null)
-  const { breakpoints } = useThemeContext()
-  const { matches: matchesTablet } = useMediaQuery(`(max-width: ${breakpoints.laptop}px) and (min-width: ${breakpoints.tablet}px)`)
+  const matchesLaptop = useDeviceMediaQuery('laptop')
 
   // Pagination Effect
   useEffect(() => {
@@ -69,13 +68,13 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
   return (
     <div className="flex flex-col laptop:flex-row">
       {
-        matchesTablet ?
-          <div className="mb-8">
-            <MobileBlogFilters clickHandlerFactory={createFilterClickHandler} />
-          </div>
-          :
+        matchesLaptop ?
           <div className="w-1/6">
             <BlogFilters clickHandlerFactory={createFilterClickHandler} />
+          </div>
+          :
+          <div className="mb-8">
+            <MobileBlogFilters clickHandlerFactory={createFilterClickHandler} />
           </div>
       }
       <div className="flex-1 laptop:px-10">

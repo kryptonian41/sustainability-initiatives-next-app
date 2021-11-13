@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Heading } from "../Heading";
 import { GridItemProps, GridItem } from "./GridPhoto";
 import styles from "./styles.module.css";
@@ -18,7 +18,7 @@ type Props = {
   openItemOnNewPage?: boolean;
 };
 
-const PhotoGrid = ({
+const PhotoGrid: React.FC<Props> = ({
   items,
   heading,
   itemsPerRow = 5,
@@ -28,9 +28,8 @@ const PhotoGrid = ({
   containerStyles,
   className,
   openItemOnNewPage = false,
-}: Props) => {
+}) => {
   const sliderRef = useRef(null);
-
   const sliderSettings = {
     dots: false,
     infinite: false,
@@ -38,6 +37,12 @@ const PhotoGrid = ({
     slidesToShow: itemsToShowInSlider,
     slidesToScroll: 1,
   };
+
+  const gridItems = useMemo(() => {
+    return items.map((props) => (
+      <GridItem {...props} openItemOnNewPage={openItemOnNewPage} />
+    ))
+  }, [items])
 
   return (
     <div
@@ -57,9 +62,7 @@ const PhotoGrid = ({
             )}
             <div className="my-8 tablet:my-20" style={containerStyles}>
               <Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
-                {items.map(({ item, id }) => (
-                  <GridItem item={item} key={id} className="mr-8" openItemOnNewPage={openItemOnNewPage} />
-                ))}
+                {gridItems}
               </Slider>
             </div>
           </div>
@@ -73,11 +76,7 @@ const PhotoGrid = ({
                 gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`,
               }}
             >
-              {
-                items.map(({ item, id }) => (
-                  <GridItem item={item} key={id} openItemOnNewPage={openItemOnNewPage} />
-                ))
-              }
+              {gridItems}
             </div >
           </div >
         )}

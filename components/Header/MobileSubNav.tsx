@@ -6,14 +6,9 @@ import { Button } from 'components/Button'
 import clsx from 'clsx'
 import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
-interface Props {
 
-}
-
-export const MobileSubNav = (props: Props) => {
-
+export const MobileSubNav = () => {
   const [showNav, setShowNav] = useState(false)
-
   const toggleNav = useCallback(() => {
     setShowNav(value => !value)
   }, [])

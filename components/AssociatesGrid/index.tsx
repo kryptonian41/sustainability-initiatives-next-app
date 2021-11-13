@@ -58,37 +58,37 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
 
   const handleModalClose = useCallback(() => {
     setIsModalopen(false)
-    // setSelectedAssociate(null)
   }, [])
 
   return (
-    <div className="py-32">
+    <div className="my-20 tablet:my-32">
       <Container className="overflow-hidden">
+
         <Heading
           label="Associates who stand with us"
           actions={isDesktop ? <ActionBtns sliderRef={sliderRef} /> : null}
         />
+
         <Slider
           {...sliderSettings}
           ref={sliderRef}
-          className={clsx(styles.slider, isTablet && "-mr-8", "my-20")}
+          className={clsx(styles.slider, "my-20")}
         >
-          {items.map(({ item, className, titleClasses, associate }) => (
-            <div key={item.imgSrc}>
-              <GridItem
-                item={item}
-                className={clsx(isTablet && "mr-8", !isTablet && "mx-12", className)}
-                titleClasses={clsx(!isTablet && "text-center", titleClasses)}
-                onClick={handleModalOpen(associate)}
-              />
-            </div>
+          {items.map(({ className, titleClasses, associate, ...restProps }) => (
+            <GridItem
+              {...restProps}
+              className={clsx(isTablet && "pr-8", className)}
+              titleClasses={clsx(!isTablet && "text-center", titleClasses)}
+              onClick={handleModalOpen(associate)}
+            />
           ))}
         </Slider>
+
         <div
           className={clsx(
             "mt-6",
-            isTablet && !isDesktop && "flex justify-between",
             isDesktop && "text-right",
+            isTablet && !isDesktop && "flex justify-between",
             !isTablet && !isDesktop && "text-center"
           )}
         >

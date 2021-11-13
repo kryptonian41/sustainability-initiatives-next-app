@@ -3,7 +3,7 @@ import { NextArrow, PrevArrow } from "components/SlideShow/arrows";
 import { useThemeContext } from "components/ThemeProvider";
 import React, { useMemo } from "react";
 import Slider from "react-slick";
-import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import { useDeviceMediaQuery, useMediaQuery } from "utils/hooks/useMediaQuery";
 import { Quote } from "utils/types";
 import styles from "./styles.module.css";
 
@@ -27,7 +27,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
   const { breakpoints } = useThemeContext();
-  const { matches } = useMediaQuery(`(max-width: ${breakpoints.tablet}px)`);
+  const matchesPhone = useDeviceMediaQuery('phone')
 
   const carouselSettings = useMemo(() => {
     return {
@@ -38,9 +38,9 @@ const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
       slidesToScroll: 1,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />,
-      arrows: !matches,
+      arrows: !matchesPhone,
     };
-  }, [matches]);
+  }, [matchesPhone]);
 
   return (
     <Slider {...carouselSettings} {...sliderProps}>

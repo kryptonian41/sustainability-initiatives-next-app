@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from './styles.module.css'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 export const Heading: React.FC<Props> = ({ label, actions, children }) => {
   const elementRef = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     (async () => {
       const Splitting = (await import("splitting")).default
       Splitting({

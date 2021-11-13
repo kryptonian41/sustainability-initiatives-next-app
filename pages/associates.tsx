@@ -1,19 +1,18 @@
+import { AssociateGridItem } from "components/AssociatesGrid";
 import { Container } from "components/Container";
+import AssociateModal from "components/Modal/AssociateModal";
 import Pagination from "components/Pagination";
 import PhotoGrid from "components/PhotoGrid";
 import { GridItemProps } from "components/PhotoGrid/GridPhoto";
+import { useThemeContext } from "components/ThemeProvider";
 import { GetStaticProps } from "next";
 import React, {
-  ReactElement,
-  useCallback,
-  useMemo,
-  useState,
-  useLayoutEffect,
+  useCallback, useEffect, useLayoutEffect, useMemo,
+  useState
 } from "react";
 import { getAssociates } from "utils/api/client-side-api";
-import { Associate } from "utils/types";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
-import { useThemeContext } from "components/ThemeProvider";
+import { Associate } from "utils/types";
 
 interface Props {
   associates: Associate[];
@@ -30,6 +29,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Associates: React.FC<Props> = ({ associates }) => {
   const [itemsPerPage, setItemPerPage] = useState(7);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isModalopen, setIsModalopen] = useState(false)
+  const [selectedAssociate, setSelectedAssociate] = useState(null)
   const [showPaginationBar, numberOfPages] = useMemo(() => {
     return [
       associates.length > itemsPerPage,
@@ -37,23 +38,35 @@ const Associates: React.FC<Props> = ({ associates }) => {
     ];
   }, [associates, itemsPerPage]);
 
-  const gridItems = useMemo<GridItemProps[]>(() => {
+
+  const handleModalOpen = useCallback((associate) => () => {
+    setSelectedAssociate(associate)
+    setIsModalopen(true)
+  }, [])
+
+  const handleModalClose = useCallback(() => {
+    setIsModalopen(false)
+  }, [])
+
+  const gridItems = useMemo<AssociateGridItem[]>(() => {
     const test = associates.map((associate) => ({
       item: {
         title: associate.name,
         imgSrc: associate.logo.url,
       },
       associate,
-      id: associate.id,
+      key: associate.id,
+      onClick: handleModalOpen(associate),
+      className: 'cursor-pointer'
     }))
     return [...test];
-  }, [associates, itemsPerPage]);
+  }, [associates]);
 
   const paginatedItems = useMemo<GridItemProps[]>(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = currentPage * itemsPerPage;
     return gridItems.slice(startIndex, endIndex);
-  }, [gridItems, currentPage]);
+  }, [gridItems, currentPage, itemsPerPage]);
 
   const createPaginationActionHandler = useCallback(
     (action) => (arg) => {
@@ -87,7 +100,7 @@ const Associates: React.FC<Props> = ({ associates }) => {
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
     .matches;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isDesktop) setItemPerPage(16);
     else if (isTablet) setItemPerPage(10);
     else setItemPerPage(7);
@@ -130,6 +143,8 @@ const Associates: React.FC<Props> = ({ associates }) => {
           </Container>
         )}
       </div>
+
+      <AssociateModal isOpen={isModalopen} associate={selectedAssociate} onClose={handleModalClose} />
     </div>
   );
 };

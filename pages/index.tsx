@@ -11,7 +11,7 @@ import { InitiativeTile } from "components/Tiles/InitiativeTile";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useMemo } from "react";
 import { API } from "utils/api";
-import { useDeviceMediaQuery } from "utils/hooks/useMediaQuery";
+import { useBreakpointValue, useDeviceMediaQuery } from "utils/hooks/useMediaQuery";
 import {
   Article,
   Associate,
@@ -65,8 +65,11 @@ export const Home: React.FC<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ recentArticles, initiatives, stakeHolders, associates, quotes }) => {
   const matchesPhone = useDeviceMediaQuery('phone');
-  const matchedTablet = useDeviceMediaQuery('tablet');
-
+  const stakeHolderGridItemsPerRow = useBreakpointValue({
+    'phone': 2,
+    'tablet': 3,
+    'laptop': 5,
+  })
   const stakeHolderPhotoGridItems = useMemo<
     GridItemProps[]
   >(() => {
@@ -78,7 +81,7 @@ export const Home: React.FC<
           subTitle: stakeHolder.designation,
           path: `/people/${stakeHolder.slug}`,
         },
-        id: stakeHolder.id,
+        key: stakeHolder.id,
       };
     });
   }, [stakeHolders]);
@@ -97,7 +100,7 @@ export const Home: React.FC<
             alignItems: "center",
           },
         },
-        id: associate.id,
+        key: associate.id,
         associate,
         className: "cursor-pointer",
       };
@@ -106,7 +109,7 @@ export const Home: React.FC<
 
   return (
     <div>
-      <Container className="tablet:mt-14 tablet:my-0 tablet:mb-20" fullWidth={matchesPhone}>
+      <Container className="tablet:mt-14 tablet:px-12 tablet:mb-20" fullWidth={matchesPhone}>
         <div
           style={{
             height: "73vh",
@@ -125,9 +128,9 @@ export const Home: React.FC<
             ]}
           />
         </div>
-        <div className="mt-16 tablet:mt-36">
-          <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
-        </div>
+      </Container>
+      <Container className="mt-16 tablet:mt-36">
+        <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
       </Container>
       <div className="py-10">
         <Parallax {...missionSection} />
@@ -157,11 +160,11 @@ export const Home: React.FC<
         items={stakeHolderPhotoGridItems}
         darkBg
         heading="The People who make it Possible"
-        itemsPerRow={matchedTablet ? 3 : matchesPhone ? 2 : 5}
+        itemsPerRow={stakeHolderGridItemsPerRow}
         className="py-20"
       />
       <AssociatesGrid items={associatedPhotoGridItems} />
-      <Container className="py-10">
+      <Container className="py-10 tablet:px-12">
         <QuotesSlideShow items={quotes} />
       </Container>
       <div className="my-16 tablet:my-32">

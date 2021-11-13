@@ -1,5 +1,5 @@
 .root {
-  @apply flex flex-col justify-center phone:flex-row items-center;
+  @apply flex flex-col justify-center tablet:flex-row items-center;
   .icon,
   .body {
     @apply w-full tablet:w-1/2;

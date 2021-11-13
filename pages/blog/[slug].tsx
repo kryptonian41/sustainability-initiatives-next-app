@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 const BlogPage: React.FC<Props> = ({ article }) => {
   const articleDate = useMemo(() => `${prettyDate(article.published_at, 'd MMMM')} '${prettyDate(article.published_at, 'yy')}`, [article])
   const { colors } = useThemeContext()
-  const matchesTablet = useDeviceMediaQuery('tablet')
+  const matchesLaptop = useDeviceMediaQuery('laptop')
   const articleUrl = useMemo(() => {
     return typeof window === 'undefined' ? '' : window.location.href
   }, [])
@@ -55,14 +55,14 @@ const BlogPage: React.FC<Props> = ({ article }) => {
 
       <Container className="flex flex-wrap">
         <div className={clsx({
-          "w-1/5 mr-10": !matchesTablet,
-          "w-full": matchesTablet
+          "w-1/5 mr-10": matchesLaptop,
+          "w-full": !matchesLaptop
         })}>
           <p className={styles.date}>{articleDate}</p>
           <hr className="mt-3" />
           <div className={clsx({
-            "mt-10": !matchesTablet,
-            "mt-6": matchesTablet
+            "mt-10": matchesLaptop,
+            "mt-6": !matchesLaptop
           })}>
             <p className="mb-6">Share:</p>
             <div className="flex">
@@ -84,7 +84,8 @@ const BlogPage: React.FC<Props> = ({ article }) => {
           </div>
         </div>
         <div className={clsx("flex-1", {
-          "mt-12": matchesTablet
+          "mt-0": matchesLaptop,
+          "mt-12": !matchesLaptop
         })}>
           <h3 className={clsx("text-2xl mb-10", styles.title)}>{article.title}</h3>
           <div className="body" dangerouslySetInnerHTML={{
