@@ -26,10 +26,12 @@ export const getServerSideProps = async () => {
 const About: React.FC<Props> = ({ stakeHolders }) => {
   const gridProps = (): GridItemProps[] =>
     stakeHolders.map((stakeHolder) => ({
-      imgSrc: stakeHolder.gridPhoto.url,
-      title: stakeHolder.name,
-      subTitle: stakeHolder.designation,
-      path: `/people/${stakeHolder.slug}`,
+      item: {
+        imgSrc: stakeHolder.gridPhoto.url,
+        title: stakeHolder.name,
+        subTitle: stakeHolder.designation,
+        path: `/people/${stakeHolder.slug}`,
+      },
     }));
 
   const { breakpoints } = useThemeContext();

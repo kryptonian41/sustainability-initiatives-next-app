@@ -54,8 +54,8 @@ export const MobileSubNav = () => {
                   link="/initiatives/research-and-publication"
                 />
                 <MobileSubNavListItem
-                  label="Other Activities"
-                  link="/initiatives/other-activities"
+                  label="Community Contributions"
+                  link="/initiatives/community-contributions"
                 />
                 check
               </MobileSubNavListItem>

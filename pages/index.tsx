@@ -47,9 +47,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
 const missionSection: ParallaxProps = {
   bgImg: "/images/homepage-mission-parallax.png",
-  title: "Our mission is to make the world sustainable",
+  title: "Our Mission – Moving Towards Sustainability",
   subTitle:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim iaculis purus pretium ultrices. Suspendisse et condim entum libero. Proin vehicula dolor nibh.",
+    "Sustainability is defined as our collective ability to meet the needs of our generation while ensuring that ability of meeting the needs of future generations is not compromised. With this principle firmly in our mind, Sustainability Initiatives, aims to develop a knowledge resource pool that can guide today’s policy makers & actors to make decisions that will leave Mother Earth a better place for our future generations.",
   btnContent: "READ MORE ABOUT US",
   btnLink: "/about",
 };
@@ -59,6 +59,7 @@ const supportUsSection: ParallaxProps = {
   title: "We believe that we can make more impact with your support",
   btnContent: "SUPPORT US",
   isLight: true,
+  btnLink: "/support",
 };
 
 export const Home: React.FC<

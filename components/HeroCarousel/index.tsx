@@ -38,7 +38,7 @@ export const HeroSlideShow: React.FC<Props> = ({
         }} />
       </div>
       <div className={styles.bodyContainer}>
-        {title && <p className="text-3xl">{title}</p>}
+        {title && <p className="text-4xl">{title}</p>}
       </div>
     </div>
   )

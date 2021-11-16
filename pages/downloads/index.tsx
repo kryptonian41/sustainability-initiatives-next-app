@@ -1,6 +1,6 @@
 import { Container } from "components/Container";
 import { Heading } from "components/Heading";
-import React, {useMemo} from "react";
+import React, { useMemo } from "react";
 import { getAnnualReports } from "utils/api/client-side-api";
 import { Report } from "utils/types";
 import PhotoGrid from "components/PhotoGrid";
@@ -24,9 +24,11 @@ export const getServerSideProps = async () => {
 const Downloads: React.FC<Props> = ({ reports }) => {
   const reportsGridProps = (): GridItemProps[] =>
     reports.map((report) => ({
-      imgSrc: "images/report.jpg",
-      title: report.title,
-      path: report.report.url,
+      item: {
+        imgSrc: "images/report.jpg",
+        title: report.title,
+        path: report.report.url,
+      },
     }));
 
   const { colors, breakpoints } = useThemeContext();
