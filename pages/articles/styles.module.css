@@ -1,0 +1,31 @@
+.date {
+  @apply text-xl font-bold;
+  color: var(--text-highlight);
+}
+.date + hr {
+  background: var(--secondary);
+  height: 2px;
+}
+.title {
+  @apply text-4xl;
+  font-family: var(--secondary-font);
+  color: var(--text-highlight);
+}
+.articleBody {
+  @media screen and (min-width: 768px) {
+    column-count: 2;
+    column-gap: 2rem;
+  }
+
+  p {
+    @apply mb-4;
+  }
+}
+
+.slideShowWrapper {
+  @apply my-12;
+  height: 400px;
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+}

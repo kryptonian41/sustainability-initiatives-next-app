@@ -90,7 +90,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
                     imgUrl={article.images[0].url}
                     body={article.summary}
                     actions={
-                      <Link href={`/blog/${article.slug}`} >
+                      <Link href={`/articles/${article.slug}`} >
                         <OutlineButton label="READ MORE" />
                       </Link>
                     }

@@ -56,7 +56,8 @@ const missionSection: ParallaxProps = {
 
 const supportUsSection: ParallaxProps = {
   bgImg: "/images/homepage-support-parallax.png",
-  title: "We believe that we can make more impact with your support",
+  title: "We believe that, together with your support, we can Make A Change",
+  subTitle: "Sustainability is a path that’s most meaningful &amp; impactful when we walk on it together. No one can be left behind and when more &amp; more of us Walk the Talk on Sustainability, we will slowly, but surely, see a transformed consciousness towards how we use our Earth’s finite resources. This consciousness, by itself, will bring about innovation and behavior change that’s necessary for a Sustainable world.",
   btnContent: "SUPPORT US",
   isLight: true,
   btnLink: "/support",
@@ -122,12 +123,28 @@ export const Home: React.FC<
           <HeroSlideShow
             items={[
               {
-                imgUrl: "/images/hero-carousel-1.jpg",
+                imgUrl: "/images/hero_1.jpg",
                 title: "Development made sustainably",
               },
               {
-                imgUrl: "/images/hero-carousel-1.jpg",
-                title: "Development sustainably",
+                imgUrl: "/images/hero_2.jpg",
+                title: "Development made sustainably",
+              },
+              {
+                imgUrl: "/images/hero_3.jpg",
+                title: "Development made sustainably",
+              },
+              {
+                imgUrl: "/images/hero_4.jpg",
+                title: "Development made sustainably",
+              },
+              {
+                imgUrl: "/images/hero_5.jpg",
+                title: "Development made sustainably",
+              },
+              {
+                imgUrl: "/images/hero_6.jpg",
+                title: "Development made sustainably",
               },
             ]}
           />
