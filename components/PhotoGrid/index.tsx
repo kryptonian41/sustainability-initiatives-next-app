@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { Container } from "../Container";
 import Slider from "react-slick";
 import ActionBtns from "./ActionBtns";
+import clsx from "clsx";
 
 type Props = {
   items: GridItemProps[];
@@ -39,10 +40,15 @@ const PhotoGrid: React.FC<Props> = ({
   };
 
   const gridItems = useMemo(() => {
-    return items.map((props) => (
-      <GridItem {...props} openItemOnNewPage={openItemOnNewPage} />
-    ))
-  }, [items])
+    return items.map((props, id) => (
+      <GridItem
+        {...props}
+        key={id}
+        className={clsx(withAction && "pr-8")}
+        openItemOnNewPage={openItemOnNewPage}
+      />
+    ));
+  }, [items, withAction]);
 
   return (
     <div
@@ -77,11 +83,11 @@ const PhotoGrid: React.FC<Props> = ({
               }}
             >
               {gridItems}
-            </div >
-          </div >
+            </div>
+          </div>
         )}
-      </Container >
-    </div >
+      </Container>
+    </div>
   );
 };
 

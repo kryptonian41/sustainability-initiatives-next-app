@@ -72,7 +72,7 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
         <Slider
           {...sliderSettings}
           ref={sliderRef}
-          className={clsx(styles.slider, "my-20")}
+          className={clsx(styles.slider, isTablet && "-mr-8", "my-20")}
         >
           {items.map(({ className, titleClasses, associate, ...restProps }) => (
             <GridItem

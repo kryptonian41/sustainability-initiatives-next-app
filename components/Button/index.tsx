@@ -1,4 +1,4 @@
-import React, { forwardRef, PropsWithChildren } from 'react';
+import React, { ForwardedRef, forwardRef, PropsWithChildren } from 'react';
 import { useThemeContext } from '../ThemeProvider';
 import clsx from 'clsx'
 import styles from './styles.module.css'
@@ -9,6 +9,7 @@ interface ButtonProps {
   light?: boolean;
   onClick?: () => void;
   [key: string]: any
+  ref?: ForwardedRef<HTMLButtonElement>
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({

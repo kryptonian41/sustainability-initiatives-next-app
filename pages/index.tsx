@@ -110,7 +110,10 @@ export const Home: React.FC<
 
   return (
     <div>
-      <Container className="tablet:mt-14 tablet:px-12 tablet:mb-20" fullWidth={matchesPhone}>
+      <Container
+        className="tablet:mt-14 tablet:px-12 laptop:px-6 tablet:mb-20"
+        fullWidth={matchesPhone}
+      >
         <div
           style={{
             height: "73vh",
@@ -130,7 +133,7 @@ export const Home: React.FC<
           />
         </div>
       </Container>
-      <Container className="mt-16 tablet:mt-36">
+      <Container className="my-16 tablet:my-36">
         <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
       </Container>
       <div className="py-10">

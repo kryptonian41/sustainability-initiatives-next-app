@@ -5,7 +5,7 @@
 }
 
 .content-wrapper {
-  @apply w-11/12 mx-auto laptop:w-3/4;
+  @apply w-11/12 mx-auto laptop:w-3/4 px-4 tablet:px-6;
 }
 
 .content {
