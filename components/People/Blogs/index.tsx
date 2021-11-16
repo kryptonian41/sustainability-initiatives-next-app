@@ -35,7 +35,7 @@ const Blogs: React.FC<Props> = ({
       <div className="py-8">
         <h2 className={clsx("text-xl uppercase mb-6", styles.title)}>Blogs</h2>
         {articles.map((article, index) => (
-          <Link href={`/blog/${article.slug}`} key={index}>
+          <Link href={`/articles/${article.slug}`} key={index}>
             <div className="cursor-pointer">
               {BlogSummary(article.title, article.published_at)}
               {index < articles.length - 1 && (

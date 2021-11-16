@@ -79,7 +79,6 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
               {...restProps}
               className={clsx(isTablet && "pr-8", className)}
               titleClasses={clsx(!isTablet && "text-center", titleClasses)}
-              onClick={handleModalOpen(associate)}
             />
           ))}
         </Slider>

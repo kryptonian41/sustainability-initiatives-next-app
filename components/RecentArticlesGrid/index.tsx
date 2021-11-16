@@ -21,7 +21,7 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
 
   return (
     <div className={clsx(styles.root)}>
-      <Link href={`/blog/${primaryPost.slug}`}>
+      <Link href={`/articles/${primaryPost.slug}`}>
         <div className={clsx("flex-shrink-0 cursor-pointer", styles.slideShowWrapper)}>
           <SlideShow
             images={primaryPost.images}
@@ -31,7 +31,7 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
         </div>
       </Link>
       <div className="flex flex-col">
-        <Link href={`/blog/${secondaryPost.slug}`}>
+        <Link href={`/articles/${secondaryPost.slug}`}>
           <div className={clsx("cursor-pointer", styles.slideShowWrapper)}>
             <div className="relative h-full">
               <img

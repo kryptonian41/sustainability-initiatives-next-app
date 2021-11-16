@@ -140,7 +140,7 @@ const People: React.FC<Props> = ({
             <p className="text-sm mb-8 tablet:text-base desktop:mb-0">
               {about}
             </p>
-            {articlesByStakeHolder.length && (
+            {articlesByStakeHolder.length > 0 && (
               <Blogs
                 articles={articlesByStakeHolder.slice(0, 3)}
                 dateColor={colors.text.light}

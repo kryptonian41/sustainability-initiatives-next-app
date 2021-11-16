@@ -113,7 +113,7 @@ const Associates: React.FC<Props> = ({ associates }) => {
   }, [isTablet, isDesktop]);
 
   return (
-    <div>
+    <div className="mb-16">
       <div className="py-20">
         <PhotoGrid
           items={paginatedItems}
