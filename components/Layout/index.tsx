@@ -9,17 +9,16 @@ interface Props {
 }
 
 export const BaseLayout = ({ children }: Props) => {
-  return <div className="relative z-0">
-    <div className="z-50 sticky top-0 bg-white">
-      <Container className="relativeA">
-        <Header />
-      </Container>
+  return (
+    <div className="relative z-0">
+      <div className="sticky top-0 bg-white" style={{ zIndex: 101 }}>
+        <Container className="relativeA">
+          <Header />
+        </Container>
+      </div>
+      <div>{children}</div>
+      {/* <GoToTopButton /> */}
+      <Footer />
     </div>
-    <div>
-      {children}
-    </div>
-    {/* <GoToTopButton /> */}
-    <Footer />
-  </div>
+  );
 };
-

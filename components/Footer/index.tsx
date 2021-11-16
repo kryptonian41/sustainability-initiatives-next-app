@@ -8,7 +8,8 @@ import FB from "../../assets/svgs/footer-fb.svg";
 import Insta from "../../assets/svgs/footer-insta.svg";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
-import FooterBg from 'assets/images/footer.png'
+import Link from "next/link";
+import FooterBg from "assets/images/footer.png";
 
 const Footer = () => {
   return (
@@ -20,15 +21,27 @@ const Footer = () => {
             <div className={styles.contentOne}>
               <Logo />
               <div>
-                <p>Home</p>
-                <p>About Us</p>
-                <p>Associates</p>
-                <p>Initiatives</p>
-                <p>Downloads</p>
-                <p>Support</p>
+                <p>
+                  <Link href="/">Home</Link>
+                </p>
+                <p>
+                  <Link href="/about">About Us</Link>
+                </p>
+                <p>
+                  <Link href="/associates">Associates</Link>
+                </p>
+                {/* <p>Initiatives</p> */}
+                <p>
+                  <Link href="/downloads">Downloads</Link>
+                </p>
+                <p>
+                  <Link href="/support">Support</Link>
+                </p>
                 <p>Blog</p>
                 <div className={styles.socialLinks}>
-                  <Twitter />
+                  <a href="">
+                    <Twitter />
+                  </a>
                   <YT />
                   <FB />
                   <Insta />

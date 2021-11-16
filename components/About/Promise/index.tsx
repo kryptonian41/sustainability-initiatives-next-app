@@ -8,13 +8,13 @@ const data: SectionProps[] = [
   {
     title: "Our Promise",
     desc:
-      "Sustainability Initiatives is a not-for-profit organisation based in Pune. It is  formed by a group of like-minded professionals in the field of urban and environmental planning, architecture, environmental science, geography and energy. Sustainability Initiatives is formed with the objective of creating a network of researchers, academicians and professionals who will develop core research in the area of environment and energy.",
+      "At Sustainability Initiative, we promise to uphold the objective of Sustainability in whatever we do. While acknowledging the limitations of technology and the power of knowledge today, we shall strive to promote use of knowledge to innovate so that we find meaningful solutions for Sustainable Development.",
     imgSrc: "images/about-us-1.png",
   },
   {
     title: "Our Approach",
     desc:
-      "Sustainability Initiatives is a not-for-profit organisation based in Pune. It is  formed by a group of like-minded professionals in the field of urban and environmental planning, architecture, environmental science, geography and energy. Sustainability Initiatives is formed with the objective of creating a network of researchers, academicians and professionals who will develop core research in the area of environment and energy.",
+      "Our journey toward Sustainability has to be based on scientific knowledge that also respects the Indian traditional knowledge on living with nature, so that our lifestyle mainstreams the principles of Sustainability. The journey towards Sustainable Development is a collective approach, where participation of communities in tandem with the government is an absolute must. Lastly, no decision or policy or action can be sustainable if it is not collaborative.",
     imgSrc: "images/about-us-2.png",
   },
 ];
