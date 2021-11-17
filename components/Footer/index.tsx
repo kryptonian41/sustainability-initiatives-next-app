@@ -6,6 +6,7 @@ import Twitter from "../../assets/svgs/footer-twitter.svg";
 import YT from "../../assets/svgs/footer-yt.svg";
 import FB from "../../assets/svgs/footer-fb.svg";
 import Insta from "../../assets/svgs/footer-insta.svg";
+import LinkedIn from "../../assets/svgs/footer-linkedin.svg";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
 import Link from "next/link";
@@ -39,12 +40,24 @@ const Footer = () => {
                 </p>
                 <p>Blog</p>
                 <div className={styles.socialLinks}>
-                  <a href="">
-                    <Twitter />
+                  <a
+                    href="https://www.linkedin.com/company/sustainability-initiatives-pune/"
+                    target="_blank"
+                  >
+                    <LinkedIn />
                   </a>
-                  <YT />
-                  <FB />
-                  <Insta />
+                  <a
+                    href="https://www.facebook.com/sustainability.initiatives"
+                    target="_blank"
+                  >
+                    <FB />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/sustainabilityinitiatives/"
+                    target="_blank"
+                  >
+                    <Insta />
+                  </a>
                 </div>
               </div>
             </div>
