@@ -22,27 +22,19 @@ import clsx from "clsx";
 interface Props {
   stakeHolders: StakeHolder[];
   stakeHolder: StakeHolder[];
-  articlesByStakeHolder: Article[];
 }
 
 export const getServerSideProps = async ({ params }) => {
   const { id } = params;
   let stakeHolders = await getStakeHolders();
   const stakeHolder = await getStakeHolderBySlug(id);
-  let articlesByStakeHolder = [];
-  if (stakeHolder.length) {
-    const { author } = stakeHolder[0];
-    if (author) {
-      articlesByStakeHolder = await getArticlesByAuthor(author.id, true);
-    }
+  if (stakeHolder.length)
     stakeHolders = stakeHolders.filter((sh) => sh.id !== stakeHolder[0].id);
-  }
 
   return {
     props: {
       stakeHolders,
       stakeHolder,
-      articlesByStakeHolder,
     },
   };
 };
@@ -62,11 +54,7 @@ const createSocialItemArr = (socialLinks: SocialLinks): SocialItem[] =>
       url: item[1],
     }));
 
-const People: React.FC<Props> = ({
-  stakeHolders,
-  stakeHolder,
-  articlesByStakeHolder,
-}) => {
+const People: React.FC<Props> = ({ stakeHolders, stakeHolder }) => {
   const gridProps = (): GridItemProps[] =>
     stakeHolders.map((stakeHolder) => ({
       item: {
@@ -80,7 +68,7 @@ const People: React.FC<Props> = ({
     // return not found component
     return <div />;
   }
-  const { name, education, about, photo, socialLinks, author } = stakeHolder[0];
+  const { name, education, about, photo, socialLinks, blogs } = stakeHolder[0];
   const { colors, breakpoints } = useThemeContext();
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
     .matches;
@@ -140,12 +128,11 @@ const People: React.FC<Props> = ({
             <p className="text-sm mb-8 tablet:text-base desktop:mb-0">
               {about}
             </p>
-            {articlesByStakeHolder.length > 0 && (
+            {blogs.length > 0 && (
               <Blogs
-                articles={articlesByStakeHolder.slice(0, 3)}
+                blogs={blogs.slice(0, 3)}
                 dateColor={colors.text.light}
-                displayViewMore={articlesByStakeHolder.length > 3}
-                authorId={author.id}
+                displayViewMore={true}
               />
             )}
           </div>

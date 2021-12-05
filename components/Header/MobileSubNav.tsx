@@ -64,14 +64,14 @@ export const MobileSubNav = () => {
               <MobileSubNavListItem label="Contact" link="/contact" />
               <MobileSubNavListItem label="Downloads" link="/downloads" />
             </ul>
-            <div className="mt-20">
+            {/* <div className="mt-20">
               <Button
                 className={styles.contactButton}
                 type="outline"
                 label="GET IN TOUCH"
                 light
               />
-            </div>
+            </div> */}
           </div>
         </CSSTransition>
       </Portal>
