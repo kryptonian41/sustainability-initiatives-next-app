@@ -45,8 +45,8 @@
   .bodyContainer {
     @apply absolute bottom-0 left-0 pl-8 py-8 w-full text-white;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.822), transparent);
-    &.small {
+    /* &.small {
       @apply bottom-4 left-4;
-    }
+    } */
   }
 }
