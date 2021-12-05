@@ -9,6 +9,7 @@ export interface Article {
   location: Location;
   initiative: Initiative;
   published_at: string;
+  published_date: string | null;
   created_at: string;
   updated_at: string;
   images: Picture[];
@@ -96,6 +97,7 @@ export interface StakeHolder {
   gridPhoto: Picture;
   photo: Picture;
   socialLinks: SocialLinks | null;
+  blogs: Blog[];
 }
 export interface Associate {
   id: number;
@@ -136,4 +138,12 @@ export interface Report {
   created_at: Date;
   updated_at: Date;
   report: Picture;
+}
+
+export interface Blog {
+  id: number;
+  title: string;
+  published_date: string;
+  url: string;
+  author: StakeHolder;
 }

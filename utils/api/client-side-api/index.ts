@@ -2,6 +2,7 @@ import Axios, { AxiosRequestConfig } from "axios";
 import {
   Article,
   Associate,
+  Blog,
   Initiative,
   Quote,
   StakeHolder,
@@ -116,4 +117,9 @@ export const getQuotes = async () => {
 export const getAnnualReports = async () => {
   const { data } = await axios.get<Quote[]>("/annual-reports");
   return data;
-}
+};
+
+export const getBlogs = async () => {
+  const { data } = await axios.get<Blog[]>("/blogs");
+  return data;
+};

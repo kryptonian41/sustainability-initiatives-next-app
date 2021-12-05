@@ -1,31 +1,37 @@
-import clsx from 'clsx'
-import { BlogList } from 'components/BlogList'
-import { Container } from 'components/Container'
-import { Heading } from 'components/Heading'
-import { GetServerSideProps } from 'next'
-import React from 'react'
-import { getArticledByInitiativeSlug, getInitiaveBySlug } from 'utils/api/client-side-api'
-import { Article, Initiative } from 'utils/types'
-import styles from './styles.module.css'
+import clsx from "clsx";
+import { BlogList } from "components/BlogList";
+import { Container } from "components/Container";
+import { Heading } from "components/Heading";
+import { GetServerSideProps } from "next";
+import React from "react";
+import {
+  getArticledByInitiativeSlug,
+  getInitiaveBySlug,
+} from "utils/api/client-side-api";
+import { Article, Initiative } from "utils/types";
+import styles from "./styles.module.css";
 
 interface Props {
-  initiative: Initiative,
-  articles: Article[]
+  initiative: Initiative;
+  articles: Article[];
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) => {
-  const { slug } = params
-  const articles = await getArticledByInitiativeSlug(slug as string)
-  const initiative = await getInitiaveBySlug(slug as string)
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  params,
+}) => {
+  const { slug } = params;
+  const articles = await getArticledByInitiativeSlug(slug as string);
+  const initiative = await getInitiaveBySlug(slug as string);
   return {
     props: {
       initiative,
       articles,
-    }
-  }
-}
+    },
+  };
+};
 
 const Initiaves: React.FC<Props> = ({ articles, initiative }) => {
+  console.log(articles[0]);
   return (
     <div className="py-20">
       <div className={clsx(styles.heroContainer)}>
@@ -35,7 +41,11 @@ const Initiaves: React.FC<Props> = ({ articles, initiative }) => {
             <p className="mt-10">{initiative.description}</p>
           </div>
           <div className="w-full laptop:w-4/12 order-1 mb-20 laptop:mb-0">
-            <img src={initiative.icon.url} alt={`${initiative.title} Icon`} className="block w-full" />
+            <img
+              src={initiative.icon.url}
+              alt={`${initiative.title} Icon`}
+              className="block w-full"
+            />
           </div>
         </Container>
       </div>
@@ -43,9 +53,8 @@ const Initiaves: React.FC<Props> = ({ articles, initiative }) => {
       <Container className="my-20">
         <BlogList articles={articles} />
       </Container>
-
     </div>
-  )
-}
+  );
+};
 
-export default Initiaves
+export default Initiaves;

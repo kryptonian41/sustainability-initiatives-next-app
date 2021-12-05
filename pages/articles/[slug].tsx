@@ -45,10 +45,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 const BlogPage: React.FC<Props> = ({ article }) => {
   const articleDate = useMemo(
     () =>
-      `${prettyDate(article.published_at, "d MMMM")} '${prettyDate(
-        article.published_at,
-        "yy"
-      )}`,
+      `${prettyDate(
+        article.published_date || article.published_at,
+        "d MMMM"
+      )} '${prettyDate(article.published_date || article.published_at, "yy")}`,
     [article]
   );
   const images = useMemo(() => {

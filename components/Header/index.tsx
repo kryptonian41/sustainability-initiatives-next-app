@@ -37,7 +37,7 @@ const DesktopSubNav = () => {
         <Button type="text" className="font-medium">
           <Link href="/downloads">DOWNLOADS</Link>
         </Button>
-        <Button className="ml-4 font-medium">GET IN TOUCH</Button>
+        {/* <Button className="ml-4 font-medium">GET IN TOUCH</Button> */}
         <SearchIcon />
       </div>
       <div className={styles.nav}>
@@ -62,7 +62,7 @@ const DesktopSubNav = () => {
           </DesktopNavItem>
           <DesktopNavItem href="/associates" label="Associates" />
           <DesktopNavItem href="/support" label="Support" />
-          <li>Blogs</li>
+          <DesktopNavItem href="/blogs" label="Blogs" />
           <li onClick={scrollToFooter}>Contact</li>
         </ul>
       </div>

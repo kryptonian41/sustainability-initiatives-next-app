@@ -38,7 +38,9 @@ const Footer = () => {
                 <p>
                   <Link href="/support">Support</Link>
                 </p>
-                <p>Blog</p>
+                <p>
+                  <Link href="/blogs">Blogs</Link>
+                </p>
                 <div className={styles.socialLinks}>
                   <a
                     href="https://www.linkedin.com/company/sustainability-initiatives-pune/"
