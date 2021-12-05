@@ -2,7 +2,7 @@
   @apply py-4 pt-6;
   border-bottom: 2px solid var(--text-light);
   .title {
-    @apply text-xl;
+    @apply font-medium text-lg phone:text-xl;
     color: var(--text-dark);
   }
   .date {

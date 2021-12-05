@@ -6,6 +6,7 @@ import { Article } from "utils/types";
 import { PlainArticleTile } from "../Tiles/PlainArticleTIle";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import { useDeviceMediaQuery } from "utils/hooks/useMediaQuery";
 interface Props {
   articles: Article[];
 }
@@ -19,14 +20,22 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
     };
   }, [articles]);
 
+  const isMobile = useDeviceMediaQuery("phone");
+
   return (
     <div className={clsx(styles.root)}>
       <Link href={`/articles/${primaryPost.slug}`}>
-        <div className={clsx("flex-shrink-0 cursor-pointer", styles.slideShowWrapper)}>
+        <div
+          className={clsx(
+            "flex-shrink-0 cursor-pointer",
+            styles.slideShowWrapper
+          )}
+        >
           <SlideShow
             images={primaryPost.images}
             title={primaryPost.title}
             subTitle={prettyDate(primaryPost.published_at)}
+            size={isMobile ? "small" : "medium"}
           />
         </div>
       </Link>
@@ -39,9 +48,12 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
                 alt={secondaryPost.title}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute text-white bottom-0 py-4 w-full px-6 tablet:px-4" style={{
-                background: 'linear-gradient(to top, #000, transparent)'
-              }}>
+              <div
+                className="absolute text-white bottom-0 py-4 w-full px-4 phone:px-6 tablet:px-4"
+                style={{
+                  background: "linear-gradient(to top, #000, transparent)",
+                }}
+              >
                 <p className="text-lg">{secondaryPost.title}</p>
                 <p className="text-sm">
                   {prettyDate(secondaryPost.published_at)}
@@ -52,7 +64,7 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
         </Link>
         {restPosts.map((post) => {
           return (
-            <div className="p-6 tablet:p-0 tablet:flex-1" key={post.id}>
+            <div className="pt-6 tablet:p-0 tablet:flex-1" key={post.id}>
               <PlainArticleTile article={post} />
             </div>
           );

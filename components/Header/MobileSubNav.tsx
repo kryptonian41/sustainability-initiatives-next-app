@@ -15,7 +15,7 @@ export const MobileSubNav = () => {
 
   return (
     <div className={clsx("flex-1 flex justify-end")}>
-      <HamburgerIcon className="w-14 cursor-pointer" onClick={toggleNav} />
+      <HamburgerIcon className="w-6 cursor-pointer" onClick={toggleNav} />
       <Portal>
         <CSSTransition
           in={showNav}
@@ -35,9 +35,9 @@ export const MobileSubNav = () => {
           unmountOnExit
         >
           <div className={styles.mobileSubNavList}>
-            <h3 className="text-white text-4xl uppercase text font-thin">
+            {/* <h3 className="text-white text-4xl uppercase text font-thin">
               Menu
-            </h3>
+            </h3> */}
             <ul className="mt-10">
               <MobileSubNavListItem label="About Us" link="/about" />
               <MobileSubNavListItem label="Initiatives">
@@ -61,6 +61,7 @@ export const MobileSubNav = () => {
               </MobileSubNavListItem>
               <MobileSubNavListItem label="Associates" link="/associates" />
               <MobileSubNavListItem label="Support" link="/support" />
+              <MobileSubNavListItem label="Blogs" link="/blogs" />
               <MobileSubNavListItem label="Contact" link="/contact" />
               <MobileSubNavListItem label="Downloads" link="/downloads" />
             </ul>
