@@ -9,7 +9,7 @@ import { Button } from "../Button";
 import { MobileSubNav } from "./MobileSubNav";
 import styles from "./styles.module.css";
 
-interface Props { }
+interface Props {}
 
 export const Header = () => {
   const matchesLaptop = useDeviceMediaQuery("laptop");
@@ -61,6 +61,7 @@ const DesktopSubNav = () => {
             </ul>
           </DesktopNavItem>
           <DesktopNavItem href="/associates" label="Associates" />
+          <li>SETU</li>
           <DesktopNavItem href="/support" label="Support" />
           <DesktopNavItem href="/blogs" label="Blogs" />
           <li onClick={scrollToFooter}>Contact</li>

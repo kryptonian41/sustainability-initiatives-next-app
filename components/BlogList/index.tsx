@@ -92,7 +92,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
 
   return (
     <div className="flex flex-col laptop:flex-row">
-      {matchesLaptop ? (
+      {/* {matchesLaptop ? (
         <div className="w-1/6">
           <BlogFilters clickHandlerFactory={createFilterClickHandler} />
         </div>
@@ -100,11 +100,11 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
         <div className="mb-8">
           <MobileBlogFilters clickHandlerFactory={createFilterClickHandler} />
         </div>
-      )}
+      )} */}
       <div className="flex-1 laptop:px-10">
         {articlesToDisplay.length > 0 ? (
           <>
-            <div className="grid phone:grid-cols-2 gap-x-12">
+            <div className="grid phone:grid-cols-2 laptop:grid-cols-3 gap-x-12">
               {articlesToDisplay.map((article) => {
                 return (
                   <div className="mb-16 cursor-pointer" key={article.id}>

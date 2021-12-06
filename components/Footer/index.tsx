@@ -81,11 +81,14 @@ const Footer = () => {
                   <p>
                     Correspondence address:
                     <br />
-                    73/2 Bhakti Marg, Off Law
+                    5th Floor, Next Gen Avenue, Su. No 103(p),
                     <br />
-                    College Road, Pune 411 004,
+                    CTS no 2850, Bahiratwadi, Off, Senapati Bapat Rd, Near Icc
+                    Trade Tower,
                     <br />
-                    Maharashtra, India
+                    Bahiratwadi, Pune,
+                    <br />
+                    Maharashtra 411016, India
                   </p>
                 </div>
                 <div>
