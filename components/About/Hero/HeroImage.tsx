@@ -16,7 +16,9 @@ const HeroImage: React.FC<Props> = ({ bgImgSrc, heading = "", alt = "" }) => {
 
   const heroImageHtml = (
     <div className={heroStyles.imageContainer}>
-      <img src={bgImgSrc} alt={alt} />
+      <img src={bgImgSrc} alt={alt} style={{
+        height: '50vh'
+      }} />
       <h1>{heading}</h1>
     </div>
   );

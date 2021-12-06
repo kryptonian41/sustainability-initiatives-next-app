@@ -34,14 +34,14 @@ const Downloads: React.FC<Props> = ({ reports }) => {
   const { colors, breakpoints } = useThemeContext();
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
     .matches;
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
+  const isLaptop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
     .matches;
 
   const itemsPerRow = useMemo(() => {
-    if (isDesktop) return 6;
+    if (isLaptop) return 6;
     if (isTablet) return 4;
     return 2;
-  }, [isTablet, isDesktop]);
+  }, [isTablet, isLaptop]);
   return (
     <div className="my-20">
       <Container>

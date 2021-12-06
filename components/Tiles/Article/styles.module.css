@@ -1,10 +1,10 @@
 .container {
   .title {
-    @apply text-2xl font-semibold mt-8;
+    @apply text-xl tablet:text-2xl font-semibold mt-8;
     color: var(--text-dark);
   }
   .subtitle {
-    @apply mt-2;
+    @apply mt-2 text-sm tablet:text-base;
     color: var(--text-light);
   }
   .body {

@@ -60,6 +60,7 @@ export const MobileSubNav = () => {
                 check
               </MobileSubNavListItem>
               <MobileSubNavListItem label="Associates" link="/associates" />
+              <li>SETU</li>
               <MobileSubNavListItem label="Support" link="/support" />
               <MobileSubNavListItem label="Blogs" link="/blogs" />
               <MobileSubNavListItem label="Contact" link="/contact" />

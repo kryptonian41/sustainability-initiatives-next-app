@@ -8,16 +8,16 @@
   @apply w-11/12 mx-auto px-4 tablet:px-6;
   @media screen and (min-width: 1024px) {
     width: 90%;
-    max-width: 1160px;
+    max-width: 1200px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1536px) {
     max-width: 1400px;
   }
 }
 
 .content {
-  @apply w-full py-10 phone:pt-10 tablet:pt-0 tablet:w-5/12 laptop:w-1/3 tablet:flex tablet:items-center;
+  @apply w-full py-10 tablet:w-5/12 laptop:w-1/3 tablet:flex tablet:items-center;
   position: relative;
   min-height: 60vh;
   z-index: 2;

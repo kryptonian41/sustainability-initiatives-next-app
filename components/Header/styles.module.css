@@ -1,5 +1,5 @@
 .container {
-  @apply py-4 flex items-center laptop:pt-10;
+  @apply py-4 flex items-center desktop:py-7 -mb-7;
   svg.logo {
     width: 64px;
     height: auto;
