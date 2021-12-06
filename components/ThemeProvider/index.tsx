@@ -30,7 +30,7 @@ const breakpoints = {
   phone: 500,
   tablet: 768,
   laptop: 1024,
-  desktop: 1280,
+  desktop: 1536,
 };
 
 const ThemeContext = React.createContext<ThemeContext>({

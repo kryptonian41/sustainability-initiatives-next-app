@@ -24,7 +24,7 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
   const [isModalopen, setIsModalopen] = useState(false)
   const [selectedAssociate, setSelectedAssociate] = useState(null)
   const { breakpoints } = useThemeContext();
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`).matches
+  const isLaptop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`).matches
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`).matches
   const sliderRef = useRef(null);
 
@@ -66,7 +66,7 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
 
         <Heading
           label="Associates who stand with us"
-          actions={isDesktop ? <ActionBtns sliderRef={sliderRef} /> : null}
+          actions={isLaptop ? <ActionBtns sliderRef={sliderRef} /> : null}
         />
 
         <Slider
@@ -86,12 +86,12 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
         <div
           className={clsx(
             "mt-6",
-            isDesktop && "text-right",
-            isTablet && !isDesktop && "flex justify-between",
-            !isTablet && !isDesktop && "text-center"
+            isLaptop && "text-right",
+            isTablet && !isLaptop && "flex justify-between",
+            !isTablet && !isLaptop && "text-center"
           )}
         >
-          {isTablet && !isDesktop && <ActionBtns sliderRef={sliderRef} />}
+          {isTablet && !isLaptop && <ActionBtns sliderRef={sliderRef} />}
           {!isTablet ? (
             <SolidButton>
               <Link href="/associates">View All</Link>

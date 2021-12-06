@@ -72,14 +72,14 @@ const People: React.FC<Props> = ({ stakeHolders, stakeHolder }) => {
   const { colors, breakpoints } = useThemeContext();
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
     .matches;
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
+  const isLaptop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
     .matches;
 
   const itemsPerRow = useMemo(() => {
-    if (isDesktop) return 4;
+    if (isLaptop) return 4;
     if (isTablet) return 3;
     return 2;
-  }, [isTablet, isDesktop]);
+  }, [isTablet, isLaptop]);
 
   return (
     <div>
@@ -95,7 +95,7 @@ const People: React.FC<Props> = ({ stakeHolders, stakeHolder }) => {
               alt={photo.alternativeText}
               title={photo.name}
             />
-            {isDesktop && (
+            {isLaptop && (
               <div className="my-4">
                 {socialLinks && (
                   <SocialPanel
@@ -114,7 +114,7 @@ const People: React.FC<Props> = ({ stakeHolders, stakeHolder }) => {
             <p className={clsx("text-sm  tablet:text-base", styles.edu)}>
               {education}
             </p>
-            {!isDesktop && (
+            {!isLaptop && (
               <div className="mb-8">
                 {socialLinks && (
                   <SocialPanel
@@ -125,7 +125,7 @@ const People: React.FC<Props> = ({ stakeHolders, stakeHolder }) => {
                 )}
               </div>
             )}
-            <p className="text-sm mb-8 tablet:text-base desktop:mb-0">
+            <p className="text-sm mb-8 tablet:text-base">
               {about}
             </p>
             {blogs.length > 0 && (
@@ -143,8 +143,8 @@ const People: React.FC<Props> = ({ stakeHolders, stakeHolder }) => {
           <PhotoGrid
             heading="The People who make it possible"
             items={gridProps()}
-            withAction={isDesktop}
-            darkBg={!isDesktop}
+            withAction={isLaptop}
+            darkBg={!isLaptop}
             itemsPerRow={itemsPerRow}
             className="pt-8 pb-4"
           />

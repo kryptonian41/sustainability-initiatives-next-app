@@ -97,20 +97,20 @@ const Associates: React.FC<Props> = ({ associates }) => {
   const { breakpoints } = useThemeContext();
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`)
     .matches;
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
+  const isLaptop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`)
     .matches;
 
   useEffect(() => {
-    if (isDesktop) setItemPerPage(16);
+    if (isLaptop) setItemPerPage(16);
     else if (isTablet) setItemPerPage(10);
     else setItemPerPage(7);
-  }, [isTablet, isDesktop]);
+  }, [isTablet, isLaptop]);
 
   const itemsPerRow = useMemo(() => {
-    if (isDesktop) return 4;
+    if (isLaptop) return 4;
     if (isTablet) return 2;
     return 1;
-  }, [isTablet, isDesktop]);
+  }, [isTablet, isLaptop]);
 
   return (
     <div className="mb-16">
@@ -137,7 +137,7 @@ const Associates: React.FC<Props> = ({ associates }) => {
                 prevClickAction={createPaginationActionHandler("prev")}
                 nextClickAction={createPaginationActionHandler("next")}
                 pageBtnAction={createPaginationActionHandler("number")}
-                isCentered={!isDesktop}
+                isCentered={!isLaptop}
               />
             </div>
           </Container>
