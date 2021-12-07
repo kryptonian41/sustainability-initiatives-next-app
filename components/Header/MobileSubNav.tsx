@@ -15,7 +15,7 @@ export const MobileSubNav = () => {
 
   return (
     <div className={clsx("flex-1 flex justify-end")}>
-      <HamburgerIcon className="w-6 cursor-pointer" onClick={toggleNav} />
+      <HamburgerIcon className="w-6 h-6 cursor-pointer" onClick={toggleNav} />
       <Portal>
         <CSSTransition
           in={showNav}
