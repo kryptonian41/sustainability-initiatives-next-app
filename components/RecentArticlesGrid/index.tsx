@@ -34,7 +34,11 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
           <SlideShow
             images={primaryPost.images}
             title={primaryPost.title}
-            subTitle={prettyDate(primaryPost.published_at)}
+            subTitle={
+              primaryPost.published_date
+                ? prettyDate(primaryPost.published_date)
+                : ""
+            }
             size={isMobile ? "small" : "medium"}
           />
         </div>
@@ -56,7 +60,9 @@ export const RecentArticlesGrid: React.FC<Props> = ({ articles }) => {
               >
                 <p className="text-lg">{secondaryPost.title}</p>
                 <p className="text-sm">
-                  {prettyDate(secondaryPost.published_at)}
+                  {secondaryPost.published_date
+                    ? prettyDate(secondaryPost.published_date)
+                    : ""}
                 </p>
               </div>
             </div>

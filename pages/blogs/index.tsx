@@ -1,6 +1,6 @@
 import { Container } from "components/Container";
 import React from "react";
-import { getBlogs } from "utils/api/client-side-api";
+import { getSortedBlogs } from "utils/api/client-side-api";
 import { Blog } from "utils/types";
 import BlogsList from "components/Blogs/BlogsList";
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const getServerSideProps = async () => {
-  const blogs = await getBlogs();
+  const blogs = await getSortedBlogs();
   return {
     props: {
       blogs,

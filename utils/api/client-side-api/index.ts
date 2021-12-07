@@ -20,7 +20,7 @@ export const getArticles = async (config?: AxiosRequestConfig) => {
 export const getRecentArticles = async () => {
   return await getArticles({
     params: {
-      _sort: "created_at:desc",
+      _sort: "published_at:desc",
     },
   });
 };
@@ -61,6 +61,7 @@ export const getArticledByInitiativeSlug = async (slug: string) => {
   return await getArticles({
     params: {
       "initiative.slug": slug,
+      _sort: "published_at:desc"
     },
   });
 };
@@ -119,7 +120,14 @@ export const getAnnualReports = async () => {
   return data;
 };
 
-export const getBlogs = async () => {
-  const { data } = await axios.get<Blog[]>("/blogs");
+export const getBlogs = async (config?: AxiosRequestConfig) => {
+  const { data } = await axios.get<Blog[]>("/blogs", config || {});
   return data;
 };
+
+export const getSortedBlogs = async (sort: "asc" | "desc" = "desc") =>
+  getBlogs({
+    params: {
+      _sort: `published_date:${sort}`,
+    },
+  });

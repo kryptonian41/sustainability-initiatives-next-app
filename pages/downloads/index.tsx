@@ -46,7 +46,6 @@ const Downloads: React.FC<Props> = ({ reports }) => {
     <div className="my-20">
       <Container>
         <Heading label="Downloads"></Heading>
-        {console.log(reports)}
         <h3
           className="uppercase mt-10 tablet:text-xl"
           style={{ color: colors.secondary }}
