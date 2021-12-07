@@ -31,7 +31,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 };
 
 const Initiaves: React.FC<Props> = ({ articles, initiative }) => {
-  console.log(articles[0]);
   return (
     <div className="py-20">
       <div className={clsx(styles.heroContainer)}>

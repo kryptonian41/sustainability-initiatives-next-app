@@ -21,24 +21,33 @@ interface Props {
   article: Article;
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await getArticles();
-  const paths = articles
-    .slice(0, Math.min(10, articles.length))
-    .map((article) => `/articles/${article.slug}`);
-  return {
-    paths,
-    fallback: false,
-  };
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const articles = await getArticles();
+//   const paths = articles
+//     .slice(0, Math.min(10, articles.length))
+//     .map((article) => `/articles/${article.slug}`);
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+// export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+//   const { slug } = params;
+//   return {
+//     props: {
+//       article: await getArticleBySlug(slug as string),
+//     },
+//     revalidate: 60000,
+//   };
+// };
+
+export const getServerSideProps = async ({ params }) => {
   const { slug } = params;
   return {
     props: {
       article: await getArticleBySlug(slug as string),
     },
-    revalidate: 60000,
   };
 };
 
@@ -46,9 +55,9 @@ const BlogPage: React.FC<Props> = ({ article }) => {
   const articleDate = useMemo(
     () =>
       `${prettyDate(
-        article.published_date || article.published_at,
+        article.published_date,
         "d MMMM"
-      )} '${prettyDate(article.published_date || article.published_at, "yy")}`,
+      )} '${prettyDate(article.published_date, "yy")}`,
     [article]
   );
   const images = useMemo(() => {
@@ -77,7 +86,7 @@ const BlogPage: React.FC<Props> = ({ article }) => {
             "w-full": !matchesLaptop,
           })}
         >
-          <p className={styles.date}>{articleDate}</p>
+          <p className={styles.date}>{article.published_date ? articleDate : ""}</p>
           <hr className="mt-3" />
           <div
             className={clsx({
