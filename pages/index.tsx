@@ -110,99 +110,99 @@ export const Home: React.FC<
   }, [associates]);
 
   return (
-    <div>
-      <Container
-        className="tablet:mt-14 tablet:px-12 laptop:px-6 tablet:mb-20"
-        fullWidth={matchesPhone}
-      >
-        <div
-          style={{
-            height: "73vh",
-          }}
-        >
-          <HeroSlideShow
-            items={[
-              {
-                imgUrl: "/images/hero_1.jpg",
-                title: "Development made sustainably",
-              },
-              {
-                imgUrl: "/images/hero_2.jpg",
-                title: "Development made sustainably",
-              },
-              {
-                imgUrl: "/images/hero_3.jpg",
-                title: "Development made sustainably",
-              },
-              {
-                imgUrl: "/images/hero_4.jpg",
-                title: "Development made sustainably",
-              },
-              {
-                imgUrl: "/images/hero_5.jpg",
-                title: "Development made sustainably",
-              },
-              {
-                imgUrl: "/images/hero_6.jpg",
-                title: "Development made sustainably",
-              },
-            ]}
-          />
-        </div>
-      </Container>
-      <Container className="my-16 tablet:my-36">
-        <RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
-      </Container>
-      <div className="py-10">
-        <Parallax {...missionSection} />
-      </div>
-      <Container>
-        <div className="my-24">
-          <Heading label="Our Initiatives" />
-          <div className="mt-8">
-            {initiatives && (
-              <div className="flex flex-col justify-center items-center flex-wrap tablet:flex-row tablet:justify-start">
-                {initiatives.map((initiative) => {
-                  return (
-                    <div
-                      className="w-11/12 laptop:w-1/2 my-14 tablet:pr-10"
-                      key={initiative.id}
-                    >
-                      <InitiativeTile initiave={initiative} />
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        </div>
-      </Container>
-      <PhotoGrid
-        items={stakeHolderPhotoGridItems}
-        darkBg
-        heading="The People who make it Possible"
-        itemsPerRow={stakeHolderGridItemsPerRow}
-        className="py-20"
-      />
-      <AssociatesGrid items={associatedPhotoGridItems} />
-      <Container className="py-10 tablet:px-12">
-        <QuotesSlideShow items={quotes} />
-      </Container>
-      <div className="my-16 tablet:my-32">
-        <Parallax {...supportUsSection} />
-      </div>
+		<div>
+			<Container
+				className="tablet:mt-14 tablet:px-12 laptop:px-6 tablet:mb-20"
+				fullWidth={matchesPhone}
+			>
+				<div
+					style={{
+						height: '73vh',
+					}}
+				>
+					<HeroSlideShow
+						items={[
+							{
+								imgUrl: '/images/hero_1.jpg',
+								title: 'Development made sustainably',
+							},
+							{
+								imgUrl: '/images/hero_2.jpg',
+								title: 'Development made sustainably',
+							},
+							{
+								imgUrl: '/images/hero_3.jpg',
+								title: 'Development made sustainably',
+							},
+							{
+								imgUrl: '/images/hero_4.jpg',
+								title: 'Development made sustainably',
+							},
+							{
+								imgUrl: '/images/hero_5.jpg',
+								title: 'Development made sustainably',
+							},
+							{
+								imgUrl: '/images/hero_6.jpg',
+								title: 'Development made sustainably',
+							},
+						]}
+					/>
+				</div>
+			</Container>
+			<Container className="my-16 tablet:my-36">
+				<RecentArticlesGrid articles={recentArticles}></RecentArticlesGrid>
+			</Container>
+			<div>
+				<Parallax {...missionSection} />
+			</div>
+			<Container className="my-16 tablet:my-36">
+				<div>
+					<Heading label="Our Initiatives" />
+					<div className="mt-8">
+						{initiatives && (
+							<div className="flex flex-col justify-center items-center flex-wrap tablet:flex-row tablet:justify-start">
+								{initiatives.map((initiative) => {
+									return (
+										<div
+											className="w-11/12 laptop:w-1/2 my-14 tablet:pr-10"
+											key={initiative.id}
+										>
+											<InitiativeTile initiave={initiative} />
+										</div>
+									)
+								})}
+							</div>
+						)}
+					</div>
+				</div>
+			</Container>
+			<PhotoGrid
+				items={stakeHolderPhotoGridItems}
+				darkBg
+				heading="The People who make it Possible"
+				itemsPerRow={stakeHolderGridItemsPerRow}
+				className="py-20"
+			/>
+			<AssociatesGrid items={associatedPhotoGridItems} />
+			<Container className="tablet:px-12">
+				<QuotesSlideShow items={quotes} />
+			</Container>
+			<div className="my-16 tablet:my-36">
+				<Parallax {...supportUsSection} />
+			</div>
 
-      {/* Social Container, just for mockup */}
-      <Container className="py-10">
-        <Heading label="Join our network" />
-        <div className="py-20 grid gap-8 tablet:grid-cols-3">
-          <img src="/images/Social 1.jpg" />
-          <img src="/images/Social 2.jpg" />
-          <img src="/images/Social 3.jpg" />
-        </div>
-      </Container>
-    </div>
-  );
+			{/* Social Container, just for mockup */}
+			<Container className="pb-10">
+				<Heading label="Join our network" />
+				<div className="py-20 grid gap-8 tablet:grid-cols-3">
+					<img src="/images/Social 1.jpg" />
+					<img src="/images/Social 2.jpg" />
+					<img src="/images/Social 3.jpg" />
+				</div>
+			</Container>
+		</div>
+	)
 };
 
 export default Home;

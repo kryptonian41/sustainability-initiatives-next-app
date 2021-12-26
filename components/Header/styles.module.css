@@ -24,7 +24,7 @@
     .nav > ul {
       @apply flex justify-end;
       > li {
-        @apply relative uppercase font-bold cursor-pointer text-lg;
+        @apply relative uppercase font-bold cursor-pointer text-base desktop:text-lg;
         color: var(--text-dark);
         &:not(:first-child) {
           @apply ml-10;
@@ -65,7 +65,7 @@
           transition: all 0.3s ease;
           opacity: 0;
           li {
-            @apply text-lg normal-case font-normal whitespace-nowrap;
+            @apply  text-base desktop:text-lg normal-case font-normal whitespace-nowrap;
             &:hover {
               color: var(--text-dark);
             }

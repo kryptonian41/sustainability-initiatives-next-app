@@ -48,7 +48,7 @@ export const SlideShow: React.FC<Props> = ({
         </p>
         <p
           className={clsx({
-            ["text-lg mt-4"]: Sizes[size] === Sizes.medium,
+            ["text-lg mt-2"]: Sizes[size] === Sizes.medium,
             ["text-base mt-2"]: Sizes[size] === Sizes.small,
             ["text-xl mt-4"]: Sizes[size] === Sizes.large,
           })}
