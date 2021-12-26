@@ -87,6 +87,7 @@
 
 .mobileSubNavList {
   @apply fixed top-0 right-0 w-3/4 h-full p-12 z-20;
+  overflow-y: auto;
   background: var(--primary);
 
   ul {

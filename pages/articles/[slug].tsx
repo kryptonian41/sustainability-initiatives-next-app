@@ -6,7 +6,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { useMemo } from 'react'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import sanitizeHtml from 'sanitize-html'
-import { getArticleBySlug, getArticles } from 'utils/api/client-side-api'
+import { getArticleBySlug, getRecentArticles } from 'utils/api/client-side-api'
 import { prettyDate } from 'utils/helpers'
 import { useDeviceMediaQuery } from 'utils/hooks/useMediaQuery'
 import { Article } from 'utils/types'
@@ -23,7 +23,7 @@ interface Props {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await getArticles()
+  const articles = await getRecentArticles()
   const paths = articles
     .slice(0, Math.min(10, articles.length))
     .map((article) => `/articles/${article.slug}`)

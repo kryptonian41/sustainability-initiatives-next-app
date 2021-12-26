@@ -7,6 +7,7 @@ import {
 import { StakeHolder, SocialLinks, Article } from 'utils/types'
 import styles from './styles.module.css'
 import { Container } from 'components/Container'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { SocialPanel, SocialItem } from 'components/SocialPanel'
 import { useThemeContext } from 'components/ThemeProvider'
 import Blogs from '../../components/People/Blogs'
@@ -25,20 +26,44 @@ interface Props {
 	stakeHolder: StakeHolder[]
 }
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+	const stakeHolders = await getStakeHolders()
+	const paths = stakeHolders.map((article) => `/people/${article.id}`)
+	return {
+		paths,
+		fallback: 'blocking',
+	}
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 	const { id } = params
 	let stakeHolders = await getStakeHolders()
 	const stakeHolder = await getStakeHolderBySlug(id)
 	if (stakeHolder.length)
 		stakeHolders = stakeHolders.filter((sh) => sh.id !== stakeHolder[0].id)
-
 	return {
 		props: {
 			stakeHolders,
 			stakeHolder,
 		},
+		revalidate: 60000,
 	}
 }
+
+// export const getServerSideProps = async ({ params }) => {
+// 	const { id } = params
+// 	let stakeHolders = await getStakeHolders()
+// 	const stakeHolder = await getStakeHolderBySlug(id)
+// 	if (stakeHolder.length)
+// 		stakeHolders = stakeHolders.filter((sh) => sh.id !== stakeHolder[0].id)
+
+// 	return {
+// 		props: {
+// 			stakeHolders,
+// 			stakeHolder,
+// 		},
+// 	}
+// }
 
 const Icons = {
 	Twitter: TwitterIcon,
