@@ -2,6 +2,7 @@ import AssociatesGrid, { AssociateGridItem } from "components/AssociatesGrid";
 import { Container } from "components/Container";
 import { Heading } from "components/Heading";
 import { HeroSlideShow } from "components/HeroCarousel";
+import InstaFeed from "components/InstaFeed";
 import Parallax, { Props as ParallaxProps } from "components/Parallax";
 import PhotoGrid from "components/PhotoGrid";
 import { GridItemProps } from "components/PhotoGrid/GridPhoto";
@@ -192,15 +193,8 @@ export const Home: React.FC<
 				<Parallax {...supportUsSection} />
 			</div>
 
-			{/* Social Container, just for mockup */}
-			<Container className="pb-10">
-				<Heading label="Join our network" />
-				<div className="py-20 grid gap-8 tablet:grid-cols-3">
-					<img src="/images/Social 1.jpg" />
-					<img src="/images/Social 2.jpg" />
-					<img src="/images/Social 3.jpg" />
-				</div>
-			</Container>
+			{/* Social Container */}
+			<InstaFeed />
 		</div>
 	)
 };
