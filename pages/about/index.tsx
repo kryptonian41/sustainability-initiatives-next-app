@@ -9,6 +9,7 @@ import { StakeHolder } from "utils/types";
 import { GridItemProps } from "components/PhotoGrid/GridPhoto";
 import { useThemeContext } from "components/ThemeProvider";
 import { useMediaQuery } from "utils/hooks/useMediaQuery";
+import SEO from "components/SEO"
 
 interface Props {
   stakeHolders: StakeHolder[];
@@ -48,6 +49,7 @@ const About: React.FC<Props> = ({ stakeHolders }) => {
 
   return (
     <>
+    <SEO title="About Us" />
       <Hero />
       <Promise />
       {stakeHolders.length > 0 && (

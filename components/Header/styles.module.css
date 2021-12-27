@@ -24,7 +24,7 @@
     .nav > ul {
       @apply flex justify-end;
       > li {
-        @apply relative uppercase font-bold cursor-pointer text-lg;
+        @apply relative uppercase font-bold cursor-pointer text-base desktop:text-lg;
         color: var(--text-dark);
         &:not(:first-child) {
           @apply ml-10;
@@ -65,7 +65,7 @@
           transition: all 0.3s ease;
           opacity: 0;
           li {
-            @apply text-lg normal-case font-normal whitespace-nowrap;
+            @apply  text-base desktop:text-lg normal-case font-normal whitespace-nowrap;
             &:hover {
               color: var(--text-dark);
             }
@@ -87,6 +87,7 @@
 
 .mobileSubNavList {
   @apply fixed top-0 right-0 w-3/4 h-full p-12 z-20;
+  overflow-y: auto;
   background: var(--primary);
 
   ul {

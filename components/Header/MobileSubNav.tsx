@@ -38,7 +38,7 @@ export const MobileSubNav = () => {
             {/* <h3 className="text-white text-4xl uppercase text font-thin">
               Menu
             </h3> */}
-            <ul className="mt-10">
+            <ul>
               <MobileSubNavListItem label="About Us" link="/about" />
               <MobileSubNavListItem label="Initiatives">
                 <MobileSubNavListItem

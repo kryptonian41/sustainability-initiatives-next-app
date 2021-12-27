@@ -1,95 +1,98 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
-@import url("https://db.onlinewebfonts.com/c/d51e4b7fd1f8f28effd66c0a894eb8fb?family=Begum");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://db.onlinewebfonts.com/c/d51e4b7fd1f8f28effd66c0a894eb8fb?family=Begum');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html {
+	overflow-x: hidden;
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  overflow-x: hidden;
+	padding: 0;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :root {
-  --primary: #ff881f;
-  --secondary: #984c16;
-  --tertiary: #f6f0eb;
-  --text-dark: #411b00;
-  --text-light: #cb9a76;
-  --text-highlight: #984c16;
-  --primary-font: "Montserrat";
-  --secondary-font: "Begum";
-  --background-primary: #fff;
-  --background-secondary: #f6f0eb;
+	--primary: #ff881f;
+	--secondary: #984c16;
+	--tertiary: #f6f0eb;
+	--text-dark: #411b00;
+	--text-light: #cb9a76;
+	--text-highlight: #984c16;
+	--primary-font: 'Montserrat';
+	--secondary-font: 'Begum';
+	--background-primary: #fff;
+	--background-secondary: #f6f0eb;
 }
 
 .mobile-nav-enter {
-  transform: translateX(100%);
+	transform: translateX(100%);
 }
 
 .mobile-nav-enter-active {
-  transform: translateX(0%);
-  transition: transform 300ms ease-in-out;
+	transform: translateX(0%);
+	transition: transform 300ms ease-in-out;
 }
 
 .mobile-nav-exit {
-  transform: translateX(0%);
+	transform: translateX(0%);
 }
 
 .mobile-nav-exit-active {
-  transform: translateX(100%);
-  transition: transform 300ms ease-in-out;
+	transform: translateX(100%);
+	transition: transform 300ms ease-in-out;
 }
 
 .mobile-nav-overlay-enter {
-  opacity: 0;
+	opacity: 0;
 }
 
 .mobile-nav-overlay-enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in-out;
+	opacity: 1;
+	transition: opacity 300ms ease-in-out;
 }
 
 .mobile-nav-overlay-exit {
-  opacity: 1;
+	opacity: 1;
 }
 
 .mobile-nav-overlay-exit-active {
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
 }
 
 .filter-list-enter {
-  opacity: 0;
+	opacity: 0;
 }
 .filter-list-enter-active {
-  opacity: 1;
-  transition: opacity 0.3s ease;
+	opacity: 1;
+	transition: opacity 0.3s ease;
 }
 .filter-list-exit {
-  opacity: 1;
+	opacity: 1;
 }
 
 .filter-list-exit-active {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+	opacity: 0;
+	transition: opacity 0.3s ease;
 }
 
 .react-share__ShareButton {
-  svg {
-    width: 20px;
-    height: 20px;
-  }
+	svg {
+		width: 20px;
+		height: 20px;
+	}
 }

@@ -61,7 +61,7 @@
 .quoteSlide {
   @apply tablet:px-32 tablet:text-center;
   .quote {
-    @apply relative overflow-visible pt-20 pb-10 text-lg tablet:py-20 tablet:px-10 tablet:text-xl laptop:text-3xl;
+    @apply relative overflow-visible pt-20 pb-10 text-lg tablet:py-20 tablet:px-10 tablet:text-xl laptop:text-2xl desktop:text-3xl;
     &::before,
     &::after {
       @apply absolute;

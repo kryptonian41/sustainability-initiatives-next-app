@@ -61,7 +61,7 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
   }, [])
 
   return (
-    <div className="my-20 tablet:my-32">
+    <div className="my-20 tablet:my-36">
       <Container className="overflow-hidden">
 
         <Heading

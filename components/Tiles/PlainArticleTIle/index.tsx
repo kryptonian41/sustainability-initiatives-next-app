@@ -19,7 +19,7 @@ export const PlainArticleTile: React.FC<PlainArticleTileProps> = ({
           : ""}
       </p>
       <p className={styles.summary}>
-        {article.summary.slice(0, 90)}......
+        {article.summary.slice(0, 65)}...
         <Link href={`/articles/${article.slug}`}>
           <span className="cursor-pointer">&nbsp; Read More &gt;</span>
         </Link>
