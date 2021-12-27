@@ -55,7 +55,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
     currentPage,
   } = usePagination({
     totalItems: articles.length,
-    initialItemsPerPage: 8,
+    initialItemsPerPage: 9,
     initialPageNumber: 1,
   });
   const [_articles, setArticles] = useState([...articles]);
