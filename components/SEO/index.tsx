@@ -25,6 +25,7 @@ const SEO: React.FC<Props> = ({ title, keywords, description }) => {
 				content={description ? description : globalDesc}
 			/>
 			<meta charSet="utf-8" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossOrigin="anonymous" />
 			<link rel="icon" href="/favicon.ico" />
 			<link rel="apple-touch-icon" href="/favicon.ico" />
 			<link

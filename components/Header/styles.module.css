@@ -1,5 +1,6 @@
 .container {
   @apply py-4 flex items-center desktop:py-7 -mb-7;
+  transition: all 2s ease-in-out;
   svg.logo {
     width: 64px;
     height: auto;
@@ -8,18 +9,23 @@
       width: 100px;
     }
   }
+  svg.altLogo {
+    width: 45px;
+    height: auto;
+
+    @media screen and (min-width: 1024px) {
+      width: 60px;
+    }
+  }
   .body {
     @apply flex-1 flex flex-col justify-end;
     .sub-nav {
-      @apply flex justify-end items-center;
+      @apply flex justify-end items-center mb-8;
       svg {
         @apply ml-8;
         width: 30px;
         height: auto;
       }
-    }
-    .nav {
-      @apply mt-8;
     }
     .nav > ul {
       @apply flex justify-end;
