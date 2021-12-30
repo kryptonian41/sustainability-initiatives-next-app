@@ -9,6 +9,7 @@ import SearchIcon from '../../assets/svgs/search-icon.svg'
 import { Button } from '../Button'
 import { MobileSubNav } from './MobileSubNav'
 import styles from './styles.module.css'
+import Search from "components/Algolia/Search"
 
 interface Props {}
 
@@ -52,6 +53,8 @@ const DesktopSubNav = ({ showSubNav }) => {
 		window.scroll({ behavior: 'smooth', top })
 	}, [])
 
+	const [showSearch, setShowSearch] = useState<boolean>(false)
+
 	return (
 		<div className={styles.body}>
 			{showSubNav && (
@@ -60,7 +63,9 @@ const DesktopSubNav = ({ showSubNav }) => {
 						<Link href="/downloads">DOWNLOADS</Link>
 					</Button>
 					{/* <Button className="ml-4 font-medium">GET IN TOUCH</Button> */}
-					<SearchIcon />
+					<button onClick={() => setShowSearch(true)}>
+						<SearchIcon />
+					</button>
 				</div>
 			)}
 			<div className={styles.nav}>
@@ -90,6 +95,7 @@ const DesktopSubNav = ({ showSubNav }) => {
 					<li onClick={scrollToFooter}>Contact</li>
 				</ul>
 			</div>
+			<Search showSearch={showSearch} onClose={() => setShowSearch(false)} />
 		</div>
 	)
 }
