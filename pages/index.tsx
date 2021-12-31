@@ -94,8 +94,12 @@ export const Home: React.FC<
 					imageContainerStyles: {
 						height: 155,
 						display: 'flex',
-						alignItems: 'center',
+						alignContent: 'center',
+						justifyContent: 'center',
 					},
+					imageStyles: {
+						objectFit: 'contain'
+					}
 				},
 				key: associate.id,
 				associate,
