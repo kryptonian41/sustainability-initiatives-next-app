@@ -24,7 +24,7 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
   const [isModalopen, setIsModalopen] = useState(false)
   const [selectedAssociate, setSelectedAssociate] = useState(null)
   const { breakpoints } = useThemeContext();
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`).matches
+  const isLaptop = useMediaQuery(`(min-width: ${breakpoints.laptop}px)`).matches
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`).matches
   const sliderRef = useRef(null);
 
@@ -61,53 +61,55 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
   }, [])
 
   return (
-    <div className="my-20 tablet:my-32">
-      <Container className="overflow-hidden">
+		<div className="my-20 tablet:my-36">
+			<Container className="overflow-hidden">
+				<Heading
+					label="Associates who stand with us: Our Support Partners"
+					actions={isLaptop ? <ActionBtns sliderRef={sliderRef} /> : null}
+				/>
 
-        <Heading
-          label="Associates who stand with us"
-          actions={isDesktop ? <ActionBtns sliderRef={sliderRef} /> : null}
-        />
+				<Slider
+					{...sliderSettings}
+					ref={sliderRef}
+					className={clsx(styles.slider, isTablet && '-mr-8', 'my-20')}
+				>
+					{items.map(({ className, titleClasses, associate, ...restProps }) => (
+						<GridItem
+							{...restProps}
+							className={clsx(isTablet && 'pr-8', className)}
+							titleClasses={clsx(!isTablet && 'text-center', titleClasses)}
+						/>
+					))}
+				</Slider>
 
-        <Slider
-          {...sliderSettings}
-          ref={sliderRef}
-          className={clsx(styles.slider, "my-20")}
-        >
-          {items.map(({ className, titleClasses, associate, ...restProps }) => (
-            <GridItem
-              {...restProps}
-              className={clsx(isTablet && "pr-8", className)}
-              titleClasses={clsx(!isTablet && "text-center", titleClasses)}
-              onClick={handleModalOpen(associate)}
-            />
-          ))}
-        </Slider>
+				<div
+					className={clsx(
+						'mt-6',
+						isLaptop && 'text-right',
+						isTablet && !isLaptop && 'flex justify-between',
+						!isTablet && !isLaptop && 'text-center'
+					)}
+				>
+					{isTablet && !isLaptop && <ActionBtns sliderRef={sliderRef} />}
+					{!isTablet ? (
+						<SolidButton>
+							<Link href="/associates">View All</Link>
+						</SolidButton>
+					) : (
+						<OutlineButton>
+							<Link href="/associates">View All</Link>
+						</OutlineButton>
+					)}
+				</div>
 
-        <div
-          className={clsx(
-            "mt-6",
-            isDesktop && "text-right",
-            isTablet && !isDesktop && "flex justify-between",
-            !isTablet && !isDesktop && "text-center"
-          )}
-        >
-          {isTablet && !isDesktop && <ActionBtns sliderRef={sliderRef} />}
-          {!isTablet ? (
-            <SolidButton>
-              <Link href="/associates">View All</Link>
-            </SolidButton>
-          ) : (
-            <OutlineButton>
-              <Link href="/associates">View All</Link>
-            </OutlineButton>
-          )}
-        </div>
-
-        <AssociateModal isOpen={isModalopen} associate={selectedAssociate} onClose={handleModalClose} />
-      </Container>
-    </div>
-  );
+				<AssociateModal
+					isOpen={isModalopen}
+					associate={selectedAssociate}
+					onClose={handleModalClose}
+				/>
+			</Container>
+		</div>
+	)
 };
 
 export default AssociatesGrid;

@@ -66,9 +66,12 @@
     }
   }
   .bodyContainer {
-    @apply absolute bottom-16 left-8 text-white;
+    @apply absolute left-8 text-white;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 10;
-    width: 300px;
+    width: 80%;
+    max-width: 350px;
     font-family: var(--secondary-font);
   }
 }

@@ -1,104 +1,113 @@
 .root {
-  position: relative;
-  @apply pt-96 pb-10;
-  .bgImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    @apply object-cover;
-    z-index: -1;
-  }
-  .container {
-    .content {
-      display: grid;
-      grid-template-columns: 1.2fr 1.8fr;
-      color: white;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--text-light);
-      padding-bottom: 1.5rem;
-      @media (max-width: 1024px) {
-        grid-template-columns: 100%;
-      }
-      .contentOne {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+	position: relative;
+	@apply pb-10 -mt-20;
+	padding-top: 30rem;
 
-        .socialLinks {
-          display: flex;
-          margin-top: 1rem;
+  @media screen and (max-width: 1024px) {
+		margin-top: -10rem;
+	}
 
-          svg {
-            margin-right: 0.5rem;
-          }
-        }
+	@media screen and (max-width: 768px) {
+		margin-top: -15rem;
+	}
+	.bgImage {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		@apply object-cover;
+		z-index: -1;
+	}
+	.container {
+		.content {
+			display: grid;
+			grid-template-columns: 1.2fr 1.8fr;
+			color: white;
+			margin-bottom: 1rem;
+			border-bottom: 2px solid var(--text-light);
+			padding-bottom: 1.5rem;
+			@media (max-width: 1024px) {
+				grid-template-columns: 100%;
+			}
+			.contentOne {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
 
-        p {
-          margin-bottom: 0.5rem;
-        }
-      }
+				.socialLinks {
+					display: flex;
+					margin-top: 1rem;
 
-      .contentTwo {
-        .newsletter {
-          display: flex;
-          border-bottom: 2px solid var(--text-light);
-          padding-bottom: 1.5rem;
-          @media (max-width: 1024px) {
-            @apply mt-10;
-            flex-wrap: wrap;
-          }
-          .heading {
-            margin-right: 1rem;
-            margin-top: -0.4rem;
-            flex-shrink: 0;
-            h4 {
-              font-size: 1.2rem;
-            }
+					svg {
+						margin-right: 0.5rem;
+					}
+				}
 
-            p {
-              font-size: 0.8rem;
-            }
-          }
+				p {
+					margin-bottom: 0.5rem;
+				}
+			}
 
-          .form {
-            display: flex;
-            width: 100%;
-            align-items: flex-start;
-            input {
-              width: 100%;
-              margin-right: 0.5rem;
-              padding: 0.25rem 0.5rem;
-            }
-            @media (max-width: 1024px) {
-              @apply mt-6;
-            }
-          }
-        }
+			.contentTwo {
+				.newsletter {
+					display: flex;
+					border-bottom: 2px solid var(--text-light);
+					padding-bottom: 1.5rem;
+					@media (max-width: 1024px) {
+						@apply mt-10;
+						flex-wrap: wrap;
+					}
+					.heading {
+						margin-right: 1rem;
+						margin-top: -0.4rem;
+						flex-shrink: 0;
+						h4 {
+							font-size: 1.2rem;
+						}
 
-        .address {
-          display: grid;
-          grid-template-columns: 1.3fr 1.7fr;
-          padding-top: 1.5rem;
-          @media (max-width: 1024px) {
-            grid-template-columns: 100%;
-            grid-gap: 2rem;
-          }
-          p {
-            margin-bottom: 0.5rem;
-          }
-        }
-      }
-    }
+						p {
+							font-size: 0.8rem;
+						}
+					}
 
-    .copyright {
-      color: white;
-      display: flex;
-      margin-bottom: 2rem;
+					.form {
+						display: flex;
+						width: 100%;
+						align-items: flex-start;
+						input {
+							width: 100%;
+							margin-right: 0.5rem;
+							padding: 0.25rem 0.5rem;
+						}
+						@media (max-width: 1024px) {
+							@apply mt-6;
+						}
+					}
+				}
 
-      p {
-        margin-right: 2rem;
-      }
-    }
-  }
+				.address {
+					display: grid;
+					grid-template-columns: 1.3fr 1.7fr;
+					padding-top: 1.5rem;
+					@media (max-width: 1024px) {
+						grid-template-columns: 100%;
+						grid-gap: 2rem;
+					}
+					p {
+						margin-bottom: 0.5rem;
+					}
+				}
+			}
+		}
+
+		.copyright {
+			color: white;
+			display: flex;
+			margin-bottom: 2rem;
+
+			p {
+				margin-right: 2rem;
+			}
+		}
+	}
 }

@@ -15,7 +15,7 @@ export const MobileSubNav = () => {
 
   return (
     <div className={clsx("flex-1 flex justify-end")}>
-      <HamburgerIcon className="w-14 cursor-pointer" onClick={toggleNav} />
+      <HamburgerIcon className="w-6 h-6 cursor-pointer" onClick={toggleNav} />
       <Portal>
         <CSSTransition
           in={showNav}
@@ -35,10 +35,10 @@ export const MobileSubNav = () => {
           unmountOnExit
         >
           <div className={styles.mobileSubNavList}>
-            <h3 className="text-white text-4xl uppercase text font-thin">
+            {/* <h3 className="text-white text-4xl uppercase text font-thin">
               Menu
-            </h3>
-            <ul className="mt-10">
+            </h3> */}
+            <ul>
               <MobileSubNavListItem label="About Us" link="/about" />
               <MobileSubNavListItem label="Initiatives">
                 <MobileSubNavListItem
@@ -54,24 +54,26 @@ export const MobileSubNav = () => {
                   link="/initiatives/research-and-publication"
                 />
                 <MobileSubNavListItem
-                  label="Other Activities"
-                  link="/initiatives/other-activities"
+                  label="Community Contributions"
+                  link="/initiatives/community-contributions"
                 />
                 check
               </MobileSubNavListItem>
               <MobileSubNavListItem label="Associates" link="/associates" />
+              <li>SETU</li>
               <MobileSubNavListItem label="Support" link="/support" />
+              <MobileSubNavListItem label="Blogs" link="/blogs" />
               <MobileSubNavListItem label="Contact" link="/contact" />
               <MobileSubNavListItem label="Downloads" link="/downloads" />
             </ul>
-            <div className="mt-20">
+            {/* <div className="mt-20">
               <Button
                 className={styles.contactButton}
                 type="outline"
                 label="GET IN TOUCH"
                 light
               />
-            </div>
+            </div> */}
           </div>
         </CSSTransition>
       </Portal>

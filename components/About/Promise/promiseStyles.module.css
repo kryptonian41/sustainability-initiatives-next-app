@@ -13,6 +13,12 @@
     }
 
     .sectionContainer {
+      @media screen and (min-width: 1024px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
       h3 {
         @apply text-2xl;
         color: var(--secondary);

@@ -61,7 +61,7 @@
 .quoteSlide {
   @apply tablet:px-32 tablet:text-center;
   .quote {
-    @apply relative overflow-visible pt-20 pb-10 text-lg tablet:py-20 tablet:px-10 tablet:text-xl laptop:text-3xl;
+    @apply relative overflow-visible pt-20 pb-10 text-lg tablet:py-20 tablet:px-10 tablet:text-xl laptop:text-2xl desktop:text-3xl;
     &::before,
     &::after {
       @apply absolute;
@@ -76,7 +76,7 @@
     }
     &::before {
       top: 150px;
-      left: 0px;
+      left: -80px;
       @media (max-width: 640px) {
         top: 80px;
         left: 0px;
@@ -84,7 +84,7 @@
     }
     &::after {
       transform: rotateZ(180deg);
-      right: 250px;
+      bottom: 150px;
       @media (max-width: 640px) {
         bottom: 80px;
         right: 0px;

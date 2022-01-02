@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import Link from 'next/link';
+import { Container } from "components/Container";
+import Link from "next/link";
 import React from "react";
 import { ParallaxBanner, ParallaxProvider } from "react-scroll-parallax";
 import { Button } from "../Button";
@@ -10,7 +11,7 @@ export interface Props {
   title: string;
   subTitle?: string;
   btnContent: string | React.ReactNode;
-  btnLink?: string
+  btnLink?: string;
 }
 
 const Parallax = ({
@@ -19,7 +20,7 @@ const Parallax = ({
   subTitle,
   btnContent,
   isLight = false,
-  btnLink
+  btnLink,
 }: Props) => {
   return (
     <ParallaxProvider>
@@ -40,22 +41,26 @@ const Parallax = ({
               : "linear-gradient(90deg, rgba(0,0,0,0.8) 30%, transparent)",
           }}
         />
-        <div className={styles['content-wrapper']}>
+        <div className={styles["content-wrapper"]}>
           <div
             className={clsx(styles.content, {
-              [styles.light]: isLight
+              [styles.light]: isLight,
             })}
           >
-            <div>
+            <div className="py-8">
               {title && <h3>{title}</h3>}
               {subTitle && <p>{subTitle}</p>}
-              {btnContent && (btnLink ? <Link href={btnLink}>
-                <Button>{btnContent}</Button>
-              </Link> : <Button>{btnContent}</Button>)}
+              {btnContent &&
+                (btnLink ? (
+                  <Link href={btnLink}>
+                    <Button>{btnContent}</Button>
+                  </Link>
+                ) : (
+                  <Button>{btnContent}</Button>
+                ))}
             </div>
           </div>
         </div>
-
       </ParallaxBanner>
     </ParallaxProvider>
   );

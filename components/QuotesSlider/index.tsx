@@ -27,7 +27,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ quotes, sliderProps = {} }) => {
   const { breakpoints } = useThemeContext();
-  const matchesPhone = useDeviceMediaQuery('phone')
+  const matchesPhone = useDeviceMediaQuery("phone");
 
   const carouselSettings = useMemo(() => {
     return {

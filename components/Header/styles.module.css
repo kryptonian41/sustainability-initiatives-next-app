@@ -1,26 +1,36 @@
 .container {
-  @apply py-4 flex items-center laptop:pt-10;
+  @apply py-4 flex items-center desktop:py-7 -mb-7;
+  transition: all 2s ease-in-out;
   svg.logo {
-    width: 100px;
+    width: 64px;
     height: auto;
+
+    @media screen and (min-width: 1024px) {
+      width: 100px;
+    }
+  }
+  svg.altLogo {
+    width: 45px;
+    height: auto;
+
+    @media screen and (min-width: 1024px) {
+      width: 60px;
+    }
   }
   .body {
     @apply flex-1 flex flex-col justify-end;
     .sub-nav {
-      @apply flex justify-end items-center;
+      @apply flex justify-end items-center mb-8;
       svg {
         @apply ml-8;
         width: 30px;
         height: auto;
       }
     }
-    .nav {
-      @apply mt-8;
-    }
     .nav > ul {
       @apply flex justify-end;
       > li {
-        @apply relative uppercase font-bold cursor-pointer text-lg;
+        @apply relative uppercase font-bold cursor-pointer text-base desktop:text-lg;
         color: var(--text-dark);
         &:not(:first-child) {
           @apply ml-10;
@@ -61,7 +71,7 @@
           transition: all 0.3s ease;
           opacity: 0;
           li {
-            @apply text-lg normal-case font-normal whitespace-nowrap;
+            @apply  text-base desktop:text-lg normal-case font-normal whitespace-nowrap;
             &:hover {
               color: var(--text-dark);
             }
@@ -83,10 +93,11 @@
 
 .mobileSubNavList {
   @apply fixed top-0 right-0 w-3/4 h-full p-12 z-20;
+  overflow-y: auto;
   background: var(--primary);
 
   ul {
-    @apply text-white uppercase text-xl;
+    @apply text-white uppercase;
     li:not(:first-child) {
       @apply mt-10;
     }

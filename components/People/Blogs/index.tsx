@@ -1,21 +1,19 @@
 import React from "react";
 import clsx from "clsx";
-import { Article } from "utils/types";
+import { Blog } from "utils/types";
 import styles from "./styles.module.css";
 import Link from "next/link";
 
 interface Props {
-  articles: Article[];
+  blogs: Blog[];
   dateColor: string;
   displayViewMore: boolean;
-  authorId: number;
 }
 
 const Blogs: React.FC<Props> = ({
-  articles,
+  blogs,
   dateColor,
   displayViewMore,
-  authorId,
 }) => {
   const BlogSummary = (title: string, date: string) => {
     const dateObj = new Date(date);
@@ -34,21 +32,19 @@ const Blogs: React.FC<Props> = ({
       <hr />
       <div className="py-8">
         <h2 className={clsx("text-xl uppercase mb-6", styles.title)}>Blogs</h2>
-        {articles.map((article, index) => (
-          <Link href={`/blog/${article.slug}`} key={index}>
+        {blogs.map((blog, index) => (
+          <a href={blog.url} target="_blank" key={blog.id}>
             <div className="cursor-pointer">
-              {BlogSummary(article.title, article.published_at)}
-              {index < articles.length - 1 && (
+              {BlogSummary(blog.title, blog.published_date)}
+              {index < blogs.length - 1 && (
                 <hr style={{ borderColor: dateColor }} />
               )}
             </div>
-          </Link>
+          </a>
         ))}
         {displayViewMore && (
           <div className={styles.link}>
-            <Link href={`/articles?authourId=${authorId}`}>
-              More Articles &gt;
-            </Link>
+            <Link href="/blogs">More Articles &gt;</Link>
           </div>
         )}
       </div>

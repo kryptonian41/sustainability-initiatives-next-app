@@ -6,9 +6,11 @@ import Twitter from "../../assets/svgs/footer-twitter.svg";
 import YT from "../../assets/svgs/footer-yt.svg";
 import FB from "../../assets/svgs/footer-fb.svg";
 import Insta from "../../assets/svgs/footer-insta.svg";
+import LinkedIn from "../../assets/svgs/footer-linkedin.svg";
 import styles from "./styles.module.css";
 import { Container } from "../Container";
-import FooterBg from 'assets/images/footer.png'
+import Link from "next/link";
+import FooterBg from "assets/images/footer.png";
 
 const Footer = () => {
   return (
@@ -20,18 +22,44 @@ const Footer = () => {
             <div className={styles.contentOne}>
               <Logo />
               <div>
-                <p>Home</p>
-                <p>About Us</p>
-                <p>Associates</p>
-                <p>Initiatives</p>
-                <p>Downloads</p>
-                <p>Support</p>
-                <p>Blog</p>
+                <p>
+                  <Link href="/">Home</Link>
+                </p>
+                <p>
+                  <Link href="/about">About Us</Link>
+                </p>
+                <p>
+                  <Link href="/associates">Associates</Link>
+                </p>
+                {/* <p>Initiatives</p> */}
+                <p>
+                  <Link href="/downloads">Downloads</Link>
+                </p>
+                <p>
+                  <Link href="/support">Support</Link>
+                </p>
+                <p>
+                  <Link href="/blogs">Blogs</Link>
+                </p>
                 <div className={styles.socialLinks}>
-                  <Twitter />
-                  <YT />
-                  <FB />
-                  <Insta />
+                  <a
+                    href="https://www.linkedin.com/company/sustainability-initiatives-pune/"
+                    target="_blank"
+                  >
+                    <LinkedIn />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/sustainability.initiatives"
+                    target="_blank"
+                  >
+                    <FB />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/sustainabilityinitiatives/"
+                    target="_blank"
+                  >
+                    <Insta />
+                  </a>
                 </div>
               </div>
             </div>
@@ -53,11 +81,14 @@ const Footer = () => {
                   <p>
                     Correspondence address:
                     <br />
-                    73/2 Bhakti Marg, Off Law
+                    5th Floor, Next Gen Avenue, Su. No 103(p),
                     <br />
-                    College Road, Pune 411 004,
+                    CTS no 2850, Bahiratwadi, Off, Senapati Bapat Rd, Near Icc
+                    Trade Tower,
                     <br />
-                    Maharashtra, India
+                    Bahiratwadi, Pune,
+                    <br />
+                    Maharashtra 411016, India
                   </p>
                 </div>
                 <div>

@@ -10,9 +10,15 @@ export interface Props {
 const Section: React.FC<Props> = ({ title, desc, imgSrc }) => {
   return (
     <div className={promistStyles.sectionContainer}>
-      <h3>{title}</h3>
-      <p>{desc}</p>
-      <img src={imgSrc} alt={title} className="-mx-4 w-screen max-w-none tablet:-m-0 tablet:max-w-full tablet:mt-16" />
+      <div>
+        <h3>{title}</h3>
+        <p>{desc}</p>
+      </div>
+      <img
+        src={imgSrc}
+        alt={title}
+        className="-mx-4 w-screen max-w-none tablet:-m-0 tablet:max-w-full tablet:mt-16"
+      />
     </div>
   );
 };
