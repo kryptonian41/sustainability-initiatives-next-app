@@ -38,6 +38,9 @@
       font-size: 2rem;
       line-height: 2rem;
     }
+    @media screen and (min-width: 1536px) {
+      @apply text-4xl
+    }
   }
 
   p {

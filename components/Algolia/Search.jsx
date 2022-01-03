@@ -10,8 +10,8 @@ import {
 import Link from 'next/link'
 
 const searchClient = algoliasearch(
-	'VVU6QVGRGK',
-	'1c9f93c2dc5960b701a909eafbdaea2d'
+	process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID,
+	process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY
 )
 
 const Search = ({ showSearch, onClose }) => {
@@ -19,7 +19,7 @@ const Search = ({ showSearch, onClose }) => {
 		return (
 			<div>
 				<Link href={`/articles/${hit.slug}`}>
-					<div onClick={onClose}>
+					<div onClick={onClose} className="cursor-pointer">
 						<h4 className="font-bold">
 							<Highlight attribute="title" hit={hit} tagName="mark" />
 						</h4>
@@ -33,7 +33,6 @@ const Search = ({ showSearch, onClose }) => {
 						<p className="text-sm">
 							<Highlight attribute="summary" hit={hit} tagName="mark" />
 						</p>
-						{/* <p className='text-xs italic'>in {hit.initiative?.title}</p> */}
 					</div>
 				</Link>
 			</div>
