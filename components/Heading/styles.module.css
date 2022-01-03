@@ -1,21 +1,24 @@
 .container {
-  @apply flex items-center flex-wrap text-2xl;
-  font-family: var(--secondary-font);
-  color: var(--text-dark);
-  :global(.whitespace) {
-    margin-left: 10px;
-  }
+	@apply flex items-center flex-wrap text-2xl;
+	font-family: var(--secondary-font);
+	color: var(--text-dark);
+	:global(.whitespace) {
+		margin-left: 10px;
+	}
 
-  @media (min-width: 768px) {
-    @apply text-4xl;
-  }
-  .line {
-    content: "";
-    height: 2px;
-    background: var(--text-light);
-    @apply flex-1 ml-4 inline;
-  }
-  .actionsContainer {
-    @apply ml-6;
-  }
+	@media (min-width: 768px) {
+		font-size: 2rem;
+	}
+	@media screen and (min-width: 1536px) {
+		@apply text-4xl;
+	}
+	.line {
+		content: '';
+		height: 2px;
+		background: var(--text-light);
+		@apply flex-1 ml-4 inline;
+	}
+	.actionsContainer {
+		@apply ml-6;
+	}
 }

@@ -19,7 +19,7 @@ const Search = ({ showSearch, onClose }) => {
 		return (
 			<div>
 				<Link href={`/articles/${hit.slug}`}>
-					<div onClick={onClose}>
+					<div onClick={onClose} className="cursor-pointer">
 						<h4 className="font-bold">
 							<Highlight attribute="title" hit={hit} tagName="mark" />
 						</h4>
@@ -33,7 +33,6 @@ const Search = ({ showSearch, onClose }) => {
 						<p className="text-sm">
 							<Highlight attribute="summary" hit={hit} tagName="mark" />
 						</p>
-						{/* <p className='text-xs italic'>in {hit.initiative?.title}</p> */}
 					</div>
 				</Link>
 			</div>

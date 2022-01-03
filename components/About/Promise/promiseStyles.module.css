@@ -1,46 +1,49 @@
 .background {
-  background-color: var(--tertiary);
+	background-color: var(--tertiary);
 
-  .container {
-    padding: 6rem 0 8rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 5rem;
+	.container {
+		padding: 6rem 0 8rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 5rem;
 
-    @media screen and (min-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
+		@media screen and (min-width: 1024px) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+		}
 
-    .sectionContainer {
-      @media screen and (min-width: 1024px) {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
+		.sectionContainer {
+			@media screen and (min-width: 1024px) {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
 
-      h3 {
-        @apply text-2xl;
-        color: var(--secondary);
-        font-family: var(--secondary-font);
-        margin-bottom: 1.5rem;
-        @media screen and (min-width: 768px) {
-          @apply text-4xl;
-        }
-      }
+			h3 {
+				@apply text-2xl;
+				color: var(--secondary);
+				font-family: var(--secondary-font);
+				margin-bottom: 1.5rem;
+				@media screen and (min-width: 768px) {
+					font-size: 2rem;
+				}
+				@media screen and (min-width: 1536px) {
+					@apply text-4xl;
+				}
+			}
 
-      p {
-        @apply text-sm;
-        margin-bottom: 1.5rem;
+			p {
+				@apply text-sm;
+				margin-bottom: 1.5rem;
 
-        @media screen and (min-width: 768px) {
-          @apply text-base;
-        }
-      }
+				@media screen and (min-width: 768px) {
+					@apply text-base;
+				}
+			}
 
-      img {
-        object-fit: cover;
-      }
-    }
-  }
+			img {
+				object-fit: cover;
+			}
+		}
+	}
 }
