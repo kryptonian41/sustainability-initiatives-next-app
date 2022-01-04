@@ -112,10 +112,10 @@ a {
 }
 
 .ais-SearchBox {
-	width: 70vw
+	width: 70vw;
 }
 
 .ais-InfiniteHits {
-    max-height: 55vh;
-    overflow-y: auto;
+	max-height: 55vh;
+	overflow-y: auto;
 }

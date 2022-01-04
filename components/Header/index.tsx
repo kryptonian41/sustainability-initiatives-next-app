@@ -9,7 +9,7 @@ import SearchIcon from '../../assets/svgs/search-icon.svg'
 import { Button } from '../Button'
 import { MobileSubNav } from './MobileSubNav'
 import styles from './styles.module.css'
-import Search from "components/Algolia/Search"
+import Search from 'components/Algolia/Search'
 
 interface Props {}
 
@@ -17,9 +17,8 @@ export const Header = () => {
 	const matchesLaptop = useDeviceMediaQuery('laptop')
 	const [showAltLogo, setShowAltLogo] = useState<boolean>(false)
 	const handleShowAltLogo = () => {
-		if (window.scrollY > 300) {
-			setShowAltLogo(true)
-		} else setShowAltLogo(false)
+		if (window.scrollY > 300) setShowAltLogo(true)
+		else if (window.scrollY < 200) setShowAltLogo(false)
 	}
 	useEffect(() => {
 		window.addEventListener('scroll', handleShowAltLogo)
