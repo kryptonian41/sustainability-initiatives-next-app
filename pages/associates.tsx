@@ -4,6 +4,7 @@ import AssociateModal from 'components/Modal/AssociateModal'
 import Pagination from 'components/Pagination'
 import PhotoGrid from 'components/PhotoGrid'
 import { GridItemProps } from 'components/PhotoGrid/GridPhoto'
+import SEO from 'components/SEO'
 import { useThemeContext } from 'components/ThemeProvider'
 import { GetStaticProps } from 'next'
 import React, {
@@ -26,6 +27,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 		props: {
 			associates: await getAssociates(),
 		},
+		revalidate: 60000,
 	}
 }
 
@@ -126,43 +128,46 @@ const Associates: React.FC<Props> = ({ associates }) => {
 	}, [isTablet, isLaptop])
 
 	return (
-		<div className="mb-16">
-			<div className="py-20">
-				<PhotoGrid
-					items={paginatedItems}
-					heading="Our Associates"
-					itemsPerRow={itemsPerRow}
-					containerStyles={{
-						// @ts-ignore
-						'--gap': '3rem',
-						gridRowGap: '5rem',
-						marginTop: 90,
-						alignItems: 'baseline',
-					}}
+		<>
+			<SEO title="Associates" />
+			<div className="mb-16">
+				<div className="py-20">
+					<PhotoGrid
+						items={paginatedItems}
+						heading="Our Associates"
+						itemsPerRow={itemsPerRow}
+						containerStyles={{
+							// @ts-ignore
+							'--gap': '3rem',
+							gridRowGap: '5rem',
+							marginTop: 90,
+							alignItems: 'baseline',
+						}}
+					/>
+
+					{showPaginationBar && (
+						<Container>
+							<div className="mt-20">
+								<Pagination
+									numberOfPages={numberOfPages}
+									selectedPage={currentPage}
+									prevClickAction={createPaginationActionHandler('prev')}
+									nextClickAction={createPaginationActionHandler('next')}
+									pageBtnAction={createPaginationActionHandler('number')}
+									isCentered={!isLaptop}
+								/>
+							</div>
+						</Container>
+					)}
+				</div>
+
+				<AssociateModal
+					isOpen={isModalopen}
+					associate={selectedAssociate}
+					onClose={handleModalClose}
 				/>
-
-				{showPaginationBar && (
-					<Container>
-						<div className="mt-20">
-							<Pagination
-								numberOfPages={numberOfPages}
-								selectedPage={currentPage}
-								prevClickAction={createPaginationActionHandler('prev')}
-								nextClickAction={createPaginationActionHandler('next')}
-								pageBtnAction={createPaginationActionHandler('number')}
-								isCentered={!isLaptop}
-							/>
-						</div>
-					</Container>
-				)}
 			</div>
-
-			<AssociateModal
-				isOpen={isModalopen}
-				associate={selectedAssociate}
-				onClose={handleModalClose}
-			/>
-		</div>
+		</>
 	)
 }
 
