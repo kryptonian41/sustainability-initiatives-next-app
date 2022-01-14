@@ -1,94 +1,97 @@
-import { useMemo, useRef } from "react";
-import { Heading } from "../Heading";
-import { GridItemProps, GridItem } from "./GridPhoto";
-import styles from "./styles.module.css";
-import { Container } from "../Container";
-import Slider from "react-slick";
-import ActionBtns from "./ActionBtns";
-import clsx from "clsx";
+import { useMemo, useRef } from 'react'
+import { Heading } from '../Heading'
+import { GridItemProps, GridItem } from './GridPhoto'
+import styles from './styles.module.css'
+import { Container } from '../Container'
+import Slider from 'react-slick'
+import ActionBtns from './ActionBtns'
+import clsx from 'clsx'
 
 type Props = {
-  items: GridItemProps[];
-  heading?: string;
-  itemsPerRow?: number;
-  itemsToShowInSlider?: number;
-  withAction?: boolean;
-  darkBg?: boolean;
-  containerStyles?: React.CSSProperties;
-  className?: string;
-  openItemOnNewPage?: boolean;
-};
+	items: GridItemProps[]
+	heading?: string
+	itemsPerRow?: number
+	itemsToShowInSlider?: number
+	withAction?: boolean
+	darkBg?: boolean
+	containerStyles?: React.CSSProperties
+	className?: string
+	openItemOnNewPage?: boolean
+	titleClasses?: string
+}
 
 const PhotoGrid: React.FC<Props> = ({
-  items,
-  heading,
-  itemsPerRow = 5,
-  itemsToShowInSlider = 4,
-  withAction = false,
-  darkBg = false,
-  containerStyles,
-  className,
-  openItemOnNewPage = false,
+	items,
+	heading,
+	itemsPerRow = 5,
+	itemsToShowInSlider = 4,
+	withAction = false,
+	darkBg = false,
+	containerStyles,
+	className,
+	openItemOnNewPage = false,
+	titleClasses,
 }) => {
-  const sliderRef = useRef(null);
-  const sliderSettings = {
-    dots: false,
-    infinite: false,
-    arrows: false,
-    slidesToShow: itemsToShowInSlider,
-    slidesToScroll: 1,
-  };
+	const sliderRef = useRef(null)
+	const sliderSettings = {
+		dots: false,
+		infinite: false,
+		arrows: false,
+		slidesToShow: itemsToShowInSlider,
+		slidesToScroll: 1,
+	}
 
-  const gridItems = useMemo(() => {
-    return items.map((props, id) => (
-      <GridItem
-        {...props}
-        key={id}
-        className={clsx(withAction && "pr-8")}
-        openItemOnNewPage={openItemOnNewPage}
-      />
-    ));
-  }, [items, withAction]);
+	const gridItems = useMemo(() => {
+		return items.map((props, id) => (
+			<GridItem
+				{...props}
+				key={id}
+				className={clsx(withAction && 'pr-8')}
+				openItemOnNewPage={openItemOnNewPage}
+				titleClasses={titleClasses}
+			/>
+		))
+	}, [items, withAction])
 
-  return (
-    <div
-      style={{
-        backgroundColor: darkBg ? "#F6F0EB" : "white",
-      }}
-      className={className}
-    >
-      <Container className="overflow-hidden">
-        {withAction ? (
-          <div className={styles.photoGridContainer}>
-            {heading && (
-              <Heading
-                label={heading}
-                actions={<ActionBtns sliderRef={sliderRef} />}
-              />
-            )}
-            <div className="my-8 tablet:my-20" style={containerStyles}>
-              <Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
-                {gridItems}
-              </Slider>
-            </div>
-          </div>
-        ) : (
-          <div className={styles.photoGridContainer}>
-            {heading && <Heading label={heading} />}
-            <div
-              className={styles.photosContainer}
-              style={{
-                ...(containerStyles ?? null),
-                gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`,
-              }}
-            >
-              {gridItems}
-            </div>
-          </div>
-        )}
-      </Container>
-    </div>
-  );
-};
+	return (
+		<div
+			style={{
+				backgroundColor: darkBg ? '#F6F0EB' : 'white',
+			}}
+			className={className}
+		>
+			<Container className="overflow-hidden">
+				{withAction ? (
+					<div className={styles.photoGridContainer}>
+						{heading && (
+							<Heading
+								label={heading}
+								actions={<ActionBtns sliderRef={sliderRef} />}
+							/>
+						)}
+						<div className="my-8 tablet:my-20" style={containerStyles}>
+							<Slider {...sliderSettings} ref={sliderRef} className="-mr-8">
+								{gridItems}
+							</Slider>
+						</div>
+					</div>
+				) : (
+					<div className={styles.photoGridContainer}>
+						{heading && <Heading label={heading} />}
+						<div
+							className={styles.photosContainer}
+							style={{
+								...(containerStyles ?? null),
+								gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`,
+							}}
+						>
+							{gridItems}
+						</div>
+					</div>
+				)}
+			</Container>
+		</div>
+	)
+}
 
-export default PhotoGrid;
+export default PhotoGrid

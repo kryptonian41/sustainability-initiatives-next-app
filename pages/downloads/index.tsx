@@ -51,7 +51,7 @@ const Downloads: React.FC<Props> = ({ reports }) => {
 						className="uppercase mt-10 tablet:text-xl"
 						style={{ color: colors.secondary }}
 					>
-						Annual Reports
+						Publications
 					</h3>
 				</Container>
 				<PhotoGrid

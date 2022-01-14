@@ -108,7 +108,7 @@ export const MobileSubNavListItem: React.FC<MobileSubNavListItemProps> = ({ labe
         }
       </span>
       {_children.length > 0 &&
-        <span className={clsx(styles['mobileNav--caret'], !showChildren && styles['mobileNav--caret--rotate'])} onClick={() => setShowChildren(value => !value)} />
+        <span className={clsx(styles['mobileNav--caret'], showChildren && styles['mobileNav--caret--rotate'])} onClick={() => setShowChildren(value => !value)} />
       }
     </span>
     {

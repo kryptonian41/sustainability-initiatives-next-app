@@ -136,6 +136,7 @@ const Associates: React.FC<Props> = ({ associates }) => {
 						items={paginatedItems}
 						heading="Our Associates"
 						itemsPerRow={itemsPerRow}
+						titleClasses='text-center'
 						containerStyles={{
 							// @ts-ignore
 							'--gap': '3rem',
