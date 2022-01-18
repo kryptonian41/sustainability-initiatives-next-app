@@ -15,7 +15,7 @@ export const ArticleTile = ({ body, imgUrl, subtitle, title, actions }: PropsWit
     <div className={styles.container}>
       <img src={imgUrl} alt="" className={styles.image} />
       <p className={styles.title}>{title}</p>
-      <p className={styles.subtitle}>{subtitle}</p>
+      {/* <p className={styles.subtitle}>{subtitle}</p> */}
       <p className={clsx(styles.body, "font-medium")}>{body}</p>
       {actions &&
         <div className={styles.actionContainer}>

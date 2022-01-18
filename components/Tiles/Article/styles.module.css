@@ -1,6 +1,6 @@
 .container {
   .title {
-    @apply text-xl tablet:text-2xl font-semibold mt-8;
+    @apply text-lg desktop:text-xl font-semibold mt-8;
     color: var(--text-dark);
   }
   .subtitle {

@@ -2,6 +2,7 @@
 	position: relative;
 	@apply pb-10 -mt-20;
 	padding-top: 30rem;
+	z-index: -1;
 
   @media screen and (max-width: 1024px) {
 		margin-top: -10rem;
