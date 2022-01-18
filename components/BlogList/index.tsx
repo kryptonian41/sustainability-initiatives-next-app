@@ -101,7 +101,7 @@ export const BlogList: React.FC<BlogListProps> = ({ articles }) => {
           <MobileBlogFilters clickHandlerFactory={createFilterClickHandler} />
         </div>
       )} */}
-      <div className="flex-1 laptop:px-10">
+      <div className="flex-1">
         {articlesToDisplay.length > 0 ? (
           <>
             <div className="grid phone:grid-cols-2 laptop:grid-cols-3 gap-x-12">

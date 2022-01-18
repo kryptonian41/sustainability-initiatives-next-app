@@ -12,7 +12,7 @@ export const InitiativeTile: React.FC<Props> = ({ initiave }) => {
     <div className={styles.root}>
       <img src={initiave.icon.url} className={styles.icon} />
       <div className={styles.body}>
-        <h3 className="text-xl font-medium">{initiave.title}</h3>
+        <h3 className="text-lg desktop:text-xl font-medium">{initiave.title}</h3>
         <p className="mt-6">{initiave.shortDescription}</p>
         <div className="mt-6">
           <Link href={`/initiatives/${initiave.slug}`}>
