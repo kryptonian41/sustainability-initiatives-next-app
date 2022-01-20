@@ -16,7 +16,7 @@ const BlogsList: React.FC<Props> = ({ blogs }) => {
           <div className="cursor-pointer">
             <div className="py-8">
               <h3 className="font-medium tablet:text-xl">{blog.title}</h3>
-              <p>{blog.author.name}</p>
+              <p>{blog.author?.name}</p>
               <p
                 className="text-sm"
                 style={{ color: colors.text.light }}
