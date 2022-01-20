@@ -46,24 +46,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 			stakeHolders,
 			stakeHolder,
 		},
-		revalidate: 60000,
+		revalidate: 600,
 	}
 }
-
-// export const getServerSideProps = async ({ params }) => {
-// 	const { id } = params
-// 	let stakeHolders = await getStakeHolders()
-// 	const stakeHolder = await getStakeHolderBySlug(id)
-// 	if (stakeHolder.length)
-// 		stakeHolders = stakeHolders.filter((sh) => sh.id !== stakeHolder[0].id)
-
-// 	return {
-// 		props: {
-// 			stakeHolders,
-// 			stakeHolder,
-// 		},
-// 	}
-// }
 
 const Icons = {
 	Twitter: TwitterIcon,

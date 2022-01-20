@@ -13,22 +13,29 @@ interface Props {
 	reports: Report[]
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
 	const reports = await getAnnualReports()
 	return {
 		props: {
 			reports,
 		},
+		revalidate: 86400,
 	}
 }
 
 const Downloads: React.FC<Props> = ({ reports }) => {
+	console.log(reports)
 	const reportsGridProps = (): GridItemProps[] =>
 		reports.map((report) => ({
 			item: {
-				imgSrc: 'images/report.jpg',
+				imgSrc:
+					report.thumbnail?.formats?.thumbnail?.url || 'images/report.jpg',
 				title: report.title,
 				path: report.report.url,
+				imageStyles: {
+					objectFit: 'cover',
+					aspectRatio: '1',
+				},
 			},
 		}))
 

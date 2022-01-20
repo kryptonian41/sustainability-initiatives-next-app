@@ -77,7 +77,7 @@ const AssociatesGrid: React.FC<Props> = ({ items }) => {
 						<GridItem
 							{...restProps}
 							className={clsx(isTablet && 'pr-8', className)}
-							titleClasses={clsx(!isTablet && 'text-center', titleClasses)}
+							titleClasses={clsx('text-center', titleClasses)}
 						/>
 					))}
 				</Slider>

@@ -3,10 +3,11 @@ import { BlogList } from 'components/BlogList'
 import { Container } from 'components/Container'
 import { Heading } from 'components/Heading'
 import SEO from 'components/SEO'
-import { GetServerSideProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
 import {
 	getArticledByInitiativeSlug,
+	getInitiatives,
 	getInitiaveBySlug,
 } from 'utils/api/client-side-api'
 import { Article, Initiative } from 'utils/types'
@@ -17,9 +18,16 @@ interface Props {
 	articles: Article[]
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({
-	params,
-}) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+	const initiatives = await getInitiatives()
+	const paths = initiatives.map((initiative) => `/initiatives/${initiative.slug}`)
+	return {
+		paths,
+		fallback: 'blocking',
+	}
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 	const { slug } = params
 	const articles = await getArticledByInitiativeSlug(slug as string)
 	const initiative = await getInitiaveBySlug(slug as string)
@@ -28,6 +36,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 			initiative,
 			articles,
 		},
+		revalidate: 600,
 	}
 }
 

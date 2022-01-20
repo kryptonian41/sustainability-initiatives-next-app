@@ -39,18 +39,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     props: {
       article: await getArticleBySlug(slug as string),
     },
-    revalidate: 60000,
+    revalidate: 86400,
   }
 }
-
-// export const getServerSideProps = async ({ params }) => {
-//   const { slug } = params;
-//   return {
-//     props: {
-//       article: await getArticleBySlug(slug as string),
-//     },
-//   };
-// };
 
 const BlogPage: React.FC<Props> = ({ article }) => {
   const articleDate = useMemo(
