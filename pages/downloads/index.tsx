@@ -24,7 +24,6 @@ export const getStaticProps = async () => {
 }
 
 const Downloads: React.FC<Props> = ({ reports }) => {
-	console.log(reports)
 	const reportsGridProps = (): GridItemProps[] =>
 		reports.map((report) => ({
 			item: {
