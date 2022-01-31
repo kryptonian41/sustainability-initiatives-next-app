@@ -27,8 +27,7 @@ const Downloads: React.FC<Props> = ({ reports }) => {
 	const reportsGridProps = (): GridItemProps[] =>
 		reports.map((report) => ({
 			item: {
-				imgSrc:
-					report.thumbnail?.formats?.thumbnail?.url || 'images/report.jpg',
+				imgSrc: report.thumbnail?.formats?.small?.url || 'images/report.jpg',
 				title: report.title,
 				path: report.report.url,
 				imageStyles: {
