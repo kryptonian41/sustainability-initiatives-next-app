@@ -28,8 +28,8 @@ const Promise: React.FC = () => {
 		<div className={promiseStyles.background}>
 			<Container>
 				<div className={promiseStyles.container}>
-					{data.map((section) => (
-						<Section {...section} />
+					{data.map((section, index) => (
+						<Section {...section} key={index} />
 					))}
 				</div>
 			</Container>

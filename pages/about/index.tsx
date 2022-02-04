@@ -19,8 +19,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 	return {
 		props: {
 			stakeHolders,
-		},
-		revalidate: 600,
+		}
 	}
 }
 
