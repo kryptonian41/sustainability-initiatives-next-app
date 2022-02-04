@@ -1,22 +1,20 @@
-import React, { useMemo } from 'react'
-import Wrapper from 'components/Wrapper'
-import Hero from '../../components/About/Hero'
-import { getStakeHolders } from 'utils/api/client-side-api'
-import Promise from '../../components/About/Promise'
 import PhotoGrid from 'components/PhotoGrid'
-import { peopleProps } from 'components/PhotoGrid/mockProps'
-import { StakeHolder } from 'utils/types'
 import { GridItemProps } from 'components/PhotoGrid/GridPhoto'
-import { useThemeContext } from 'components/ThemeProvider'
-import { useMediaQuery } from 'utils/hooks/useMediaQuery'
 import SEO from 'components/SEO'
-import { GetStaticProps } from 'next'
+import { useThemeContext } from 'components/ThemeProvider'
+import { GetServerSideProps } from 'next'
+import React, { useMemo } from 'react'
+import { getStakeHolders } from 'utils/api/client-side-api'
+import { useMediaQuery } from 'utils/hooks/useMediaQuery'
+import { StakeHolder } from 'utils/types'
+import Hero from '../../components/About/Hero'
+import Promise from '../../components/About/Promise'
 
 interface Props {
 	stakeHolders: StakeHolder[]
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
 	const stakeHolders = await getStakeHolders()
 	return {
 		props: {

@@ -4,18 +4,18 @@ import { getSortedBlogs } from 'utils/api/client-side-api'
 import { Blog } from 'utils/types'
 import BlogsList from 'components/Blogs/BlogsList'
 import SEO from 'components/SEO'
+import { GetServerSideProps } from 'next'
 
 interface Props {
 	blogs: Blog[]
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
 	const blogs = await getSortedBlogs()
 	return {
 		props: {
 			blogs,
 		},
-		revalidate: 86400,
 	}
 }
 

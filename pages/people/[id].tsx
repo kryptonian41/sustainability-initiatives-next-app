@@ -7,7 +7,7 @@ import {
 import { StakeHolder, SocialLinks, Article } from 'utils/types'
 import styles from './styles.module.css'
 import { Container } from 'components/Container'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { SocialPanel, SocialItem } from 'components/SocialPanel'
 import { useThemeContext } from 'components/ThemeProvider'
 import Blogs from '../../components/People/Blogs'
@@ -26,16 +26,9 @@ interface Props {
 	stakeHolder: StakeHolder[]
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const stakeHolders = await getStakeHolders()
-	const paths = stakeHolders.map((article) => `/people/${article.id}`)
-	return {
-		paths,
-		fallback: 'blocking',
-	}
-}
-
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+	params,
+}) => {
 	const { id } = params
 	let stakeHolders = await getStakeHolders()
 	const stakeHolder = await getStakeHolderBySlug(id)
@@ -46,7 +39,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 			stakeHolders,
 			stakeHolder,
 		},
-		revalidate: 600,
 	}
 }
 

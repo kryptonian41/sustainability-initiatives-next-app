@@ -5,6 +5,7 @@ import {
 	Blog,
 	Initiative,
 	Quote,
+	Report,
 	StakeHolder,
 } from 'utils/types'
 
@@ -116,7 +117,7 @@ export const getQuotes = async () => {
 }
 
 export const getAnnualReports = async () => {
-	const { data } = await axios.get<Quote[]>('/annual-reports', {
+	const { data } = await axios.get<Report[]>('/annual-reports', {
 		params: {
 			_sort: 'published_at:desc',
 		},

@@ -6,7 +6,7 @@ import PhotoGrid from 'components/PhotoGrid'
 import { GridItemProps } from 'components/PhotoGrid/GridPhoto'
 import SEO from 'components/SEO'
 import { useThemeContext } from 'components/ThemeProvider'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import React, {
 	useCallback,
 	useEffect,
@@ -22,12 +22,11 @@ interface Props {
 	associates: Associate[]
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
 	return {
 		props: {
 			associates: await getAssociates(),
 		},
-		revalidate: 86400,
 	}
 }
 
@@ -136,7 +135,7 @@ const Associates: React.FC<Props> = ({ associates }) => {
 						items={paginatedItems}
 						heading="Our Associates"
 						itemsPerRow={itemsPerRow}
-						titleClasses='text-center'
+						titleClasses="text-center"
 						containerStyles={{
 							// @ts-ignore
 							'--gap': '3rem',

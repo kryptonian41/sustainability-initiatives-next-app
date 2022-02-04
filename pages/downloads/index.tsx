@@ -1,25 +1,25 @@
 import { Container } from 'components/Container'
 import { Heading } from 'components/Heading'
-import React, { useMemo } from 'react'
-import { getAnnualReports } from 'utils/api/client-side-api'
-import { Report } from 'utils/types'
 import PhotoGrid from 'components/PhotoGrid'
 import { GridItemProps } from 'components/PhotoGrid/GridPhoto'
-import { useMediaQuery } from 'utils/hooks/useMediaQuery'
-import { useThemeContext } from 'components/ThemeProvider'
 import SEO from 'components/SEO'
+import { useThemeContext } from 'components/ThemeProvider'
+import { GetServerSideProps } from 'next'
+import React, { useMemo } from 'react'
+import { getAnnualReports } from 'utils/api/client-side-api'
+import { useMediaQuery } from 'utils/hooks/useMediaQuery'
+import { Report } from 'utils/types'
 
 interface Props {
 	reports: Report[]
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
 	const reports = await getAnnualReports()
 	return {
 		props: {
 			reports,
 		},
-		revalidate: 86400,
 	}
 }
 

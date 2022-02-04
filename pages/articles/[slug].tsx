@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { Container } from 'components/Container'
 import { SocialPanelIcon } from 'components/SocialPanel'
 import { useThemeContext } from 'components/ThemeProvider'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import React, { useMemo } from 'react'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import sanitizeHtml from 'sanitize-html'
@@ -16,53 +16,43 @@ import styles from './styles.module.css'
 import Slider from 'react-slick'
 import { NextArrow, PrevArrow } from 'components/SlideShow/arrows'
 import { SlideShow } from 'components/SlideShow'
-import SEO from "components/SEO"
+import SEO from 'components/SEO'
 
 interface Props {
-  article: Article
+	article: Article
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await getRecentArticles()
-  const paths = articles
-    .slice(0, Math.min(10, articles.length))
-    .map((article) => `/articles/${article.slug}`)
-  return {
-    paths,
-    fallback: 'blocking',
-  }
-}
-
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const { slug } = params
-  return {
-    props: {
-      article: await getArticleBySlug(slug as string),
-    },
-    revalidate: 86400,
-  }
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+	params,
+}) => {
+	const { slug } = params
+	return {
+		props: {
+			article: await getArticleBySlug(slug as string),
+		},
+	}
 }
 
 const BlogPage: React.FC<Props> = ({ article }) => {
-  const articleDate = useMemo(
-    () =>
-      `${prettyDate(article.published_date, 'd MMMM')} '${prettyDate(
-        article.published_date,
-        'yy'
-      )}`,
-    [article]
-  )
-  const images = useMemo(() => {
-    return article.images.map((image) => image.url)
-  }, [article])
-  const { colors } = useThemeContext()
-  const matchesLaptop = useDeviceMediaQuery('laptop')
-  const articleUrl = useMemo(() => {
-    return typeof window === 'undefined' ? '' : window.location.href
-  }, [])
-  return (
+	const articleDate = useMemo(
+		() =>
+			`${prettyDate(article.published_date, 'd MMMM')} '${prettyDate(
+				article.published_date,
+				'yy'
+			)}`,
+		[article]
+	)
+	const images = useMemo(() => {
+		return article.images.map((image) => image.url)
+	}, [article])
+	const { colors } = useThemeContext()
+	const matchesLaptop = useDeviceMediaQuery('laptop')
+	const articleUrl = useMemo(() => {
+		return typeof window === 'undefined' ? '' : window.location.href
+	}, [])
+	return (
 		<>
-    <SEO title={article.title} description={article.summary} />
+			<SEO title={article.title} description={article.summary} />
 			<div className="py-20">
 				{article?.heroImage && (
 					<Container className="h-96 mb-20">
