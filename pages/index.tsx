@@ -98,8 +98,8 @@ export const Home: React.FC<
 						justifyContent: 'center',
 					},
 					imageStyles: {
-						objectFit: 'contain'
-					}
+						objectFit: 'contain',
+					},
 				},
 				key: associate.id,
 				associate,
@@ -175,6 +175,19 @@ export const Home: React.FC<
 						)}
 					</div>
 				</div>
+			</Container>
+			<Container className="my-16 tablet:my-36">
+				<iframe
+					className="w-full"
+					style={{
+						aspectRatio: '16/9'
+					}}
+					src="https://www.youtube.com/embed/6eeu8DJe2QE"
+					title="YouTube video player"
+					frameBorder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowFullScreen
+				></iframe>
 			</Container>
 			<PhotoGrid
 				items={stakeHolderPhotoGridItems}
